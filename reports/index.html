@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="工藤まさゆき（奈良県議会議員）の活動報告。議会質問の全記録。" />
+    <title>活動報告｜工藤まさゆき</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --color-primary: #37c200;
+        --color-bg-white: #fafaf8;
+        --color-bg-light: #eefbe8;
+        --color-bg-mid: #c8f0b8;
+        --color-text: #2c2c2c;
+        --color-text-muted: #888888;
+        --color-footer-bg: #1a3324;
+        --color-footer-text: #ffffff;
+        --font-main: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --font-en: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --content-max: 1100px;
+        --pad-x: max(20px, 5vw);
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-main);
+        color: var(--color-text);
+        background: var(--color-bg-white);
+        letter-spacing: 0.7px;
+        line-height: 2.2;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        width: 100%;
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 0 var(--pad-x);
+      }
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 10px;
+        background: #ffffff;
+        color: var(--color-text);
+        padding: 10px 12px;
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+        z-index: 999;
+      }
+      .skip-link:focus {
+        left: 12px;
+        outline: 2px solid rgba(55, 194, 0, 0.5);
+        outline-offset: 2px;
+      }
+      :focus-visible {
+        outline: 2px solid rgba(55, 194, 0, 0.55);
+        outline-offset: 3px;
+        border-radius: 12px;
+      }
+
+      .topbar {
+        height: 34px;
+        background: var(--color-primary);
+        color: #fff;
+        display: flex;
+        align-items: center;
+      }
+      .topbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .topbar__label {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .topbar__social {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .icon-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: transform 0.6s var(--ease-out), opacity 0.6s var(--ease-out);
+      }
+      .icon-btn:hover {
+        opacity: 0.85;
+        transform: translateY(-2px);
+      }
+      .icon-btn svg {
+        width: 16px;
+        height: 16px;
+        fill: #fff;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(250, 250, 248, 0.92);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(26, 51, 36, 0.08);
+      }
+      .header .container {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 18px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+      .brand {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+        min-width: 0;
+      }
+      .brand__jp {
+        font-weight: 900;
+        font-size: 24px;
+        letter-spacing: 1.2px;
+        white-space: nowrap;
+      }
+      .brand__en {
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        opacity: 0.68;
+        margin-top: 2px;
+        white-space: nowrap;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .nav a {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        padding: 10px 8px;
+        border-radius: 10px;
+        transition: background 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+      }
+      .nav a:hover {
+        background: rgba(55, 194, 0, 0.1);
+        transform: translateY(-1px);
+      }
+      .nav a[aria-current="page"] {
+        background: rgba(55, 194, 0, 0.14);
+      }
+      .menu-btn {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid rgba(26, 51, 36, 0.12);
+        background: transparent;
+        cursor: pointer;
+        transition: transform 0.6s var(--ease-out), background 0.6s var(--ease-out);
+      }
+      .menu-btn:hover {
+        transform: translateY(-2px);
+        background: rgba(55, 194, 0, 0.08);
+      }
+      .menu-btn span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        margin: 4px auto;
+        background: rgba(26, 51, 36, 0.65);
+        border-radius: 2px;
+      }
+      .mobile-panel {
+        display: none;
+        border-top: 1px solid rgba(26, 51, 36, 0.08);
+        background: var(--color-bg-white);
+      }
+      .mobile-panel .container {
+        padding-top: 10px;
+        padding-bottom: 14px;
+        display: grid;
+        gap: 6px;
+      }
+      .mobile-panel a {
+        padding: 12px 10px;
+        border-radius: 12px;
+        font-weight: 500;
+        transition: background 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+      }
+      .mobile-panel a:hover {
+        background: rgba(55, 194, 0, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .layout-3col {
+        display: block;
+        min-height: 100vh;
+      }
+      .sidebar {
+        background: var(--color-primary);
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 5;
+        width: 200px;
+      }
+      .sidebar--left {
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 40px 0 40px;
+      }
+      .sidebar--right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 200px;
+        background: var(--color-primary);
+        z-index: 5;
+        overflow: hidden;
+      }
+      .sidebar-bubble {
+        position: absolute;
+        bottom: 65vh;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+      .sidebar-bubble span {
+        display: block;
+        background: #ffffff;
+        color: #2c2c2c;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        padding: 14px 20px;
+        border-radius: 16px;
+        border: 3px solid #2c2c2c;
+        position: relative;
+        white-space: nowrap;
+        writing-mode: vertical-rl;
+      }
+      .sidebar-bubble span::after {
+        content: "";
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 16px solid #ffffff;
+        filter: drop-shadow(0 3px 0 #2c2c2c);
+      }
+      .sidebar__text {
+        writing-mode: vertical-lr;
+        font-family: var(--font-en);
+        font-size: 28px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.15);
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin-top: 120px;
+      }
+      .sidebar__label {
+        writing-mode: vertical-rl;
+        font-size: 18px;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 3px;
+        line-height: 1.6;
+        text-align: center;
+      }
+      .sidebar__portrait {
+        width: 100%;
+        height: auto;
+        max-height: 65vh;
+        object-fit: contain;
+        object-position: bottom center;
+        opacity: 1;
+        pointer-events: none;
+        position: relative;
+        z-index: 1;
+        margin-top: auto;
+      }
+      .main-content {
+        min-width: 0;
+        background: var(--color-bg-white);
+        margin-left: 200px;
+        margin-right: 200px;
+      }
+
+      .report-hero {
+        background: var(--color-primary);
+        color: #ffffff;
+        text-align: center;
+        padding: 64px 20px;
+      }
+      .report-hero__label {
+        font-family: var(--font-en);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        opacity: 0.8;
+        margin: 0 0 8px;
+      }
+      .report-hero__title {
+        font-size: clamp(32px, 5vw, 48px);
+        font-weight: 900;
+        letter-spacing: 4px;
+        margin: 0 0 16px;
+      }
+      .report-hero__subtitle {
+        font-size: 16px;
+        opacity: 0.85;
+        margin: 0;
+      }
+
+      .summary-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: rgba(0, 0, 0, 0.06);
+        margin: 0 0 80px;
+      }
+      .summary-stat {
+        background: #ffffff;
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .summary-stat__value {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 48px;
+        font-weight: 800;
+        color: var(--color-primary);
+        line-height: 1.1;
+      }
+      .summary-stat__label {
+        display: block;
+        font-size: 14px;
+        color: var(--color-text-muted);
+        margin-top: 8px;
+        letter-spacing: 0.5px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+      .viewpoints__title,
+      .timeline__title {
+        font-size: clamp(24px, 3.2vw, 32px);
+        font-weight: 900;
+        margin: 0 0 40px;
+        letter-spacing: 1px;
+      }
+      .viewpoints__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(24px, 3vw, 32px);
+      }
+      .viewpoint-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 32px 28px;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.04),
+          0 12px 32px rgba(0, 0, 0, 0.03);
+      }
+      .viewpoint-card__no {
+        font-family: var(--font-en);
+        font-size: 56px;
+        font-weight: 800;
+        color: var(--color-primary);
+        line-height: 1;
+        opacity: 0.3;
+      }
+      .viewpoint-card h3 {
+        font-size: 18px;
+        font-weight: 900;
+        margin: 10px 0 10px;
+      }
+      .viewpoint-card p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 2.0;
+        color: rgba(44, 44, 44, 0.92);
+      }
+
+      .policy-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-primary);
+        transition: gap 0.3s ease;
+      }
+      .policy-card__link:hover {
+        gap: 12px;
+      }
+      .arrow-circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: 1.5px solid var(--color-primary);
+        border-radius: 50%;
+        font-size: 14px;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+      .policy-card__link:hover .arrow-circle {
+        background: var(--color-primary);
+        color: #ffffff;
+      }
+
+      .timeline__list {
+        position: relative;
+        padding-left: 120px;
+      }
+      .timeline__item {
+        display: flex;
+        gap: 32px;
+        margin-bottom: 64px;
+        position: relative;
+      }
+      .timeline__date {
+        position: absolute;
+        left: -120px;
+        top: 0;
+        text-align: right;
+        width: 80px;
+      }
+      .timeline__year {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--color-primary);
+        line-height: 1;
+      }
+      .timeline__month {
+        display: block;
+        font-family: var(--font-en);
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--color-text-muted);
+      }
+      .timeline__line {
+        position: relative;
+        width: 3px;
+        background: var(--color-primary);
+        flex-shrink: 0;
+      }
+      .timeline__line::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        border: 3px solid #ffffff;
+        box-shadow: 0 0 0 2px var(--color-primary);
+      }
+      .timeline__card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 32px;
+        flex: 1;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.04),
+          0 12px 32px rgba(0, 0, 0, 0.03);
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+      }
+      .timeline__card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.04),
+          0 8px 24px rgba(0, 0, 0, 0.06),
+          0 24px 48px rgba(0, 0, 0, 0.04);
+      }
+      .timeline__card h3 {
+        font-size: 20px;
+        font-weight: 900;
+        margin: 12px 0 8px;
+      }
+      .timeline__type {
+        font-size: 14px;
+        color: var(--color-text-muted);
+        margin: 0 0 12px;
+      }
+      .timeline__highlight {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin: 4px 0;
+        line-height: 1.6;
+      }
+      .timeline__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .tag {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--color-primary);
+        background: rgba(55, 194, 0, 0.08);
+        padding: 4px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+      }
+      .badge {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        color: #ffffff;
+        background: var(--color-primary);
+        padding: 2px 10px;
+        border-radius: 20px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+
+      footer {
+        background: var(--color-footer-bg);
+        color: var(--color-footer-text);
+        padding: 54px 0 40px;
+      }
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 18px;
+        margin: 0 0 18px;
+      }
+      .footer-nav a {
+        opacity: 0.9;
+        padding: 8px 10px;
+        border-radius: 12px;
+        transition: background 0.6s var(--ease-out), opacity 0.6s var(--ease-out);
+      }
+      .footer-nav a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        opacity: 1;
+      }
+      .footer-text {
+        margin: 0;
+        opacity: 0.92;
+        line-height: 2.0;
+        letter-spacing: 0.7px;
+        font-size: 14px;
+      }
+      .footer-copy {
+        margin-top: 20px;
+        opacity: 0.7;
+        font-family: var(--font-en);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        font-size: 13px;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1199px) {
+        .nav {
+          gap: 10px;
+        }
+        .viewpoints__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 767px) {
+        .sidebar {
+          display: none;
+        }
+        .main-content {
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .nav {
+          display: none;
+        }
+        .menu-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .mobile-panel {
+          display: block;
+        }
+        .mobile-panel[hidden] {
+          display: none;
+        }
+        .summary-bar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .viewpoints__grid {
+          grid-template-columns: 1fr;
+        }
+        .timeline__list {
+          padding-left: 0;
+        }
+        .timeline__date {
+          position: static;
+          width: auto;
+          text-align: left;
+          display: flex;
+          gap: 8px;
+          align-items: baseline;
+          margin-bottom: 8px;
+        }
+        .timeline__item {
+          flex-direction: column;
+          gap: 0;
+        }
+        .timeline__line {
+          display: none;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1199px) {
+        .sidebar {
+          width: 140px;
+        }
+        .sidebar--right {
+          width: 140px;
+        }
+        .main-content {
+          margin-left: 140px;
+          margin-right: 140px;
+        }
+        .sidebar__text {
+          font-size: 22px;
+          letter-spacing: 5px;
+        }
+        .sidebar__label {
+          font-size: 15px;
+        }
+        .sidebar-bubble span {
+          font-size: 16px;
+          padding: 10px 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
+    <div class="topbar" role="banner">
+      <div class="container">
+        <div class="topbar__label">奈良県議会議員 / 日本維新の会</div>
+        <div class="topbar__social" aria-label="SNSリンク">
+          <a class="icon-btn" href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" aria-label="X（旧Twitter）を開く">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z" />
+            </svg>
+          </a>
+          <a class="icon-btn" href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" aria-label="Instagramを開く">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm9 2h-9A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.7-.9a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <header class="header" aria-label="ヘッダー">
+      <div class="container">
+        <a class="brand" href="../index.html" aria-label="ホームに戻る">
+          <span class="brand__jp">工藤まさゆき</span>
+          <span class="brand__en">Kudo Masayuki Official Site</span>
+        </a>
+
+        <nav class="nav" aria-label="グローバルナビゲーション">
+          <a href="../index.html">ホーム</a>
+          <a href="../index.html#policy">政策</a>
+          <a href="../index.html#profile">プロフィール</a>
+          <a href="/reports/index.html" aria-current="page">活動報告</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#contact">お問い合わせ</a>
+        </nav>
+
+        <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobilePanel">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-panel" id="mobilePanel" hidden>
+        <div class="container" aria-label="モバイルメニュー">
+          <a href="../index.html">ホーム</a>
+          <a href="../index.html#policy">政策</a>
+          <a href="../index.html#profile">プロフィール</a>
+          <a href="/reports/index.html">活動報告</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#contact">お問い合わせ</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="layout-3col">
+        <aside class="sidebar sidebar--left" aria-hidden="true">
+          <span class="sidebar__text">KUDO MASAYUKI</span>
+          <span class="sidebar__label">奈良県議会議員<br />工藤まさゆき</span>
+        </aside>
+
+        <div class="main-content">
+          <div class="report-hero">
+            <p class="report-hero__label">REPORTS</p>
+            <h1 class="report-hero__title">活動報告</h1>
+            <p class="report-hero__subtitle">議会質問の全記録。声は、確かに届いています。</p>
+          </div>
+
+          <div class="summary-bar" aria-label="成果サマリ">
+            <div class="summary-stat">
+              <span class="summary-stat__value">3</span>
+              <span class="summary-stat__label">議会質問</span>
+            </div>
+            <div class="summary-stat">
+              <span class="summary-stat__value">12</span>
+              <span class="summary-stat__label">取り上げたテーマ</span>
+            </div>
+            <div class="summary-stat">
+              <span class="summary-stat__value">20+</span>
+              <span class="summary-stat__label">引き出した答弁</span>
+            </div>
+            <div class="summary-stat">
+              <span class="summary-stat__value">4</span>
+              <span class="summary-stat__label">継続追及テーマ</span>
+            </div>
+          </div>
+
+          <section class="section viewpoints container">
+            <h2 class="viewpoints__title">工藤議員の質問を貫く3つの視点</h2>
+            <div class="viewpoints__grid">
+              <div class="viewpoint-card reveal">
+                <span class="viewpoint-card__no">01</span>
+                <h3>地元・桜井市への目配り</h3>
+                <p>待機児童増加、桜井吉野線整備、大神神社参道整備など、地元の具体的な課題を県政に届ける。</p>
+              </div>
+              <div class="viewpoint-card reveal">
+                <span class="viewpoint-card__no">02</span>
+                <h3>自ら動く・一次情報の収集</h3>
+                <p>北海道担当職員への直接電話など、現場の一次情報を自ら収集して議会に持ち込む行動力。</p>
+              </div>
+              <div class="viewpoint-card reveal">
+                <span class="viewpoint-card__no">03</span>
+                <h3>具体的な数字で行政を動かす</h3>
+                <p>「人口1,000倍・面積165倍」「0.4% vs 98.2%」など数値比較で課題を可視化し、前向きな答弁を引き出す。</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section timeline container" aria-label="議会質問の記録">
+            <h2 class="timeline__title">議会質問の記録</h2>
+
+            <div class="timeline__list">
+              <div class="timeline__item reveal">
+                <div class="timeline__date">
+                  <span class="timeline__year">2025</span>
+                  <span class="timeline__month">06</span>
+                </div>
+                <div class="timeline__line"></div>
+                <div class="timeline__card">
+                  <div class="timeline__tags">
+                    <span class="tag">市町村支援</span>
+                    <span class="tag">土地利用</span>
+                    <span class="tag">参道整備</span>
+                    <span class="tag">不登校</span>
+                    <span class="tag">生理用品</span>
+                  </div>
+                  <h3>令和7年6月定例会（第363回）</h3>
+                  <p class="timeline__type">一般質問　5テーマ＋要望1件</p>
+                  <p class="timeline__highlight">★ 知事が「今月中に勉強会設置」を明言</p>
+                  <p class="timeline__highlight">★ 生理用品配置率 0.4% vs 北海道98.2% を議場で可視化</p>
+                  <a href="2025-06.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
+                </div>
+              </div>
+
+              <div class="timeline__item reveal">
+                <div class="timeline__date">
+                  <span class="timeline__year">2024</span>
+                  <span class="timeline__month">12</span>
+                </div>
+                <div class="timeline__line"></div>
+                <div class="timeline__card">
+                  <div class="timeline__tags">
+                    <span class="tag">保育士確保</span>
+                    <span class="tag">高校無償化</span>
+                    <span class="tag">部活動</span>
+                    <span class="tag">道路整備</span>
+                  </div>
+                  <h3>令和6年12月定例会（第361回）</h3>
+                  <p class="timeline__type">一般質問　4テーマ</p>
+                  <p class="timeline__highlight">★ 6県共同の国への要望を実現</p>
+                  <p class="timeline__highlight">★ 「30%の財源でも上乗せを」と具体的提案</p>
+                  <a href="2024-12.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
+                </div>
+              </div>
+
+              <div class="timeline__item reveal">
+                <div class="timeline__date">
+                  <span class="timeline__year">2023</span>
+                  <span class="timeline__month">09</span>
+                </div>
+                <div class="timeline__line"></div>
+                <div class="timeline__card">
+                  <div class="timeline__tags">
+                    <span class="tag">観光振興</span>
+                    <span class="tag">子育て</span>
+                    <span class="tag">医療的ケア児</span>
+                  </div>
+                  <h3>令和5年9月定例会（第356回）<span class="badge">初質問</span></h3>
+                  <p class="timeline__type">一般質問（初質問）　3テーマ</p>
+                  <p class="timeline__highlight">★ 知事が東京でセミナー開催を表明</p>
+                  <p class="timeline__highlight">★ 重心センターの周知強化を約束</p>
+                  <a href="2023-09.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="sidebar sidebar--right" aria-hidden="true">
+          <div class="sidebar-bubble">
+            <span>声は届く！</span>
+          </div>
+          <img class="sidebar__portrait" src="../rightcolumn.png" alt="" />
+        </aside>
+      </div>
+    </main>
+
+    <footer aria-label="フッター">
+      <div class="container">
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <a href="../index.html">ホーム</a>
+          <a href="../index.html#policy">政策</a>
+          <a href="../index.html#profile">プロフィール</a>
+          <a href="/reports/index.html">活動報告</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#contact">お問い合わせ</a>
+        </nav>
+        <p class="footer-text">
+          奈良県議会議員 工藤まさゆき<br />
+          日本維新の会 奈良県議団<br />
+          〒633-0062 桜井市大字栗殿612-8
+        </p>
+        <p class="footer-copy">© 2026 Kudo Masayuki. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const menuBtn = document.getElementById("menuBtn");
+        const mobilePanel = document.getElementById("mobilePanel");
+
+        function setMenu(open) {
+          if (!menuBtn || !mobilePanel) return;
+          menuBtn.setAttribute("aria-expanded", String(open));
+          menuBtn.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
+          mobilePanel.hidden = !open;
+        }
+
+        if (menuBtn && mobilePanel) {
+          setMenu(false);
+          menuBtn.addEventListener("click", () => setMenu(mobilePanel.hidden));
+          mobilePanel.addEventListener("click", (e) => {
+            const a = e.target.closest("a");
+            if (a && a.getAttribute("href") && a.getAttribute("href").startsWith("#")) setMenu(false);
+          });
+        }
+
+        const reveals = Array.from(document.querySelectorAll(".reveal"));
+        if (reveals.length === 0) return;
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          reveals.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
+        );
+        reveals.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>

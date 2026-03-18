@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="令和6年12月定例会（第361回）一般質問の活動レポート。" />
+    <title>令和6年12月定例会｜活動報告｜工藤まさゆき</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --color-primary: #37c200;
+        --color-bg-white: #fafaf8;
+        --color-bg-light: #eefbe8;
+        --color-bg-mid: #c8f0b8;
+        --color-text: #2c2c2c;
+        --color-text-muted: #888888;
+        --color-footer-bg: #1a3324;
+        --color-footer-text: #ffffff;
+        --font-main: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --font-en: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --content-max: 1100px;
+        --pad-x: max(20px, 5vw);
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font-main);
+        color: var(--color-text);
+        background: var(--color-bg-white);
+        letter-spacing: 0.7px;
+        line-height: 2.2;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        width: 100%;
+        max-width: var(--content-max);
+        margin: 0 auto;
+        padding: 0 var(--pad-x);
+      }
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 10px;
+        background: #ffffff;
+        color: var(--color-text);
+        padding: 10px 12px;
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+        z-index: 999;
+      }
+      .skip-link:focus {
+        left: 12px;
+        outline: 2px solid rgba(55, 194, 0, 0.5);
+        outline-offset: 2px;
+      }
+      :focus-visible {
+        outline: 2px solid rgba(55, 194, 0, 0.55);
+        outline-offset: 3px;
+        border-radius: 12px;
+      }
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(250, 250, 248, 0.92);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(26, 51, 36, 0.08);
+      }
+      .header .container {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 18px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+      .brand {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+      .brand__jp {
+        font-weight: 900;
+        font-size: 24px;
+        letter-spacing: 1.2px;
+        white-space: nowrap;
+      }
+      .brand__en {
+        font-family: var(--font-en);
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        opacity: 0.68;
+        margin-top: 2px;
+        white-space: nowrap;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .nav a {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        padding: 10px 8px;
+        border-radius: 10px;
+        transition: background 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+      }
+      .nav a:hover {
+        background: rgba(55, 194, 0, 0.1);
+        transform: translateY(-1px);
+      }
+      .nav a[aria-current="page"] {
+        background: rgba(55, 194, 0, 0.14);
+      }
+
+      .layout-3col {
+        display: block;
+        min-height: 100vh;
+      }
+      .sidebar {
+        background: var(--color-primary);
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 5;
+        width: 200px;
+      }
+      .sidebar--left {
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 40px 0 40px;
+      }
+      .sidebar--right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 200px;
+        background: var(--color-primary);
+        z-index: 5;
+        overflow: hidden;
+      }
+      .sidebar-bubble {
+        position: absolute;
+        bottom: 65vh;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+      .sidebar-bubble span {
+        display: block;
+        background: #ffffff;
+        color: #2c2c2c;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        padding: 14px 20px;
+        border-radius: 16px;
+        border: 3px solid #2c2c2c;
+        position: relative;
+        white-space: nowrap;
+        writing-mode: vertical-rl;
+      }
+      .sidebar-bubble span::after {
+        content: "";
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 16px solid #ffffff;
+        filter: drop-shadow(0 3px 0 #2c2c2c);
+      }
+      .sidebar__text {
+        writing-mode: vertical-lr;
+        font-family: var(--font-en);
+        font-size: 28px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.15);
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin-top: 120px;
+      }
+      .sidebar__label {
+        writing-mode: vertical-rl;
+        font-size: 18px;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 3px;
+        line-height: 1.6;
+        text-align: center;
+      }
+      .sidebar__portrait {
+        width: 100%;
+        height: auto;
+        max-height: 65vh;
+        object-fit: contain;
+        object-position: bottom center;
+        opacity: 1;
+        pointer-events: none;
+        position: relative;
+        z-index: 1;
+        margin-top: auto;
+      }
+      .main-content {
+        min-width: 0;
+        background: var(--color-bg-white);
+        margin-left: 200px;
+        margin-right: 200px;
+      }
+
+      .report-hero {
+        background: var(--color-primary);
+        color: #ffffff;
+        text-align: center;
+        padding: 64px 20px;
+      }
+      .report-hero__label {
+        font-family: var(--font-en);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        opacity: 0.8;
+        margin: 0 0 8px;
+      }
+      .report-hero__title {
+        font-size: clamp(28px, 4.2vw, 44px);
+        font-weight: 900;
+        letter-spacing: 2px;
+        margin: 0 0 12px;
+      }
+      .report-hero__subtitle {
+        font-size: 16px;
+        opacity: 0.9;
+        margin: 0;
+      }
+      .backlink {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 16px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .backlink span {
+        display: inline-flex;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(255, 255, 255, 0.55);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+      .card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 32px;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.04),
+          0 12px 32px rgba(0, 0, 0, 0.03);
+      }
+      .highlights {
+        background: var(--color-bg-light);
+        padding: 48px 0;
+        margin: 0;
+      }
+      .highlights h2 {
+        font-size: clamp(22px, 3vw, 28px);
+        font-weight: 900;
+        margin: 0 0 20px;
+      }
+      .highlights__list {
+        list-style: none;
+        padding: 0;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .highlights__list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.6;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      }
+      .highlights__list li::before {
+        content: "✓";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: var(--color-primary);
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 14px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .theme-section {
+        margin-bottom: 80px;
+        padding-bottom: 80px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .theme-header {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+      .theme-no {
+        font-family: var(--font-en);
+        font-size: 56px;
+        font-weight: 800;
+        color: var(--color-primary);
+        line-height: 1;
+        opacity: 0.3;
+      }
+      .theme-title {
+        font-size: clamp(24px, 3vw, 32px);
+        font-weight: 900;
+        margin: 0;
+      }
+      .theme-block {
+        margin-bottom: 40px;
+      }
+      .theme-block__label {
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin: 0 0 16px;
+        padding-left: 12px;
+        border-left: 3px solid var(--color-primary);
+      }
+      .claim-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .claim-list li {
+        padding: 12px 0 12px 24px;
+        position: relative;
+        line-height: 2.0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      }
+      .claim-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 20px;
+        width: 8px;
+        height: 8px;
+        background: var(--color-primary);
+        border-radius: 50%;
+      }
+      .answer-card {
+        background: var(--color-bg-light);
+        border-radius: 16px;
+        padding: 28px;
+        margin-bottom: 16px;
+      }
+      .answer-card__who {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 900;
+        color: var(--color-primary);
+        background: rgba(55, 194, 0, 0.1);
+        padding: 4px 14px;
+        border-radius: 20px;
+        margin-bottom: 16px;
+      }
+      .theme-result {
+        background: rgba(55, 194, 0, 0.04);
+        border-left: 4px solid var(--color-primary);
+        padding: 24px 28px;
+        border-radius: 0 12px 12px 0;
+      }
+      .theme-result h4 {
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin: 0 0 12px;
+      }
+      .theme-result p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 2.2;
+      }
+      .source {
+        font-size: 14px;
+        color: var(--color-text-muted);
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .source a {
+        color: var(--color-primary);
+        text-decoration: underline;
+      }
+      .report-nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 40px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .report-nav a {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-primary);
+      }
+
+      footer {
+        background: var(--color-footer-bg);
+        color: var(--color-footer-text);
+        padding: 54px 0 40px;
+      }
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 18px;
+        margin: 0 0 18px;
+      }
+      .footer-nav a {
+        opacity: 0.9;
+        padding: 8px 10px;
+        border-radius: 12px;
+      }
+      .footer-text {
+        margin: 0;
+        opacity: 0.92;
+        line-height: 2.0;
+        letter-spacing: 0.7px;
+        font-size: 14px;
+      }
+      .footer-copy {
+        margin-top: 20px;
+        opacity: 0.7;
+        font-family: var(--font-en);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        font-size: 13px;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 767px) {
+        .sidebar {
+          display: none;
+        }
+        .main-content {
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .nav {
+          display: none;
+        }
+      }
+      @media (min-width: 768px) and (max-width: 1199px) {
+        .sidebar,
+        .sidebar--right {
+          width: 140px;
+        }
+        .main-content {
+          margin-left: 140px;
+          margin-right: 140px;
+        }
+        .sidebar__text {
+          font-size: 22px;
+          letter-spacing: 5px;
+        }
+        .sidebar__label {
+          font-size: 15px;
+        }
+        .sidebar-bubble span {
+          font-size: 16px;
+          padding: 10px 16px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">本文へスキップ</a>
+
+    <header class="header" aria-label="ヘッダー">
+      <div class="container">
+        <a class="brand" href="../index.html" aria-label="ホームに戻る">
+          <span class="brand__jp">工藤まさゆき</span>
+          <span class="brand__en">Kudo Masayuki Official Site</span>
+        </a>
+        <nav class="nav" aria-label="グローバルナビゲーション">
+          <a href="../index.html">ホーム</a>
+          <a href="../index.html#policy">政策</a>
+          <a href="../index.html#profile">プロフィール</a>
+          <a href="/reports/index.html" aria-current="page">活動報告</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#contact">お問い合わせ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="layout-3col">
+        <aside class="sidebar sidebar--left" aria-hidden="true">
+          <span class="sidebar__text">KUDO MASAYUKI</span>
+          <span class="sidebar__label">奈良県議会議員<br />工藤まさゆき</span>
+        </aside>
+
+        <div class="main-content">
+          <div class="report-hero">
+            <p class="report-hero__label">REPORT</p>
+            <h1 class="report-hero__title">令和6年12月定例会（第361回）</h1>
+            <p class="report-hero__subtitle">一般質問｜2024年12月6日（金）</p>
+            <a class="backlink" href="index.html"><span>←</span>一覧へ戻る</a>
+          </div>
+
+          <section class="highlights" aria-label="成果ハイライト">
+            <div class="container">
+              <h2>成果ハイライト</h2>
+              <ul class="highlights__list">
+                <li>奈良県が中心となり6県共同で国に公定価格の地域差是正を要望する枠組みを実現</li>
+                <li>処遇改善事業が5市→22市町村に拡大という成果を確認</li>
+                <li>通信教育での保育士資格取得に対する費用補助を前向きに検討</li>
+                <li>私立高校無償化の所得制限について「試算がされていない」ことを明らかにし、データ整備を促進</li>
+                <li>「30%の財源でも段階的に上乗せを」という現実的提案で前に進む道筋を開く</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="section container" aria-label="テーマ別詳細">
+            <section class="theme-section reveal">
+              <div class="theme-header">
+                <span class="theme-no">01</span>
+                <h3 class="theme-title">保育士確保</h3>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">工藤議員の質問・主張</h4>
+                <ul class="claim-list">
+                  <li>県外（大阪等）への人材流出を課題として指摘し、処遇改善の継続・強化を要求</li>
+                  <li>通信教育で資格取得するルートへの費用補助を新提案</li>
+                  <li>待機児童の現実的な数値目標を示し、改善の道筋を求める</li>
+                </ul>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答</h4>
+                <div class="answer-card">
+                  <span class="answer-card__who">山下知事</span>
+                  <p style="margin: 0">
+                    奈良県が中心となり6県共同で国に要望する枠組みを実現。通信教育費補助についても前向きに検討する姿勢を示しました。
+                  </p>
+                </div>
+              </div>
+              <div class="theme-result">
+                <h4>成果・意義</h4>
+                <p>広域連携（6県共同）を引き出し、現場に即した新提案（通信教育支援）を政策議論に乗せました。</p>
+              </div>
+            </section>
+
+            <section class="theme-section reveal">
+              <div class="theme-header">
+                <span class="theme-no">02</span>
+                <h3 class="theme-title">私立高校授業料無償化</h3>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">工藤議員の質問・主張</h4>
+                <ul class="claim-list">
+                  <li>所得制限撤廃の追加財源について「試算」を求め、数値での議論を要求</li>
+                  <li>100%を待たず「30%の財源でも段階的に上乗せ」という現実的な拡充案を提示</li>
+                </ul>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答</h4>
+                <div class="answer-card">
+                  <span class="answer-card__who">山下知事</span>
+                  <p style="margin: 0">試算がない現状を明らかにし、段階的拡充の方向性について検討姿勢を示しました。</p>
+                </div>
+              </div>
+              <div class="theme-result">
+                <h4>成果・意義</h4>
+                <p>「試算がない」という重要事実を可視化し、段階的拡充という次の打ち手を提示して前進させました。</p>
+              </div>
+            </section>
+
+            <section class="theme-section reveal" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0">
+              <div class="theme-header">
+                <span class="theme-no">03</span>
+                <h3 class="theme-title">道路整備（桜井吉野線）</h3>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">工藤議員の質問・主張</h4>
+                <ul class="claim-list">
+                  <li>残る用地取得（相続人多数・反対者あり）の具体課題と解決見通しを確認</li>
+                  <li>市と県の連携強化、完成がもたらす効果（渋滞緩和等）を具体的に提示</li>
+                </ul>
+              </div>
+              <div class="theme-result">
+                <h4>成果・意義</h4>
+                <p>進捗のボトルネックを議会で公式に確認し、粘り強い交渉継続の方針を引き出しました。</p>
+              </div>
+            </section>
+
+            <div class="source">
+              出典：奈良県議会 令和6年12月定例会（第361回）会議録 第3号 2024年12月6日<br />
+              <a href="https://ssp.kaigiroku.net/tenant/prefnara/SpMinuteView.html?council_id=297&schedule_id=4&minute_id=5" target="_blank" rel="noreferrer"
+                >会議録（外部サイト）</a
+              >
+            </div>
+
+            <nav class="report-nav" aria-label="前後ナビゲーション">
+              <a href="2023-09.html">← 前のレポート</a>
+              <a href="2025-06.html">次のレポート →</a>
+            </nav>
+          </section>
+        </div>
+
+        <aside class="sidebar sidebar--right" aria-hidden="true">
+          <div class="sidebar-bubble">
+            <span>声は届く！</span>
+          </div>
+          <img class="sidebar__portrait" src="../rightcolumn.png" alt="" />
+        </aside>
+      </div>
+    </main>
+
+    <footer aria-label="フッター">
+      <div class="container">
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <a href="../index.html">ホーム</a>
+          <a href="../index.html#policy">政策</a>
+          <a href="../index.html#profile">プロフィール</a>
+          <a href="/reports/index.html">活動報告</a>
+          <a href="../index.html#news">お知らせ</a>
+          <a href="../index.html#contact">お問い合わせ</a>
+        </nav>
+        <p class="footer-text">
+          奈良県議会議員 工藤まさゆき<br />
+          日本維新の会 奈良県議団<br />
+          〒633-0062 桜井市大字栗殿612-8
+        </p>
+        <p class="footer-copy">© 2026 Kudo Masayuki. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const reveals = Array.from(document.querySelectorAll(".reveal"));
+        if (reveals.length === 0) return;
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          reveals.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
+        );
+        reveals.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>
