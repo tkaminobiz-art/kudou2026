@@ -1087,6 +1087,73 @@
         font-size: 13px;
       }
 
+      .layout-3col {
+        display: grid;
+        grid-template-columns: 72px 1fr 72px;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        background: var(--color-primary);
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 5;
+      }
+
+      .sidebar--left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 40px 0 32px;
+      }
+
+      .sidebar__text {
+        writing-mode: vertical-lr;
+        font-family: var(--font-en);
+        font-size: 14px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.2);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .sidebar__label {
+        writing-mode: vertical-rl;
+        font-size: 11px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 2px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .sidebar--right {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .sidebar__portrait {
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        object-fit: contain;
+        object-position: bottom center;
+        opacity: 0.12;
+        filter: brightness(1.2);
+        pointer-events: none;
+      }
+
+      .main-content {
+        min-width: 0;
+        background: var(--color-bg-white);
+      }
+
       .reveal {
         opacity: 0;
         transform: translateY(20px);
@@ -1136,6 +1203,12 @@
       }
 
       @media (max-width: 767px) {
+        .layout-3col {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: none;
+        }
         .topbar .container {
           gap: 10px;
         }
@@ -1214,6 +1287,18 @@
         }
         .news-cat {
           width: fit-content;
+        }
+      }
+
+      @media (min-width: 768px) and (max-width: 1199px) {
+        .layout-3col {
+          grid-template-columns: 48px 1fr 48px;
+        }
+        .sidebar__label {
+          font-size: 10px;
+        }
+        .sidebar__text {
+          font-size: 12px;
         }
       }
 
@@ -1365,6 +1450,14 @@
           </div>
         </div>
       </div>
+
+      <div class="layout-3col">
+        <aside class="sidebar sidebar--left" aria-hidden="true">
+          <span class="sidebar__text">KUDO MASAYUKI</span>
+          <span class="sidebar__label">奈良県議会議員<br>工藤まさゆき</span>
+        </aside>
+
+        <div class="main-content">
 
       <section class="message" aria-label="メッセージ">
         <div class="message__giant" aria-hidden="true"><span>声は届く。</span></div>
@@ -1598,6 +1691,13 @@
           </div>
         </div>
       </section>
+
+        </div>
+
+        <aside class="sidebar sidebar--right" aria-hidden="true">
+          <img class="sidebar__portrait" src="rightcolumn.png" alt="" />
+        </aside>
+      </div>
     </main>
 
     <footer aria-label="フッター">
