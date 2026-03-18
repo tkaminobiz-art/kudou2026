@@ -444,6 +444,469 @@
         transform: translateY(0);
       }
 
+      /* ========================================
+         活動レポート — デザイン強化 v2
+         ======================================== */
+
+      /* --- 概要カード（議員情報・基本情報） --- */
+      .overview-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 48px;
+      }
+
+      .overview-card__item {
+        background: #ffffff;
+        padding: 24px 28px;
+      }
+
+      .overview-card__label {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--color-primary);
+        letter-spacing: 1px;
+        margin: 0 0 6px;
+        text-transform: uppercase;
+      }
+
+      .overview-card__value {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 767px) {
+        .overview-card {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* --- テーマタグ群 --- */
+      .theme-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 32px;
+      }
+
+      .theme-tag {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--color-primary);
+        background: rgba(55, 194, 0, 0.08);
+        padding: 6px 16px;
+        border-radius: 24px;
+        letter-spacing: 0.5px;
+      }
+
+      /* --- 成果ハイライト（強化版） --- */
+      .highlights {
+        background: linear-gradient(135deg, rgba(55, 194, 0, 0.06), rgba(55, 194, 0, 0.02));
+        border-radius: 20px;
+        padding: 48px 40px;
+        margin-bottom: 64px;
+        border: 1px solid rgba(55, 194, 0, 0.1);
+      }
+
+      .highlights__title {
+        font-size: 28px;
+        font-weight: 900;
+        margin: 0 0 32px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .highlights__title::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 28px;
+        background: var(--color-primary);
+        border-radius: 2px;
+      }
+
+      .highlights__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .highlights__list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 0;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.7;
+        border-bottom: 1px solid rgba(55, 194, 0, 0.06);
+      }
+
+      .highlights__list li:last-child {
+        border-bottom: none;
+      }
+
+      .highlights__list li .check-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--color-primary);
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 16px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        box-shadow: 0 2px 8px rgba(55, 194, 0, 0.3);
+      }
+
+      /* --- テーマセクション（強化版） --- */
+      .theme-section {
+        margin-bottom: 80px;
+        padding-bottom: 80px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.04);
+      }
+
+      .theme-section:last-of-type {
+        border-bottom: none;
+      }
+
+      .theme-header {
+        display: flex;
+        align-items: baseline;
+        gap: 20px;
+        margin-bottom: 48px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid var(--color-primary);
+      }
+
+      .theme-no {
+        font-family: var(--font-en);
+        font-size: 64px;
+        font-weight: 800;
+        color: var(--color-primary);
+        line-height: 1;
+        opacity: 0.2;
+      }
+
+      .theme-title {
+        font-size: clamp(24px, 3vw, 32px);
+        font-weight: 900;
+        margin: 0;
+      }
+
+      /* --- テーマ内ブロック --- */
+      .theme-block {
+        margin-bottom: 48px;
+      }
+
+      .theme-block__label {
+        font-size: 17px;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin: 0 0 20px;
+        padding: 8px 0 8px 16px;
+        border-left: 4px solid var(--color-primary);
+        background: linear-gradient(90deg, rgba(55, 194, 0, 0.04), transparent);
+      }
+
+      .theme-block__text {
+        font-size: 16px;
+        line-height: 2.2;
+        margin: 0 0 24px;
+      }
+
+      /* --- データテーブル（PDFの表を再現） --- */
+      .data-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 24px 0;
+        font-size: 15px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.04);
+      }
+
+      .data-table thead {
+        background: var(--color-primary);
+        color: #ffffff;
+      }
+
+      .data-table th {
+        padding: 14px 20px;
+        text-align: left;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+
+      .data-table td {
+        padding: 14px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        background: #ffffff;
+      }
+
+      .data-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .data-table tbody tr:hover td {
+        background: rgba(55, 194, 0, 0.03);
+      }
+
+      .data-table strong {
+        color: var(--color-primary);
+        font-weight: 900;
+      }
+
+      .data-table .highlight-cell {
+        color: #d32f2f;
+        font-weight: 900;
+      }
+
+      /* --- 主張リスト --- */
+      .claim-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .claim-list li {
+        padding: 14px 0 14px 28px;
+        position: relative;
+        line-height: 2;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      }
+
+      .claim-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 22px;
+        width: 10px;
+        height: 10px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(55, 194, 0, 0.15);
+      }
+
+      .claim-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* --- 行政回答カード（ラベル付き） --- */
+      .answer-card {
+        background: var(--color-bg-light);
+        border-radius: 20px;
+        padding: 32px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(55, 194, 0, 0.08);
+      }
+
+      .answer-card__who {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 900;
+        color: var(--color-primary);
+        background: rgba(55, 194, 0, 0.1);
+        padding: 6px 18px;
+        border-radius: 24px;
+        margin-bottom: 20px;
+      }
+
+      .answer-card__who::before {
+        content: "🏛";
+        font-size: 14px;
+      }
+
+      .answer-items {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .answer-item {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px 24px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+      }
+
+      .answer-item__label {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 800;
+        color: #ffffff;
+        background: var(--color-primary);
+        padding: 3px 12px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .answer-item p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 2;
+      }
+
+      /* --- 成果・意義ブロック --- */
+      .theme-result {
+        background: linear-gradient(135deg, rgba(55, 194, 0, 0.05), rgba(55, 194, 0, 0.02));
+        border-left: 5px solid var(--color-primary);
+        padding: 28px 32px;
+        border-radius: 0 16px 16px 0;
+        margin-top: 32px;
+      }
+
+      .theme-result h4 {
+        font-size: 17px;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin: 0 0 12px;
+      }
+
+      .theme-result p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 2.2;
+      }
+
+      /* --- 締めくくりの言葉 --- */
+      .closing-quote {
+        background: linear-gradient(135deg, rgba(55, 194, 0, 0.06), rgba(55, 194, 0, 0.02));
+        border-radius: 20px;
+        padding: 48px 44px;
+        margin: 64px 0;
+        position: relative;
+        border: 1px solid rgba(55, 194, 0, 0.1);
+      }
+
+      .closing-quote::before {
+        content: '"';
+        position: absolute;
+        top: 8px;
+        left: 24px;
+        font-size: 96px;
+        color: var(--color-primary);
+        opacity: 0.15;
+        line-height: 1;
+        font-family: "Georgia", serif;
+      }
+
+      .closing-quote p {
+        font-size: 17px;
+        line-height: 2.4;
+        font-weight: 500;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* --- 前後ナビゲーション --- */
+      .report-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 40px 0;
+        margin-top: 40px;
+        border-top: 2px solid rgba(0, 0, 0, 0.04);
+      }
+
+      .report-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-primary);
+        padding: 12px 24px;
+        border-radius: 12px;
+        border: 1px solid rgba(55, 194, 0, 0.15);
+        transition: all 0.3s ease;
+      }
+
+      .report-nav a:hover {
+        background: rgba(55, 194, 0, 0.06);
+        border-color: rgba(55, 194, 0, 0.3);
+      }
+
+      /* --- 出典 --- */
+      .source {
+        font-size: 14px;
+        color: var(--color-text-muted);
+        margin-top: 48px;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.02);
+        border-radius: 12px;
+      }
+
+      .source a {
+        color: var(--color-primary);
+        text-decoration: underline;
+        word-break: break-all;
+      }
+
+      /* --- 3つの視点まとめ --- */
+      .viewpoints-summary {
+        margin: 64px 0;
+        padding: 48px 40px;
+        background: var(--color-bg-light);
+        border-radius: 20px;
+      }
+
+      .viewpoints-summary__title {
+        font-size: 22px;
+        font-weight: 900;
+        margin: 0 0 32px;
+      }
+
+      .viewpoints-summary__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .viewpoint-mini {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      }
+
+      .viewpoint-mini h4 {
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin: 0 0 8px;
+      }
+
+      .viewpoint-mini p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--color-text-muted);
+        margin: 0;
+      }
+
+      @media (max-width: 767px) {
+        .viewpoints-summary__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 767px) {
         .sidebar {
           display: none;
@@ -525,34 +988,108 @@
             <a class="backlink" href="index.html"><span>←</span>一覧へ戻る</a>
           </div>
 
-          <section class="highlights" aria-label="成果ハイライト">
-            <div class="container">
-              <h2>成果ハイライト</h2>
-              <ul class="highlights__list">
-                <li>知事が「今月中に勉強会を立ち上げ、制度見直しを検討する」と期限付きで明言</li>
-                <li>奈良県43市町村の格差問題（人口1,000倍・面積165倍）を数値で可視化し、前向き答弁を確保</li>
-                <li>大神神社参道の電線共同溝整備が「今年度中に完成」と具体時期を確認</li>
-                <li>不登校支援「ならコネクト」中3進学支援 15名→21名を公式記録に</li>
-                <li>生理用品配置率 0.4% vs 北海道98.2% を議場で提示し、アンケート実施を促進</li>
-              </ul>
+          <div class="overview-card reveal">
+            <div class="overview-card__item">
+              <p class="overview-card__label">議員名</p>
+              <p class="overview-card__value">工藤 将之（くどう まさゆき）</p>
             </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">選挙区 / 会派</p>
+              <p class="overview-card__value">桜井市選挙区 ｜ 日本維新の会</p>
+            </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">質問種別</p>
+              <p class="overview-card__value">一般質問　5テーマ＋要望1件</p>
+            </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">答弁者</p>
+              <p class="overview-card__value">山下知事 / 教育長 / 県土マネジメント部長</p>
+            </div>
+          </div>
+
+          <div class="theme-tags">
+            <span class="theme-tag">市町村支援</span>
+            <span class="theme-tag">土地利用</span>
+            <span class="theme-tag">参道整備</span>
+            <span class="theme-tag">不登校</span>
+            <span class="theme-tag">生理用品</span>
+          </div>
+
+          <section class="highlights reveal" aria-label="成果ハイライト">
+            <h2 class="highlights__title">成果ハイライト</h2>
+            <ul class="highlights__list">
+              <li><span class="check-icon">✓</span><span>知事が「今月中（2025年6月中）に勉強会を立ち上げ、制度見直しの方向性を検討する」と具体的な行動宣言</span></li>
+              <li><span class="check-icon">✓</span><span>奈良県43市町村の格差（人口1,000倍・面積165倍）を議場で可視化し、前向き答弁を確保</span></li>
+              <li><span class="check-icon">✓</span><span>大神神社参道の電線共同溝整備が「今年度中に完成」と具体時期を確認</span></li>
+              <li><span class="check-icon">✓</span><span>不登校支援「ならコネクト」中3進学支援 15名→21名を引き出し、公式記録に残す</span></li>
+              <li><span class="check-icon">✓</span><span>生理用品配置率 0.4% vs 北海道98.2% を提示し、アンケート実施のコミットメントを促進</span></li>
+            </ul>
           </section>
 
-          <section class="section container" aria-label="テーマ別詳細（要約）">
+          <section class="section container" aria-label="テーマ別詳細">
             <section class="theme-section reveal">
               <div class="theme-header">
                 <span class="theme-no">01</span>
                 <h3 class="theme-title">県内市町村への支援</h3>
               </div>
+
               <div class="theme-block">
-                <h4 class="theme-block__label">要点</h4>
-                <p style="margin: 0">
-                  人口格差約1,000倍・面積格差約165倍という実態を提示し、県主導でのDX・ふるさと納税共通返礼品・公共交通の支援策を提案。
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  奈良県内43市町村は、人口規模・面積・財政力において極めて大きな格差を抱えている。最大と最小では人口が約1,000倍、面積が約165倍もの開きがあり、大都市と限界集落が同じ県内に共存している。工藤議員は「同じ県民として同水準のサービスを受けられるよう、県が積極的に市町村を支援すべき」という観点から質問に臨んだ。
                 </p>
+
+                <table class="data-table">
+                  <thead>
+                    <tr><th>項目</th><th>奈良県43市町村の実態</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>人口格差（最大vs最小）</td><td><strong>約1,000倍</strong></td></tr>
+                    <tr><td>面積格差（最大vs最小）</td><td><strong>約165倍</strong></td></tr>
+                    <tr><td>課題</td><td>南部・東部の小規模自治体は人口減少・財政縮小で行政サービス維持が困難</td></tr>
+                    <tr><td>参考モデル</td><td>三重県：県が主導して市町村の広域連携・DX化を支援</td></tr>
+                  </tbody>
+                </table>
               </div>
+
+              <div class="theme-block">
+                <h4 class="theme-block__label">工藤議員の質問・主張</h4>
+                <ul class="claim-list">
+                  <li>三重県の取り組みを具体的なモデルとして紹介し、「奈良県でも県が主体となって市町村のデジタル化・業務効率化を支援できないか」と提案。</li>
+                  <li>ふるさと納税について、複数市町村が共通返礼品を用意して連携する「共通返礼品制度」の導入を提案。小規模自治体でも競争力のある返礼品を出せるよう、県が仲介役を担うべきと訴えた。</li>
+                  <li>公共交通の維持・再編について、県が財政支援・調整役として介入する必要性を訴えた。</li>
+                  <li>「市町村合併で解決できる時代は終わった。合併ではなく、独立性を保ちながら県の支援で行政サービスを維持できる仕組みが必要だ」と方向性を示した。</li>
+                </ul>
+              </div>
+
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答（山下知事）</h4>
+                <div class="answer-card">
+                  <div class="answer-card__who">山下知事</div>
+                  <div class="answer-items">
+                    <div class="answer-item">
+                      <span class="answer-item__label">格差の認識</span>
+                      <p>奈良県43市町村の格差について同様の問題意識を持つと明言。南部・東部の持続可能性が県政の重要課題であると確認した。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">デジタル化支援</span>
+                      <p>市町村の情報システム標準化・共同利用に県が積極的に関与し、コスト削減と業務効率化を後押しする方針。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">ふるさと納税</span>
+                      <p>共通返礼品の連携について、県が各市町村と連携を図る方向で検討を進める姿勢を示した。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">公共交通</span>
+                      <p>県が主体的に調整・財政支援を行う方針を確認。特に南部・東部の路線維持に積極的役割を果たすと答弁。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="theme-result">
                 <h4>成果・意義</h4>
-                <p>具体的な数値で課題を可視化し、市町村支援の方向性について前向きな答弁を引き出しました。</p>
+                <p>人口1,000倍・面積165倍という具体的数字で格差を可視化し、知事から「重要課題」という認識を引き出した。DX・ふるさと納税・公共交通という具体メニューで前向き答弁を確保した。</p>
               </div>
             </section>
 
@@ -561,43 +1098,224 @@
                 <span class="theme-no">02</span>
                 <h3 class="theme-title">土地利用制度（市街化調整区域）</h3>
               </div>
+
               <div class="theme-block">
-                <h4 class="theme-block__label">要点</h4>
-                <p style="margin: 0">人口減少時代に「移住・定住を妨げる制度的矛盾」を提起し、制度見直しの必要性を追及。</p>
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  高度成長期に「開発を抑制する」ために作られた市街化調整区域の規制が、人口減少時代の山間部では「移住・定住を妨げる」制度的矛盾として機能している。「来てほしい地域に人が来られない」というジレンマがある。
+                </p>
+                <table class="data-table">
+                  <thead><tr><th>項目</th><th>内容</th></tr></thead>
+                  <tbody>
+                    <tr><td>問題の構造</td><td>移住希望者が土地を取得しても家が建てられないなど、制度が人口減少対策の障壁になっている。</td></tr>
+                  </tbody>
+                </table>
               </div>
+
+              <div class="theme-block">
+                <h4 class="theme-block__label">工藤議員の質問・主張</h4>
+                <ul class="claim-list">
+                  <li>「時代が変わった。線引き制度が南部・東部の人口減少を加速させている」と制度改革の必要性を直接提起。</li>
+                  <li>「移住希望者が土地を取得しても家が建てられない」という現場の声を代弁し、具体的障壁の除去を求めた。</li>
+                  <li>無秩序な開発を防ぎつつ、過疎地域では思い切った規制緩和が地域再生につながると主張。</li>
+                </ul>
+              </div>
+
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答（山下知事）</h4>
+                <div class="answer-card">
+                  <div class="answer-card__who">山下知事</div>
+                  <div class="answer-items">
+                    <div class="answer-item">
+                      <span class="answer-item__label">問題意識の共有</span>
+                      <p>線引き制度が移住促進の制度的障壁になっている面があるという問題意識を共有すると明言。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">★ 勉強会の立ち上げ</span>
+                      <p>「今月中（2025年6月中）に勉強会を立ち上げ、制度見直しの方向性を検討する」と行動宣言。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">制度設計のスケジュール</span>
+                      <p>「今年度中（2025年度中）に具体的な制度設計を行う」と明言。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="theme-result">
                 <h4>成果・意義</h4>
-                <p><strong>「今月中に勉強会」「今年度中に制度設計」</strong>という期限付きコミットメントを引き出しました。</p>
+                <p>「今月中に勉強会・今年度中に制度設計」という期限付きコミットメントを引き出し、政策転換の起点を作った。</p>
               </div>
             </section>
 
-            <section class="theme-section reveal" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0">
+            <section class="theme-section reveal">
               <div class="theme-header">
                 <span class="theme-no">03</span>
+                <h3 class="theme-title">大神神社参道整備</h3>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  大神神社参道の景観を損ねる電線類や狭隘などの課題があり、整備が求められている。平成29年に事業化されたが、JR三輪駅の東西で進捗に差がある。
+                </p>
+                <table class="data-table">
+                  <thead><tr><th>区間</th><th>状況・進捗</th></tr></thead>
+                  <tbody>
+                    <tr><td>JR三輪駅より東側</td><td><strong>今年度（令和7年度）中に電線共同溝の整備完成予定</strong></td></tr>
+                    <tr><td>JR三輪駅より西側</td><td>検討会議で継続協議中</td></tr>
+                    <tr><td>事業化</td><td><strong>平成29年（2017年）</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答（県土マネジメント部長）</h4>
+                <div class="answer-card">
+                  <div class="answer-card__who">県土マネジメント部長</div>
+                  <div class="answer-items">
+                    <div class="answer-item"><span class="answer-item__label">JR東側</span><p>今年度中に完成予定。</p></div>
+                    <div class="answer-item"><span class="answer-item__label">JR西側</span><p>検討会議で継続協議し、合意形成を図る。</p></div>
+                  </div>
+                </div>
+              </div>
+              <div class="theme-result">
+                <h4>成果・意義</h4>
+                <p>JR東側の完成時期を公式に確認し、進捗管理の根拠を作った。</p>
+              </div>
+            </section>
+
+            <section class="theme-section reveal">
+              <div class="theme-header">
+                <span class="theme-no">04</span>
+                <h3 class="theme-title">不登校支援（ならコネクト）</h3>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  「ならコネクト」への移行にあたり、実績と課題を具体的な数字で確認するとともに、進路支援やメタバース活用を深掘りした。
+                </p>
+                <table class="data-table">
+                  <thead><tr><th>指標</th><th>実績・状況</th></tr></thead>
+                  <tbody>
+                    <tr><td>ならコネクト登録者数</td><td><strong>44名</strong></td></tr>
+                    <tr><td>中3の進学支援（令和5年度）</td><td><strong>15名が進学</strong></td></tr>
+                    <tr><td>中3の進学支援（令和6年度）</td><td><strong class="highlight-cell">21名が進学（R5比+6名増）</strong></td></tr>
+                    <tr><td>今後の対象拡大</td><td>小学5〜6年生へ</td></tr>
+                    <tr><td>新機能</td><td><strong>メタバース</strong>活用</td></tr>
+                    <tr><td>開校予定</td><td><strong>令和7年6月末</strong></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答（教育長）</h4>
+                <div class="answer-card">
+                  <div class="answer-card__who">教育長</div>
+                  <div class="answer-items">
+                    <div class="answer-item"><span class="answer-item__label">特徴</span><p>オンラインとリアルを組み合わせた学習・交流の場を提供。</p></div>
+                    <div class="answer-item"><span class="answer-item__label">進学実績</span><p>15名→21名と数字に表れている。</p></div>
+                    <div class="answer-item"><span class="answer-item__label">メタバース</span><p>外出困難な生徒の交流環境として活用。</p></div>
+                    <div class="answer-item"><span class="answer-item__label">対象拡大</span><p>小学5〜6年生への拡大準備を進める。</p></div>
+                  </div>
+                </div>
+              </div>
+              <div class="theme-result">
+                <h4>成果・意義</h4>
+                <p>15→21という成果数字を公式記録に残し、支援の進化を県民に伝える根拠を作った。</p>
+              </div>
+            </section>
+
+            <section class="theme-section reveal">
+              <div class="theme-header">
+                <span class="theme-no">05</span>
                 <h3 class="theme-title">学校トイレの生理用品配置</h3>
               </div>
               <div class="theme-block">
-                <h4 class="theme-block__label">要点</h4>
-                <p style="margin: 0">
-                  奈良県0.4% vs 北海道98.2% の差を提示。本人が北海道担当職員に直接ヒアリングし、実現手法を具体的に検証。
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  奈良県内の配置が極めて遅れている現状を、北海道との比較で可視化し、なぜ差がつくのかを追及した。
                 </p>
+                <table class="data-table">
+                  <thead><tr><th>都道府県</th><th>学校トイレへの生理用品配置率</th><th>備考</th></tr></thead>
+                  <tbody>
+                    <tr><td>北海道</td><td><strong>98.2%</strong></td><td>担当職員へ直接電話でヒアリング</td></tr>
+                    <tr><td>奈良県</td><td><strong class="highlight-cell">0.4%（アンケート結果）</strong></td><td>ほぼ未実施</td></tr>
+                    <tr><td>全国平均</td><td>調査中</td><td>格差あり</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答（教育長）</h4>
+                <div class="answer-card">
+                  <div class="answer-card__who">教育長</div>
+                  <div class="answer-items">
+                    <div class="answer-item"><span class="answer-item__label">現状</span><p>配置が進んでいないことを認めた。</p></div>
+                    <div class="answer-item"><span class="answer-item__label">★ アンケート実施</span><p>学校現場の実態についてアンケートを実施する方向で検討。</p></div>
+                    <div class="answer-item"><span class="answer-item__label">今後</span><p>北海道の取り組みを参考に、仕組みを検討。</p></div>
+                  </div>
+                </div>
               </div>
               <div class="theme-result">
                 <h4>成果・意義</h4>
-                <p>実態把握のためのアンケート実施を促し、次の改善へつながる議論を前進させました。</p>
+                <p>0.4% vs 98.2% を議会で可視化し、アンケート実施という政策サイクルの起点を作った。</p>
               </div>
             </section>
 
-            <div class="source">
-              出典：奈良県議会 令和7年6月定例会（第363回）会議録 2025年6月24日<br />
-              <a href="https://ssp.kaigiroku.net/tenant/prefnara/SpMinuteView.html?council_id=322&schedule_id=4&minute_id=66" target="_blank" rel="noreferrer"
-                >会議録（外部サイト）</a
-              >
+            <section class="theme-section reveal">
+              <div class="theme-header">
+                <span class="theme-no">要望</span>
+                <h3 class="theme-title">フードバンクへの備蓄米配布</h3>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">要望の内容</h4>
+                <p class="theme-block__text">
+                  米価高騰で困っている子育て世帯・低所得世帯に対し、フードバンクや子ども食堂を通じた備蓄米の配布支援を県に要望した。
+                </p>
+                <table class="data-table">
+                  <thead><tr><th>項目</th><th>内容</th></tr></thead>
+                  <tbody>
+                    <tr><td>問題の核心</td><td>市場放出だけでは本当に必要な人に届かない「ラストワンマイル」の課題がある。</td></tr>
+                  </tbody>
+                </table>
+                <ul class="claim-list">
+                  <li>フードバンクや子ども食堂等を通じた配布支援に取り組むよう要望。</li>
+                  <li>国の政策だけを待たず、県として機動的にできることを求めた。</li>
+                </ul>
+              </div>
+              <div class="theme-result">
+                <h4>意義</h4>
+                <p>「本当に必要な人に届ける」視点を提示し、具体的な政策メニューとして県の対応を促した。</p>
+              </div>
+            </section>
+
+            <div class="viewpoints-summary reveal">
+              <h3 class="viewpoints-summary__title">工藤議員の質問を貫く3つの視点</h3>
+              <div class="viewpoints-summary__grid">
+                <div class="viewpoint-mini">
+                  <h4>地元・桜井市への目配り</h4>
+                  <p>大神神社参道整備・フードバンクへの米配布など、地元の具体的課題を県政に届ける。</p>
+                </div>
+                <div class="viewpoint-mini">
+                  <h4>自ら動く・一次情報の収集</h4>
+                  <p>北海道担当職員への直接電話など、一次情報を自ら収集して議会に持ち込む行動力。</p>
+                </div>
+                <div class="viewpoint-mini">
+                  <h4>具体的な数字で行政を動かす</h4>
+                  <p>「人口1,000倍・面積165倍」「0.4% vs 98.2%」など数値比較で課題を可視化し、答弁を引き出す。</p>
+                </div>
+              </div>
             </div>
 
-            <nav class="report-nav" aria-label="前後ナビゲーション">
-              <a href="2024-12.html">← 前のレポート</a>
-              <a href="index.html">一覧へ戻る</a>
+            <div class="source">
+              <p>出典：奈良県議会 令和7年6月定例会（第363回）会議録　2025年6月24日</p>
+              <p>
+                <a href="https://ssp.kaigiroku.net/tenant/prefnara/SpMinuteView.html?council_id=322&schedule_id=4&minute_id=66" target="_blank" rel="noopener"
+                  >議事録を見る（外部サイト）</a
+                >
+              </p>
+            </div>
+
+            <nav class="report-nav">
+              <a href="2024-12.html">← 令和6年12月定例会</a>
+              <a href="index.html">一覧に戻る</a>
             </nav>
           </section>
         </div>

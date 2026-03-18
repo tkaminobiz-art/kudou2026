@@ -645,6 +645,190 @@
         transform: translateY(0);
       }
 
+      /* ========================================
+         活動レポート — デザイン強化 v2
+         ======================================== */
+
+      .overview-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 48px;
+      }
+
+      .overview-card__item {
+        background: #ffffff;
+        padding: 24px 28px;
+      }
+
+      .overview-card__label {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--color-primary);
+        letter-spacing: 1px;
+        margin: 0 0 6px;
+        text-transform: uppercase;
+      }
+
+      .overview-card__value {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 767px) {
+        .overview-card {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .theme-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 32px;
+      }
+
+      .theme-tag {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--color-primary);
+        background: rgba(55, 194, 0, 0.08);
+        padding: 6px 16px;
+        border-radius: 24px;
+        letter-spacing: 0.5px;
+      }
+
+      .highlights {
+        background: linear-gradient(135deg, rgba(55, 194, 0, 0.06), rgba(55, 194, 0, 0.02));
+        border-radius: 20px;
+        padding: 48px 40px;
+        margin-bottom: 64px;
+        border: 1px solid rgba(55, 194, 0, 0.1);
+      }
+
+      .highlights__title {
+        font-size: 28px;
+        font-weight: 900;
+        margin: 0 0 32px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .highlights__title::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 28px;
+        background: var(--color-primary);
+        border-radius: 2px;
+      }
+
+      .highlights__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .highlights__list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 0;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.7;
+        border-bottom: 1px solid rgba(55, 194, 0, 0.06);
+      }
+
+      .highlights__list li:last-child {
+        border-bottom: none;
+      }
+
+      .highlights__list li .check-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--color-primary);
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 16px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        box-shadow: 0 2px 8px rgba(55, 194, 0, 0.3);
+      }
+
+      .theme-block__text {
+        font-size: 16px;
+        line-height: 2.2;
+        margin: 0 0 24px;
+      }
+
+      .answer-card__who::before {
+        content: "🏛";
+        font-size: 14px;
+      }
+
+      .answer-items {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* --- 3つの視点まとめ --- */
+      .viewpoints-summary {
+        margin: 64px 0;
+        padding: 48px 40px;
+        background: var(--color-bg-light);
+        border-radius: 20px;
+      }
+
+      .viewpoints-summary__title {
+        font-size: 22px;
+        font-weight: 900;
+        margin: 0 0 32px;
+      }
+
+      .viewpoints-summary__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .viewpoint-mini {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      }
+
+      .viewpoint-mini h4 {
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin: 0 0 8px;
+      }
+
+      .viewpoint-mini p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--color-text-muted);
+        margin: 0;
+      }
+
+      @media (max-width: 767px) {
+        .viewpoints-summary__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 767px) {
         .sidebar {
           display: none;
@@ -748,38 +932,41 @@
             <a class="backlink" href="index.html"><span>←</span>一覧へ戻る</a>
           </div>
 
-          <section class="section overview container">
-            <div class="overview-grid">
-              <div class="card reveal">
-                <h2>概要</h2>
-                <div class="kv" aria-label="基本情報">
-                  <div class="kv-row"><span>答弁者</span><span>山下知事 / 各局部長 / 教育長</span></div>
-                  <div class="kv-row"><span>テーマ</span><span>観光振興・子育て・医療的ケア児</span></div>
-                  <div class="kv-row"><span>特徴</span><span><strong>初質問</strong>。現場の一次情報・具体数値で課題を可視化。</span></div>
-                </div>
-              </div>
-              <div class="card reveal">
-                <h2>この回の要点</h2>
-                <p style="margin: 0">
-                  日帰り偏重の観光構造、子育て支援の所得制限、医療的ケア児を取り巻く制度設計。<br />
-                  「既存施策の繰り返し」で終わらせず、知事から新たな具体アクションの言質を引き出しました。
-                </p>
-              </div>
+          <div class="overview-card reveal">
+            <div class="overview-card__item">
+              <p class="overview-card__label">議員名</p>
+              <p class="overview-card__value">工藤 将之（くどう まさゆき）</p>
             </div>
-          </section>
+            <div class="overview-card__item">
+              <p class="overview-card__label">選挙区 / 会派</p>
+              <p class="overview-card__value">桜井市選挙区 ｜ 日本維新の会</p>
+            </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">質問種別</p>
+              <p class="overview-card__value">一般質問（初質問）</p>
+            </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">答弁者</p>
+              <p class="overview-card__value">山下知事 / 各局部長 / 教育長</p>
+            </div>
+          </div>
 
-          <section class="highlights" aria-label="成果ハイライト">
-            <div class="container">
-              <h2>成果ハイライト</h2>
-              <ul class="highlights__list">
-                <li>知事が閉鎖宿泊施設の再開を県として積極支援する方針を表明</li>
-                <li>知事が首都圏事業者向けセミナー開催（知事自ら登壇）を表明</li>
-                <li>年収910万円以上の家庭への支援を「検討している」と前向き姿勢</li>
-                <li>重心センターの周知不足を認め「しっかり取り組む」と明言</li>
-                <li>高校入試の合理的配慮について「前向きに進む」と答弁</li>
-                <li>市町村事務職向けコーディネーター簡易研修の検討を開始</li>
-              </ul>
-            </div>
+          <div class="theme-tags">
+            <span class="theme-tag">観光振興</span>
+            <span class="theme-tag">子育て支援</span>
+            <span class="theme-tag">医療的ケア児</span>
+          </div>
+
+          <section class="highlights reveal" aria-label="成果ハイライト">
+            <h2 class="highlights__title">成果ハイライト</h2>
+            <ul class="highlights__list">
+              <li><span class="check-icon">✓</span><span>知事が閉鎖宿泊施設の再開を県として積極支援する方針を表明</span></li>
+              <li><span class="check-icon">✓</span><span>知事が首都圏事業者向けセミナー開催（知事自ら登壇）を表明</span></li>
+              <li><span class="check-icon">✓</span><span>年収910万円以上の家庭への支援を「検討している」と前向き姿勢</span></li>
+              <li><span class="check-icon">✓</span><span>重心センターの周知不足を認め「しっかり取り組む」と明言</span></li>
+              <li><span class="check-icon">✓</span><span>高校入試の合理的配慮について「前向きに進む」と答弁</span></li>
+              <li><span class="check-icon">✓</span><span>市町村事務職向けコーディネーター簡易研修の検討を開始</span></li>
+            </ul>
           </section>
 
           <section class="section container" aria-label="テーマ別詳細">
@@ -828,8 +1015,8 @@
                 <div class="theme-block">
                   <h4 class="theme-block__label">行政側の回答</h4>
                   <div class="answer-card">
-                    <span class="answer-card__who">山下知事</span>
-                    <div class="answer-card__items">
+                    <div class="answer-card__who">山下知事</div>
+                    <div class="answer-items">
                       <div class="answer-item">
                         <span class="answer-item__label">具体的施策①</span>
                         <p>コロナ禍で閉鎖した宿泊施設の実態を確認し、再開を県として積極支援する。</p>
@@ -861,7 +1048,16 @@
               <div class="theme-body">
                 <div class="theme-block">
                   <h4 class="theme-block__label">課題意識・問題提起</h4>
-                  <p style="margin: 0">所得制限の壁で支援が届かない層があり、「年収910万円以上の世帯は国も県も支援がゼロ」という盲点が存在します。</p>
+                  <p class="theme-block__text">所得制限の壁で支援が届かない層があり、「年収910万円以上の世帯は国も県も支援がゼロ」という盲点が存在します。</p>
+                  <table class="data-table">
+                    <thead>
+                      <tr><th>項目</th><th>数値・内容</th><th>備考</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>多胎児分娩件数（県内）</td><td><strong>90件</strong></td><td>こども・女性局長答弁（令和4年度）</td></tr>
+                      <tr><td>支援ツール</td><td><strong>リトルベビーハンドブック</strong> などの周知</td><td>早産児・低出生体重児の家族支援</td></tr>
+                    </tbody>
+                  </table>
                 </div>
                 <div class="theme-block">
                   <h4 class="theme-block__label">工藤議員の質問・主張</h4>
@@ -873,8 +1069,8 @@
                 <div class="theme-block">
                   <h4 class="theme-block__label">行政側の回答</h4>
                   <div class="answer-card">
-                    <span class="answer-card__who">山下知事</span>
-                    <div class="answer-card__items">
+                    <div class="answer-card__who">山下知事</div>
+                    <div class="answer-items">
                       <div class="answer-item">
                         <span class="answer-item__label">姿勢</span>
                         <p>年収910万円以上の家庭への支援策についても「今、検討している」と前向きに答弁。</p>
@@ -910,8 +1106,8 @@
                 <div class="theme-block">
                   <h4 class="theme-block__label">行政側の回答</h4>
                   <div class="answer-card">
-                    <span class="answer-card__who">福祉医療部長 / 教育長</span>
-                    <div class="answer-card__items">
+                    <div class="answer-card__who">福祉医療部長 / 教育長</div>
+                    <div class="answer-items">
                       <div class="answer-item">
                         <span class="answer-item__label">周知</span>
                         <p>周知不足を認め「しっかり取り組む」と明言。事務職向け簡易研修の検討も約束。</p>
@@ -935,6 +1131,24 @@
                 「多胎児支援や医療的ケア児支援は、当事者の方々が声を上げにくいテーマです。<br />
                 同じ苦労を奈良県で同時多発的にしないような制度設計をぜひお願いしたい。引き続き取り組んでまいります。」
               </p>
+            </div>
+
+            <div class="viewpoints-summary reveal">
+              <h3 class="viewpoints-summary__title">工藤議員の質問を貫く3つの視点</h3>
+              <div class="viewpoints-summary__grid">
+                <div class="viewpoint-mini">
+                  <h4>地元への目配り</h4>
+                  <p>観光の宿泊促進や子育て・医療的ケア児支援など、暮らしの課題を県政の議論に乗せる。</p>
+                </div>
+                <div class="viewpoint-mini">
+                  <h4>現場の一次情報</h4>
+                  <p>当事者の声・実態に基づき、制度の盲点や周知不足といった課題を具体化する。</p>
+                </div>
+                <div class="viewpoint-mini">
+                  <h4>数字と具体策で前に進める</h4>
+                  <p>データ提示と具体アクション提案で、答弁を「方針」から「行動」へ近づける。</p>
+                </div>
+              </div>
             </div>
 
             <div class="source">

@@ -490,6 +490,189 @@
         transform: translateY(0);
       }
 
+      /* ========================================
+         活動レポート — デザイン強化 v2
+         ======================================== */
+
+      .overview-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: rgba(0, 0, 0, 0.06);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 48px;
+      }
+
+      .overview-card__item {
+        background: #ffffff;
+        padding: 24px 28px;
+      }
+
+      .overview-card__label {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--color-primary);
+        letter-spacing: 1px;
+        margin: 0 0 6px;
+        text-transform: uppercase;
+      }
+
+      .overview-card__value {
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 767px) {
+        .overview-card {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .theme-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 16px 0 32px;
+      }
+
+      .theme-tag {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--color-primary);
+        background: rgba(55, 194, 0, 0.08);
+        padding: 6px 16px;
+        border-radius: 24px;
+        letter-spacing: 0.5px;
+      }
+
+      .highlights {
+        background: linear-gradient(135deg, rgba(55, 194, 0, 0.06), rgba(55, 194, 0, 0.02));
+        border-radius: 20px;
+        padding: 48px 40px;
+        margin-bottom: 64px;
+        border: 1px solid rgba(55, 194, 0, 0.1);
+      }
+
+      .highlights__title {
+        font-size: 28px;
+        font-weight: 900;
+        margin: 0 0 32px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .highlights__title::before {
+        content: "";
+        display: inline-block;
+        width: 4px;
+        height: 28px;
+        background: var(--color-primary);
+        border-radius: 2px;
+      }
+
+      .highlights__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .highlights__list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 0;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.7;
+        border-bottom: 1px solid rgba(55, 194, 0, 0.06);
+      }
+
+      .highlights__list li:last-child {
+        border-bottom: none;
+      }
+
+      .highlights__list li .check-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--color-primary);
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 16px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        box-shadow: 0 2px 8px rgba(55, 194, 0, 0.3);
+      }
+
+      .theme-block__text {
+        font-size: 16px;
+        line-height: 2.2;
+        margin: 0 0 24px;
+      }
+
+      .answer-card__who::before {
+        content: "🏛";
+        font-size: 14px;
+      }
+
+      .answer-items {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .viewpoints-summary {
+        margin: 64px 0;
+        padding: 48px 40px;
+        background: var(--color-bg-light);
+        border-radius: 20px;
+      }
+
+      .viewpoints-summary__title {
+        font-size: 22px;
+        font-weight: 900;
+        margin: 0 0 32px;
+      }
+
+      .viewpoints-summary__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .viewpoint-mini {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+      }
+
+      .viewpoint-mini h4 {
+        font-size: 16px;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin: 0 0 8px;
+      }
+
+      .viewpoint-mini p {
+        font-size: 14px;
+        line-height: 1.8;
+        color: var(--color-text-muted);
+        margin: 0;
+      }
+
+      @media (max-width: 767px) {
+        .viewpoints-summary__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       @media (max-width: 767px) {
         .sidebar {
           display: none;
@@ -571,17 +754,41 @@
             <a class="backlink" href="index.html"><span>←</span>一覧へ戻る</a>
           </div>
 
-          <section class="highlights" aria-label="成果ハイライト">
-            <div class="container">
-              <h2>成果ハイライト</h2>
-              <ul class="highlights__list">
-                <li>奈良県が中心となり6県共同で国に公定価格の地域差是正を要望する枠組みを実現</li>
-                <li>処遇改善事業が5市→22市町村に拡大という成果を確認</li>
-                <li>通信教育での保育士資格取得に対する費用補助を前向きに検討</li>
-                <li>私立高校無償化の所得制限について「試算がされていない」ことを明らかにし、データ整備を促進</li>
-                <li>「30%の財源でも段階的に上乗せを」という現実的提案で前に進む道筋を開く</li>
-              </ul>
+          <div class="overview-card reveal">
+            <div class="overview-card__item">
+              <p class="overview-card__label">議員名</p>
+              <p class="overview-card__value">工藤 将之（くどう まさゆき）</p>
             </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">選挙区 / 会派</p>
+              <p class="overview-card__value">桜井市選挙区 ｜ 日本維新の会</p>
+            </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">質問種別</p>
+              <p class="overview-card__value">一般質問</p>
+            </div>
+            <div class="overview-card__item">
+              <p class="overview-card__label">答弁者</p>
+              <p class="overview-card__value">山下知事 / 大石教育長 / 安井県土マネジメント部長</p>
+            </div>
+          </div>
+
+          <div class="theme-tags">
+            <span class="theme-tag">保育士確保</span>
+            <span class="theme-tag">私立高校無償化</span>
+            <span class="theme-tag">部活動</span>
+            <span class="theme-tag">道路整備</span>
+          </div>
+
+          <section class="highlights reveal" aria-label="成果ハイライト">
+            <h2 class="highlights__title">成果ハイライト</h2>
+            <ul class="highlights__list">
+              <li><span class="check-icon">✓</span><span>奈良県が中心となり6県共同で国に公定価格の地域差是正を要望する枠組みを実現</span></li>
+              <li><span class="check-icon">✓</span><span>処遇改善事業が5市→22市町村に拡大という成果を確認</span></li>
+              <li><span class="check-icon">✓</span><span>通信教育での保育士資格取得に対する費用補助を前向きに検討</span></li>
+              <li><span class="check-icon">✓</span><span>私立高校無償化の所得制限について「試算がされていない」ことを明らかにし、データ整備を促進</span></li>
+              <li><span class="check-icon">✓</span><span>「30%の財源でも段階的に上乗せを」という現実的提案で前に進む道筋を開く</span></li>
+            </ul>
           </section>
 
           <section class="section container" aria-label="テーマ別詳細">
@@ -589,6 +796,21 @@
               <div class="theme-header">
                 <span class="theme-no">01</span>
                 <h3 class="theme-title">保育士確保</h3>
+              </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  待機児童は全国的に減少している一方、奈良県では地域によって増加が見られ、人材流出も含めて「確保」と「処遇」の両面で対策が必要です。
+                </p>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>指標</th><th>推移</th><th>備考</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>全国の待機児童数</td><td><strong>26,081人 → 2,567人</strong></td><td>減少傾向</td></tr>
+                    <tr><td>奈良県（桜井市）待機児童</td><td><strong class="highlight-cell">0人 → 18人</strong></td><td>増加が課題</td></tr>
+                  </tbody>
+                </table>
               </div>
               <div class="theme-block">
                 <h4 class="theme-block__label">工藤議員の質問・主張</h4>
@@ -601,10 +823,21 @@
               <div class="theme-block">
                 <h4 class="theme-block__label">行政側の回答</h4>
                 <div class="answer-card">
-                  <span class="answer-card__who">山下知事</span>
-                  <p style="margin: 0">
-                    奈良県が中心となり6県共同で国に要望する枠組みを実現。通信教育費補助についても前向きに検討する姿勢を示しました。
-                  </p>
+                  <div class="answer-card__who">山下知事</div>
+                  <div class="answer-items">
+                    <div class="answer-item">
+                      <span class="answer-item__label">広域連携</span>
+                      <p>奈良県が中心となり6県共同で国に要望する枠組みを実現。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">処遇改善</span>
+                      <p>処遇改善事業が5市→22市町村に拡大していることを確認。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">通信教育支援</span>
+                      <p>通信教育費補助についても前向きに検討する姿勢を示した。</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="theme-result">
@@ -619,6 +852,21 @@
                 <h3 class="theme-title">私立高校授業料無償化</h3>
               </div>
               <div class="theme-block">
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  所得制限撤廃の議論は「理念」だけでなく、追加財源をいくら見込むのかという“数字の土台”が不可欠です。しかし当時、県側で試算が整理されていないことが議会の場で明らかになりました。
+                </p>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>論点</th><th>当時の状況</th><th>工藤議員の対応</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>所得制限撤廃の追加財源</td><td><strong class="highlight-cell">「試算していない」</strong>（知事答弁）</td><td>議員自身で概算試算を行い、議論の前提を作る</td></tr>
+                    <tr><td>進め方</td><td>100%財源を待つと停滞</td><td><strong>「30%の財源でも段階的に上乗せ」</strong>を提案</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="theme-block">
                 <h4 class="theme-block__label">工藤議員の質問・主張</h4>
                 <ul class="claim-list">
                   <li>所得制限撤廃の追加財源について「試算」を求め、数値での議論を要求</li>
@@ -628,8 +876,17 @@
               <div class="theme-block">
                 <h4 class="theme-block__label">行政側の回答</h4>
                 <div class="answer-card">
-                  <span class="answer-card__who">山下知事</span>
-                  <p style="margin: 0">試算がない現状を明らかにし、段階的拡充の方向性について検討姿勢を示しました。</p>
+                  <div class="answer-card__who">山下知事</div>
+                  <div class="answer-items">
+                    <div class="answer-item">
+                      <span class="answer-item__label">試算</span>
+                      <p>追加財源の試算が整理されていない現状を認めた。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">方向性</span>
+                      <p>段階的拡充の方向性について検討姿勢を示した。</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="theme-result">
@@ -644,17 +901,67 @@
                 <h3 class="theme-title">道路整備（桜井吉野線）</h3>
               </div>
               <div class="theme-block">
+                <h4 class="theme-block__label">課題意識・問題提起</h4>
+                <p class="theme-block__text">
+                  桜井吉野線（百市工区）は、区間ごとに進捗が異なり、用地取得がボトルネックになっています。全体の状況を区間別に「見える化」して前進を促しました。
+                </p>
+                <table class="data-table">
+                  <thead>
+                    <tr><th>区間</th><th>進捗</th><th>備考</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>南側</td><td><strong>590m 供用済</strong></td><td>開通区間</td></tr>
+                    <tr><td>北側</td><td><strong>810m 整備中</strong></td><td>工事継続</td></tr>
+                    <tr><td>用地取得</td><td><strong class="highlight-cell">残 12筆</strong></td><td>相続人多数・反対者あり等</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="theme-block">
                 <h4 class="theme-block__label">工藤議員の質問・主張</h4>
                 <ul class="claim-list">
                   <li>残る用地取得（相続人多数・反対者あり）の具体課題と解決見通しを確認</li>
                   <li>市と県の連携強化、完成がもたらす効果（渋滞緩和等）を具体的に提示</li>
                 </ul>
               </div>
+              <div class="theme-block">
+                <h4 class="theme-block__label">行政側の回答（県土マネジメント部長）</h4>
+                <div class="answer-card">
+                  <div class="answer-card__who">県土マネジメント部長</div>
+                  <div class="answer-items">
+                    <div class="answer-item">
+                      <span class="answer-item__label">進捗</span>
+                      <p>区間ごとの整備を着実に進めており、北側は引き続き整備を継続する。</p>
+                    </div>
+                    <div class="answer-item">
+                      <span class="answer-item__label">用地取得</span>
+                      <p>残る用地取得について、関係者との調整・交渉を継続し、粘り強く進める方針。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="theme-result">
                 <h4>成果・意義</h4>
                 <p>進捗のボトルネックを議会で公式に確認し、粘り強い交渉継続の方針を引き出しました。</p>
               </div>
             </section>
+
+            <div class="viewpoints-summary reveal">
+              <h3 class="viewpoints-summary__title">工藤議員の質問を貫く3つの視点</h3>
+              <div class="viewpoints-summary__grid">
+                <div class="viewpoint-mini">
+                  <h4>現場の不足を“数字”で見える化</h4>
+                  <p>待機児童や進捗の区間表など、データを置いて議論の精度を上げる。</p>
+                </div>
+                <div class="viewpoint-mini">
+                  <h4>できるところから前に進める</h4>
+                  <p>「30%の財源でも段階的に」など、停滞しない現実解を提示する。</p>
+                </div>
+                <div class="viewpoint-mini">
+                  <h4>広域連携で突破口を作る</h4>
+                  <p>6県共同要望など、県単独では動かない構造課題に“連携”で迫る。</p>
+                </div>
+              </div>
+            </div>
 
             <div class="source">
               出典：奈良県議会 令和6年12月定例会（第361回）会議録 第3号 2024年12月6日<br />
@@ -664,8 +971,9 @@
             </div>
 
             <nav class="report-nav" aria-label="前後ナビゲーション">
-              <a href="2023-09.html">← 前のレポート</a>
-              <a href="2025-06.html">次のレポート →</a>
+              <a href="2023-09.html">← 令和5年9月定例会</a>
+              <a href="index.html">一覧に戻る</a>
+              <a href="2025-06.html">令和7年6月定例会 →</a>
             </nav>
           </section>
         </div>
