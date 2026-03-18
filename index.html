@@ -1087,71 +1087,75 @@
         font-size: 13px;
       }
 
+      /* ★ fixedのサイドバーはグリッドから外れるので、layout-3colはblock・main-contentでmargin対応 */
       .layout-3col {
-        display: grid;
-        grid-template-columns: 72px 1fr 72px;
+        display: block;
         min-height: 100vh;
       }
 
       .sidebar {
         background: var(--color-primary);
-        position: sticky;
+        position: fixed;
         top: 0;
         height: 100vh;
         overflow: hidden;
         z-index: 5;
+        width: 200px;
       }
 
       .sidebar--left {
+        left: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        padding: 40px 0 32px;
-      }
-
-      .sidebar__text {
-        writing-mode: vertical-lr;
-        font-family: var(--font-en);
-        font-size: 14px;
-        font-weight: 800;
-        color: rgba(255, 255, 255, 0.2);
-        letter-spacing: 4px;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .sidebar__label {
-        writing-mode: vertical-rl;
-        font-size: 11px;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.7);
-        letter-spacing: 2px;
-        line-height: 1.6;
-        text-align: center;
+        padding: 40px 0 40px;
       }
 
       .sidebar--right {
+        right: 0;
         display: flex;
         align-items: flex-end;
         justify-content: center;
         padding: 0;
       }
 
+      .sidebar__text {
+        writing-mode: vertical-lr;
+        font-family: var(--font-en);
+        font-size: 28px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.15);
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .sidebar__label {
+        writing-mode: vertical-rl;
+        font-size: 18px;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: 3px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
       .sidebar__portrait {
         width: 100%;
         height: auto;
-        max-height: 70vh;
+        max-height: 80vh;
         object-fit: contain;
         object-position: bottom center;
-        opacity: 0.12;
-        filter: brightness(1.2);
+        opacity: 1;
         pointer-events: none;
       }
 
       .main-content {
         min-width: 0;
         background: var(--color-bg-white);
+        margin-left: 200px;
+        margin-right: 200px;
       }
 
       .reveal {
@@ -1203,11 +1207,12 @@
       }
 
       @media (max-width: 767px) {
-        .layout-3col {
-          grid-template-columns: 1fr;
-        }
         .sidebar {
           display: none;
+        }
+        .main-content {
+          margin-left: 0;
+          margin-right: 0;
         }
         .topbar .container {
           gap: 10px;
@@ -1291,14 +1296,19 @@
       }
 
       @media (min-width: 768px) and (max-width: 1199px) {
-        .layout-3col {
-          grid-template-columns: 48px 1fr 48px;
+        .sidebar {
+          width: 140px;
         }
-        .sidebar__label {
-          font-size: 10px;
+        .main-content {
+          margin-left: 140px;
+          margin-right: 140px;
         }
         .sidebar__text {
-          font-size: 12px;
+          font-size: 22px;
+          letter-spacing: 5px;
+        }
+        .sidebar__label {
+          font-size: 15px;
         }
       }
 
