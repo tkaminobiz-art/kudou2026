@@ -512,13 +512,154 @@
       }
 
       .policy {
-        background: var(--color-bg-light);
+        background: var(--color-bg-white);
       }
+
+      .policy-heading {
+        font-size: clamp(40px, 5vw, 56px);
+        font-weight: 900;
+        text-align: center;
+        margin: 0;
+        letter-spacing: 2px;
+      }
+
+      .policy-lead {
+        font-size: 16px;
+        color: var(--color-text-muted);
+        text-align: center;
+        margin: 12px 0 0;
+        letter-spacing: 0.5px;
+      }
+
+      .policy-card {
+        background: #FFFFFF;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.04),
+          0 12px 32px rgba(0, 0, 0, 0.03);
+        transition:
+          transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .policy-card:hover {
+        transform: translateY(-6px);
+        box-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.04),
+          0 8px 24px rgba(0, 0, 0, 0.06),
+          0 24px 48px rgba(0, 0, 0, 0.04);
+      }
+
+      .policy-card__img {
+        position: relative;
+        aspect-ratio: 3 / 2;
+        overflow: hidden;
+      }
+
+      .policy-card__placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .policy-card__placeholder span {
+        font-family: var(--font-en);
+        font-size: 24px;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .policy-card:hover .policy-card__placeholder {
+        transform: scale(1.05);
+      }
+
+      .policy-card__img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .policy-card:hover .policy-card__img img {
+        transform: scale(1.05);
+      }
+
+      .policy-card__no {
+        position: absolute;
+        bottom: 12px;
+        left: 16px;
+        font-family: var(--font-en);
+        font-size: 56px;
+        font-weight: 800;
+        color: #FFFFFF;
+        line-height: 1;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .policy-card__body {
+        padding: 24px 24px 28px;
+      }
+
+      .policy-card__title {
+        font-size: 20px;
+        font-weight: 900;
+        margin: 0 0 4px;
+        letter-spacing: 1px;
+      }
+
+      .policy-card__subtitle {
+        font-size: 14px;
+        color: var(--color-text-muted);
+        margin: 0 0 16px;
+        line-height: 1.6;
+      }
+
+      .policy-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--color-primary);
+        transition: gap 0.3s ease;
+      }
+
+      .policy-card__link:hover {
+        gap: 12px;
+      }
+
+      .arrow-circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border: 1.5px solid var(--color-primary);
+        border-radius: 50%;
+        font-size: 14px;
+        transition:
+          background 0.3s ease,
+          color 0.3s ease;
+      }
+
+      .policy-card__link:hover .arrow-circle {
+        background: var(--color-primary);
+        color: #FFFFFF;
+      }
+
       .grid-3 {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: clamp(24px, 3vw, 32px);
       }
+
       .card {
         background: #FFFFFF;
         border-radius: 16px;
@@ -556,35 +697,6 @@
       }
       .card:hover::before {
         opacity: 1;
-      }
-      .policy__no {
-        font-family: var(--font-en);
-        font-weight: 700;
-        font-size: 48px;
-        color: var(--color-primary);
-        letter-spacing: 0.5px;
-        line-height: 1;
-      }
-      .policy__title {
-        margin: 14px 0 6px;
-        font-size: 22px;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        line-height: 1.5;
-      }
-      .policy__subtitle {
-        margin: 0 0 18px;
-        color: rgba(44, 44, 44, 0.78);
-        font-weight: 500;
-        letter-spacing: 0.9px;
-        line-height: 2.2;
-      }
-      .policy__body {
-        margin: 0;
-        font-size: 15px;
-        font-weight: 400;
-        letter-spacing: 0.7px;
-        line-height: 2.2;
       }
       .section-cta {
         margin-top: clamp(34px, 5vw, 52px);
@@ -1026,6 +1138,7 @@
         .btn-primary,
         .btn-ghost,
         .card,
+        .policy-card,
         .contact-card,
         .stat,
         .icon-btn,
@@ -1182,46 +1295,52 @@
 
       <section id="policy" class="policy" aria-label="政策">
         <div class="container">
-          <div class="section-head">
-            <p class="section-subtitle">POLICY</p>
-            <h2 class="section-title">政策</h2>
+          <div class="section-head centered-head">
+            <h2 class="policy-heading">政策</h2>
+            <p class="policy-lead">教育・医療福祉・地域行政。3つの柱で奈良を変える。</p>
           </div>
 
           <div class="grid-3">
-            <article class="card reveal">
-              <div class="policy__no">01</div>
-              <h3 class="policy__title">教育</h3>
-              <p class="policy__subtitle">基礎学力の底上げ</p>
-              <p class="policy__body">
-                低学年からの基礎教育を充実させ、<br />
-                すべての子どもたちの学力底上げに取り組みます。<br />
-                塾との連携や反復学習の推進で、<br />
-                奈良の教育のベースを引き上げます。
-              </p>
+            <article class="policy-card reveal">
+              <div class="policy-card__img">
+                <div class="policy-card__placeholder" style="background: linear-gradient(135deg, #5BAD5E, #8dc98f);">
+                  <span>Education</span>
+                </div>
+                <span class="policy-card__no">01</span>
+              </div>
+              <div class="policy-card__body">
+                <h3 class="policy-card__title">教育</h3>
+                <p class="policy-card__subtitle">基礎学力の底上げ</p>
+                <a href="#" class="policy-card__link">もっと見る <span class="arrow-circle">→</span></a>
+              </div>
             </article>
 
-            <article class="card reveal">
-              <div class="policy__no">02</div>
-              <h3 class="policy__title">医療・福祉</h3>
-              <p class="policy__subtitle">誰もが安心できる暮らし</p>
-              <p class="policy__body">
-                医療的ケア児の通学支援、<br />
-                介護保険料の負担軽減、<br />
-                障害のある方への学習機会の拡充。<br />
-                いのちと暮らしを守る県政を。
-              </p>
+            <article class="policy-card reveal">
+              <div class="policy-card__img">
+                <div class="policy-card__placeholder" style="background: linear-gradient(135deg, #4a9e4d, #6db86e);">
+                  <span>Welfare</span>
+                </div>
+                <span class="policy-card__no">02</span>
+              </div>
+              <div class="policy-card__body">
+                <h3 class="policy-card__title">医療・福祉</h3>
+                <p class="policy-card__subtitle">誰もが安心できる暮らし</p>
+                <a href="#" class="policy-card__link">もっと見る <span class="arrow-circle">→</span></a>
+              </div>
             </article>
 
-            <article class="card reveal">
-              <div class="policy__no">03</div>
-              <h3 class="policy__title">地域・行政</h3>
-              <p class="policy__subtitle">県と市の連携強化</p>
-              <p class="policy__body">
-                桜井市議三期の経験を活かし、<br />
-                県と市が本当に連携する仕組みをつくります。<br />
-                長谷トンネルの実現をはじめ、<br />
-                地域のインフラ課題に正面から取り組みます。
-              </p>
+            <article class="policy-card reveal">
+              <div class="policy-card__img">
+                <div class="policy-card__placeholder" style="background: linear-gradient(135deg, #3d8a40, #5bad5e);">
+                  <span>Community</span>
+                </div>
+                <span class="policy-card__no">03</span>
+              </div>
+              <div class="policy-card__body">
+                <h3 class="policy-card__title">地域・行政</h3>
+                <p class="policy-card__subtitle">県と市の連携強化</p>
+                <a href="#" class="policy-card__link">もっと見る <span class="arrow-circle">→</span></a>
+              </div>
             </article>
           </div>
 
