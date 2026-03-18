@@ -730,7 +730,7 @@
       .profile-main {
         position: relative;
         overflow: hidden;
-        padding: 80px 0 0;
+        padding: 140px 0 0;
         background: var(--color-bg-light);
       }
 
@@ -784,7 +784,7 @@
 
       .profile-photo img {
         width: 100%;
-        max-width: 420px;
+        max-width: 380px;
         height: auto;
         object-fit: contain;
         display: block;
@@ -1113,11 +1113,56 @@
       }
 
       .sidebar--right {
-        right: 0;
         display: flex;
-        align-items: flex-end;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
         padding: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 200px;
+        background: var(--color-primary);
+        z-index: 5;
+        overflow: hidden;
+      }
+
+      .sidebar-bubble {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+      }
+
+      .sidebar-bubble span {
+        display: block;
+        background: #FFFFFF;
+        color: #2C2C2C;
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: 2px;
+        padding: 14px 20px;
+        border-radius: 16px;
+        border: 3px solid #2C2C2C;
+        position: relative;
+        white-space: nowrap;
+        writing-mode: vertical-rl;
+      }
+
+      .sidebar-bubble span::after {
+        content: '';
+        position: absolute;
+        bottom: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 16px solid #FFFFFF;
+        filter: drop-shadow(0 3px 0 #2C2C2C);
       }
 
       .sidebar__text {
@@ -1129,6 +1174,7 @@
         letter-spacing: 6px;
         text-transform: uppercase;
         white-space: nowrap;
+        margin-top: 120px;
       }
 
       .sidebar__label {
@@ -1144,11 +1190,14 @@
       .sidebar__portrait {
         width: 100%;
         height: auto;
-        max-height: 80vh;
+        max-height: 65vh;
         object-fit: contain;
         object-position: bottom center;
         opacity: 1;
         pointer-events: none;
+        position: relative;
+        z-index: 1;
+        margin-top: auto;
       }
 
       .main-content {
@@ -1309,6 +1358,10 @@
         }
         .sidebar__label {
           font-size: 15px;
+        }
+        .sidebar-bubble span {
+          font-size: 16px;
+          padding: 10px 16px;
         }
       }
 
@@ -1703,6 +1756,9 @@
         </div>
 
         <aside class="sidebar sidebar--right" aria-hidden="true">
+          <div class="sidebar-bubble">
+            <span>声は届く！</span>
+          </div>
           <img class="sidebar__portrait" src="rightcolumn.png" alt="" />
         </aside>
       </div>
