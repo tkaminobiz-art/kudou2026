@@ -519,6 +519,20 @@
           0 12px 32px rgba(0, 0, 0, 0.03);
         transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
       }
+      .timeline__thumb {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 14px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .timeline__thumb img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
       .timeline__card:hover {
         transform: translateY(-4px);
         box-shadow:
@@ -961,6 +975,9 @@
                 </div>
                 <div class="timeline__line"></div>
                 <div class="timeline__card">
+                  <div class="timeline__thumb">
+                    <img src="../images/speech-point.jpg" alt="" width="3825" height="6119" loading="lazy" decoding="async" />
+                  </div>
                   <div class="timeline__tags">
                     <span class="tag">市町村支援</span>
                     <span class="tag">土地利用</span>
@@ -983,6 +1000,9 @@
                 </div>
                 <div class="timeline__line"></div>
                 <div class="timeline__card">
+                  <div class="timeline__thumb">
+                    <img src="../images/speech-mic.jpg" alt="" width="3714" height="5943" loading="lazy" decoding="async" />
+                  </div>
                   <div class="timeline__tags">
                     <span class="tag">保育士確保</span>
                     <span class="tag">高校無償化</span>
@@ -1004,6 +1024,9 @@
                 </div>
                 <div class="timeline__line"></div>
                 <div class="timeline__card">
+                  <div class="timeline__thumb">
+                    <img src="../images/outdoor-speech.jpg" alt="" width="6255" height="4170" loading="lazy" decoding="async" />
+                  </div>
                   <div class="timeline__tags">
                     <span class="tag">観光振興</span>
                     <span class="tag">子育て</span>
@@ -1024,7 +1047,7 @@
           <div class="sidebar-bubble">
             <span>声は届く！</span>
           </div>
-          <img class="sidebar__portrait" src="../rightcolumn.png" alt="" />
+          <img class="sidebar__portrait" src="../images/rightcolumn.png" alt="" width="848" height="1264" loading="lazy" decoding="async" />
         </aside>
       </div>
     </main>
