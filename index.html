@@ -731,6 +731,21 @@
         position: relative;
         overflow: hidden;
         padding: 80px 0 0;
+        background: var(--color-bg-light);
+      }
+
+      /* ★ 斜めに切れた白い面（宮下サイト風の背景処理） */
+      .profile-main::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -5%;
+        width: 55%;
+        height: 100%;
+        background: #FFFFFF;
+        transform: skewX(-6deg);
+        z-index: 0;
+        box-shadow: 8px 0 32px rgba(0, 0, 0, 0.04);
       }
 
       .profile-bg-text {
@@ -749,6 +764,7 @@
         white-space: nowrap;
         pointer-events: none;
         user-select: none;
+        z-index: 1;
       }
 
       .profile-main__inner {
@@ -756,6 +772,8 @@
         grid-template-columns: 1fr 1fr;
         gap: 40px;
         align-items: end;
+        position: relative;
+        z-index: 1;
       }
 
       .profile-photo {
@@ -1160,6 +1178,12 @@
         }
         .grid-2 {
           grid-template-columns: 1fr;
+        }
+        .profile-main::before {
+          display: none;
+        }
+        .profile-main {
+          background: var(--color-bg-white);
         }
         .profile-main__inner {
           grid-template-columns: 1fr;
