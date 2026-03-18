@@ -357,32 +357,136 @@
         margin: 0;
       }
 
-      .summary-bar {
+      .summary-dashboard {
+        padding: 48px 0 64px;
+      }
+
+      .summary-dashboard__grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        background: rgba(0, 0, 0, 0.06);
-        margin: 0 0 80px;
+        gap: 20px;
       }
-      .summary-stat {
-        background: #ffffff;
-        text-align: center;
-        padding: 40px 20px;
+
+      .dash-card {
+        background: #FFFFFF;
+        border-radius: 20px;
+        padding: 28px 24px 24px;
+        position: relative;
+        overflow: hidden;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.04),
+          0 12px 32px rgba(0, 0, 0, 0.03);
+        transition:
+          transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s ease;
       }
-      .summary-stat__value {
-        display: block;
-        font-family: var(--font-en);
-        font-size: 48px;
-        font-weight: 800;
+
+      .dash-card:hover {
+        transform: translateY(-6px);
+        box-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.04),
+          0 8px 24px rgba(0, 0, 0, 0.06),
+          0 24px 48px rgba(0, 0, 0, 0.04);
+      }
+
+      .dash-card__icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(55, 194, 0, 0.1), rgba(55, 194, 0, 0.05));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .dash-card__icon svg {
+        width: 22px;
+        height: 22px;
         color: var(--color-primary);
-        line-height: 1.1;
       }
-      .summary-stat__label {
-        display: block;
-        font-size: 14px;
+
+      .dash-card__content {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        margin-bottom: 4px;
+      }
+
+      .dash-card__value {
+        font-family: var(--font-en);
+        font-size: 44px;
+        font-weight: 800;
+        color: var(--color-text);
+        line-height: 1;
+        letter-spacing: -1px;
+      }
+
+      .dash-card__unit {
+        font-size: 16px;
+        font-weight: 700;
         color: var(--color-text-muted);
-        margin-top: 8px;
+      }
+
+      .dash-card__label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text-muted);
+        margin: 0 0 16px;
         letter-spacing: 0.5px;
+      }
+
+      .dash-card__bar {
+        height: 4px;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .dash-card__bar span {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--color-primary), #6AD834);
+        border-radius: 2px;
+        transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .dash-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--color-primary), #6AD834);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .dash-card:hover::before {
+        opacity: 1;
+      }
+
+      @media (max-width: 1199px) {
+        .summary-dashboard__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 767px) {
+        .summary-dashboard__grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+
+        .dash-card {
+          padding: 20px 16px 16px;
+        }
+
+        .dash-card__value {
+          font-size: 36px;
+        }
       }
 
       .section {
@@ -790,9 +894,6 @@
         .mobile-panel[hidden] {
           display: none;
         }
-        .summary-bar {
-          grid-template-columns: repeat(2, 1fr);
-        }
         .viewpoints__grid {
           grid-template-columns: 1fr;
         }
@@ -924,22 +1025,57 @@
             <p class="report-hero__subtitle">議会質問の全記録。声は、確かに届いています。</p>
           </div>
 
-          <div class="summary-bar" aria-label="成果サマリ">
-            <div class="summary-stat">
-              <span class="summary-stat__value">3</span>
-              <span class="summary-stat__label">議会質問</span>
-            </div>
-            <div class="summary-stat">
-              <span class="summary-stat__value">12</span>
-              <span class="summary-stat__label">取り上げたテーマ</span>
-            </div>
-            <div class="summary-stat">
-              <span class="summary-stat__value">20+</span>
-              <span class="summary-stat__label">引き出した答弁</span>
-            </div>
-            <div class="summary-stat">
-              <span class="summary-stat__value">4</span>
-              <span class="summary-stat__label">継続追及テーマ</span>
+          <div class="summary-dashboard container reveal" aria-label="成果サマリ">
+            <div class="summary-dashboard__grid">
+
+              <div class="dash-card">
+                <div class="dash-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                </div>
+                <div class="dash-card__content">
+                  <span class="dash-card__value">3</span>
+                  <span class="dash-card__unit">回</span>
+                </div>
+                <p class="dash-card__label">議会質問</p>
+                <div class="dash-card__bar"><span style="width:100%"></span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                </div>
+                <div class="dash-card__content">
+                  <span class="dash-card__value">12</span>
+                  <span class="dash-card__unit">件</span>
+                </div>
+                <p class="dash-card__label">取り上げたテーマ</p>
+                <div class="dash-card__bar"><span style="width:80%"></span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="dash-card__content">
+                  <span class="dash-card__value">20</span>
+                  <span class="dash-card__unit">件+</span>
+                </div>
+                <p class="dash-card__label">引き出した答弁</p>
+                <div class="dash-card__bar"><span style="width:90%"></span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                </div>
+                <div class="dash-card__content">
+                  <span class="dash-card__value">4</span>
+                  <span class="dash-card__unit">テーマ</span>
+                </div>
+                <p class="dash-card__label">継続追及</p>
+                <div class="dash-card__bar"><span style="width:60%"></span></div>
+              </div>
+
             </div>
           </div>
 
