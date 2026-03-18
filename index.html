@@ -936,57 +936,6 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: clamp(24px, 3vw, 32px);
       }
-      .report-card {
-        padding: 0;
-      }
-      .report-thumb {
-        height: 220px;
-        background: var(--color-primary);
-        display: grid;
-        place-items: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .report-thumb::before {
-        content: "";
-        position: absolute;
-        inset: -30% -40%;
-        background: radial-gradient(560px 300px at 30% 40%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 60%),
-          radial-gradient(520px 280px at 70% 60%, rgba(26, 51, 36, 0.22), rgba(26, 51, 36, 0) 60%);
-        opacity: 0.9;
-      }
-      .report-thumb span {
-        position: relative;
-        color: #fff;
-        font-family: var(--font-en);
-        font-weight: 800;
-        letter-spacing: 1px;
-      }
-      .report-body {
-        padding: 26px 26px 30px;
-      }
-      .report-title {
-        margin: 0 0 8px;
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        line-height: 1.9;
-      }
-      .report-desc {
-        margin: 0 0 16px;
-        color: rgba(44, 44, 44, 0.9);
-        line-height: 2.2;
-        font-size: 15px;
-      }
-      .report-date {
-        margin: 0;
-        font-family: var(--font-en);
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        color: var(--color-text-muted);
-        font-size: 13px;
-      }
-
       .contact {
         background: var(--color-primary);
         color: #ffffff;
@@ -1692,28 +1641,46 @@
             <h2 class="section-title">活動報告</h2>
           </div>
 
-          <div class="grid-2">
-            <article class="card report-card reveal">
-              <div class="report-thumb" aria-hidden="true"><span>Coming Soon</span></div>
-              <div class="report-body">
-                <h3 class="report-title">活動報告 Vol.1（準備中）</h3>
-                <p class="report-desc">議会質問の活動実績レポートを公開予定です。</p>
-                <p class="report-date">2026.04（予定）</p>
+          <div class="grid-3">
+            <article class="policy-card reveal">
+              <div class="policy-card__img">
+                <img src="images/speech-point.jpg" alt="令和7年6月定例会" width="3825" height="6119" loading="lazy" />
+                <span class="policy-card__no">NEW</span>
+              </div>
+              <div class="policy-card__body">
+                <h3 class="policy-card__title">令和7年6月定例会</h3>
+                <p class="policy-card__subtitle">市町村支援・土地利用・参道整備・不登校・生理用品</p>
+                <a href="reports/2025-06.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
               </div>
             </article>
 
-            <article class="card report-card reveal">
-              <div class="report-thumb" aria-hidden="true"><span>Coming Soon</span></div>
-              <div class="report-body">
-                <h3 class="report-title">議会レポート（準備中）</h3>
-                <p class="report-desc">県議会での活動をレポートにまとめます。</p>
-                <p class="report-date">近日公開</p>
+            <article class="policy-card reveal">
+              <div class="policy-card__img">
+                <img src="images/speech-mic.jpg" alt="令和6年12月定例会" width="3714" height="5943" loading="lazy" />
+                <span class="policy-card__no">02</span>
+              </div>
+              <div class="policy-card__body">
+                <h3 class="policy-card__title">令和6年12月定例会</h3>
+                <p class="policy-card__subtitle">保育士確保・私立高校無償化・部活動・道路整備</p>
+                <a href="reports/2024-12.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
+              </div>
+            </article>
+
+            <article class="policy-card reveal">
+              <div class="policy-card__img">
+                <img src="images/outdoor-speech.jpg" alt="令和5年9月定例会" width="6255" height="4170" loading="lazy" />
+                <span class="policy-card__no">01</span>
+              </div>
+              <div class="policy-card__body">
+                <h3 class="policy-card__title">令和5年9月定例会</h3>
+                <p class="policy-card__subtitle">観光振興・子育て支援・医療的ケア児</p>
+                <a href="reports/2023-09.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
               </div>
             </article>
           </div>
 
           <div class="section-cta">
-            <a class="btn-primary" href="/reports/index.html" aria-label="活動報告一覧（レポート一覧へ）">活動報告一覧</a>
+            <a class="btn-primary" href="reports/index.html">活動報告一覧</a>
           </div>
         </div>
       </section>
