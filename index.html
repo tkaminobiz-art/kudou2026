@@ -263,33 +263,36 @@
         position: relative;
         overflow: hidden;
         background: #0f2f1e;
-        background-image: url("hero-pc.png");
-        background-size: cover;
-        background-position: center;
       }
-      .hero::after {
-        content: "";
+      .hero__picture {
         position: absolute;
         inset: 0;
-        background: radial-gradient(900px 420px at 20% 30%, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0) 60%),
-          linear-gradient(90deg, rgba(0, 0, 0, 0.44), rgba(0, 0, 0, 0) 55%);
-        pointer-events: none;
+        margin: 0;
+      }
+      .hero__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        vertical-align: bottom;
       }
       .hero .container {
         position: relative;
         z-index: 1;
-        height: 100%;
-        display: grid;
-        align-content: center;
-        padding-top: clamp(80px, 10vh, 140px);
-        padding-bottom: clamp(80px, 10vh, 140px);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        text-align: right;
+        min-height: 100vh;
+        padding: 80px var(--pad-x);
       }
       .hero__meta {
         color: rgba(255, 255, 255, 0.92);
-        font-size: 16px;
+        font-size: clamp(16px, 1.6vw, 18px);
         letter-spacing: 1.0px;
         font-weight: 500;
-        margin-bottom: 16px;
+        margin: 0 0 16px;
       }
       .hero__name {
         margin: 0;
@@ -307,11 +310,25 @@
         letter-spacing: 1.5px;
         line-height: 1;
       }
+      .hero__slogan {
+        display: inline-block;
+        margin: 16px 0 0;
+        font-size: clamp(28px, 4vw, 44px);
+        font-weight: 900;
+        color: #FFFFFF;
+        transform: rotate(-5deg);
+        letter-spacing: 2px;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        border-bottom: 3px solid rgba(255, 255, 255, 0.6);
+        padding-bottom: 4px;
+        line-height: 1.2;
+      }
       .hero__cta {
         margin-top: 30px;
         display: flex;
         gap: 14px;
         flex-wrap: wrap;
+        justify-content: flex-end;
       }
 
       .btn-primary {
@@ -958,20 +975,14 @@
           display: none;
         }
 
-        .hero {
-          background-image: url("hero-sp.png");
-          background-position: center top;
-        }
         .hero .container {
-          align-content: end;
-          padding-top: 120px;
-          padding-bottom: 64px;
-        }
-        .hero::after {
-          background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.62) 70%, rgba(0, 0, 0, 0.72));
+          align-items: center;
+          text-align: center;
+          padding: 100px var(--pad-x) 64px;
         }
         .hero__cta {
           margin-top: 20px;
+          justify-content: center;
         }
 
         .pill {
@@ -1117,10 +1128,15 @@
 
     <main id="main">
       <section id="home" class="hero" aria-label="ファーストビュー">
+        <picture class="hero__picture">
+          <source media="(max-width: 767px)" srcset="hero-sp.png" />
+          <img src="hero-pc.png" alt="" class="hero__img" width="1920" height="1080" fetchpriority="high" />
+        </picture>
         <div class="container">
           <div class="hero__meta">奈良県議会議員</div>
           <h1 class="hero__name">工藤まさゆき</h1>
           <div class="hero__kana">くどう まさゆき</div>
+          <p class="hero__slogan">声は届く。</p>
           <div class="hero__cta">
             <a class="btn-primary" href="#contact">お問い合わせ</a>
             <a class="btn-ghost" href="#policy">政策を見る</a>
