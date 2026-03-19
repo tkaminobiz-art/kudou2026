@@ -38,7 +38,8 @@ img{display:block;max-width:100%;height:auto}
   align-items:center;justify-content:space-between;padding:120px 0 40px;
 }
 .sidebar--right{
-  right:0;display:flex;align-items:flex-end;justify-content:center;
+  right:0;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;
+  padding:24px 0;
 }
 .sidebar__text{
   writing-mode:vertical-lr;font-family:var(--en);
@@ -53,7 +54,7 @@ img{display:block;max-width:100%;height:auto}
   width:100%;height:auto;max-height:80vh;
   object-fit:contain;object-position:bottom center;opacity:1;pointer-events:none;
 }
-.sidebar-bubble{position:absolute;top:12%;left:50%;transform:translateX(-50%);z-index:2}
+.sidebar-bubble{position:relative;z-index:2;margin:0 0 14px;flex-shrink:0}
 .sidebar-bubble span{
   display:block;background:#fff;color:var(--text);
   font-size:20px;font-weight:900;letter-spacing:2px;
