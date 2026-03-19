@@ -1,0 +1,261 @@
+<!-- ============================
+     お問い合わせ＋フッター統合版 v3
+     ============================
+     index.htmlの既存の:
+     1. お問い合わせセクション(id="contact") → 削除
+     2. フッター(footer) → 以下に置換
+     ============================
+-->
+
+<!-- お問い合わせセクションは削除。以下のフッターに統合。 -->
+
+<footer class="footer-v3">
+
+  <!-- SNS帯 -->
+  <div class="fv3-sns">
+    <div class="fv3-sns__inner">
+      <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" class="fv3-sns__item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z"/></svg>
+        <span>X（Twitter）</span>
+      </a>
+      <a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" class="fv3-sns__item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2Zm9 2h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4ZM12 7a5 5 0 110 10 5 5 0 010-10Zm0 2a3 3 0 100 6 3 3 0 000-6Zm5.7-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4Z"/></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="#" class="fv3-sns__item" aria-label="LINE公聴専用（後日リンク設定）">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg>
+        <span>LINE（ご相談）</span>
+      </a>
+      <a href="#" class="fv3-sns__item" aria-label="LINE配信専用（後日リンク設定）">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg>
+        <span>LINE（配信）</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- メインフッター -->
+  <div class="fv3-main">
+    <div class="fv3-main__inner">
+
+      <!-- 左: お問い合わせ誘導 + 事務所情報 -->
+      <div class="fv3-contact">
+        <h3 class="fv3-contact__title">お問い合わせ</h3>
+        <p class="fv3-contact__text">ご意見・ご相談はお気軽にどうぞ。匿名でも構いません。</p>
+        <a href="#" class="fv3-contact__btn">フォームを開く →</a>
+      </div>
+
+      <!-- 中: ナビゲーション -->
+      <div class="fv3-nav">
+        <a href="#home">ホーム</a>
+        <a href="#policy">政策</a>
+        <a href="#profile">プロフィール</a>
+        <a href="reports/index.html">活動報告</a>
+        <a href="#news">お知らせ</a>
+      </div>
+
+      <!-- 右: 事務所情報 -->
+      <div class="fv3-office">
+        <p class="fv3-office__name">奈良県議会議員<br>工藤まさゆき</p>
+        <p class="fv3-office__party">日本維新の会 奈良県議団</p>
+        <p class="fv3-office__address">〒633-0062 桜井市大字栗殿612-8</p>
+        <p class="fv3-office__tel">TEL 090-9543-0910</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- コピーライト -->
+  <div class="fv3-copy">
+    <p>© 2026 Kudo Masayuki. All Rights Reserved.</p>
+  </div>
+
+</footer>
+
+<style>
+/* ==============================
+   フッター統合版 v3
+   ============================== */
+
+/* --- SNS帯（最上部・最も目立つ） --- */
+.fv3-sns {
+  background: var(--color-primary);
+  padding: 0;
+}
+
+.fv3-sns__inner {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+.fv3-sns__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 32px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+}
+
+.fv3-sns__item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.fv3-sns__item svg {
+  flex-shrink: 0;
+}
+
+/* --- メインフッター --- */
+.fv3-main {
+  background: #1a2e1a;
+  padding: 64px 0 48px;
+}
+
+.fv3-main__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* お問い合わせ（左） */
+.fv3-contact__title {
+  font-size: 18px;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0 0 12px;
+  letter-spacing: 1px;
+}
+
+.fv3-contact__text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 20px;
+  line-height: 1.8;
+}
+
+.fv3-contact__btn {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 28px;
+  border-radius: 60px;
+  letter-spacing: 0.5px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.fv3-contact__btn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ナビ（中央） */
+.fv3-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fv3-nav a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 6px 0;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.fv3-nav a:hover {
+  color: #FFFFFF;
+}
+
+/* 事務所情報（右） */
+.fv3-office {
+  text-align: right;
+}
+
+.fv3-office__name {
+  font-size: 22px;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0 0 8px;
+  line-height: 1.6;
+  letter-spacing: 2px;
+}
+
+.fv3-office__party {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 16px;
+  letter-spacing: 0.5px;
+}
+
+.fv3-office__address {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 4px;
+}
+
+.fv3-office__tel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  font-family: var(--font-en);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* --- コピーライト --- */
+.fv3-copy {
+  background: #142414;
+  padding: 16px 0;
+  text-align: center;
+}
+
+.fv3-copy p {
+  margin: 0;
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.5px;
+}
+
+/* --- レスポンシブ --- */
+@media (max-width: 767px) {
+  .fv3-sns__inner {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .fv3-sns__item {
+    padding: 14px 20px;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .fv3-main__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .fv3-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+
+  .fv3-office {
+    text-align: left;
+  }
+}
+</style>
