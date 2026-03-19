@@ -1424,6 +1424,30 @@
         padding: 40px 0 40px;
       }
 
+      .sidebar-sns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding-top: 80px;
+      }
+
+      .sidebar-sns a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        color: #FFFFFF;
+        transition: background 0.3s ease;
+      }
+
+      .sidebar-sns a:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
       .sidebar--right {
         display: flex;
         flex-direction: column;
@@ -2137,9 +2161,23 @@
         </div>
 
         <aside class="sidebar sidebar--right" aria-hidden="true">
+          <!-- SNSアイコン（上部） -->
+          <div class="sidebar-sns">
+            <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" aria-label="X">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2Zm9 2h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4ZM12 7a5 5 0 110 10 5 5 0 010-10Zm0 2a3 3 0 100 6 3 3 0 000-6Zm5.7-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4Z"/></svg>
+            </a>
+            <a href="#" aria-label="LINE">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg>
+            </a>
+          </div>
+          <!-- 吹き出し -->
           <div class="sidebar-bubble">
             <span>声は届く！</span>
           </div>
+          <!-- 本人画像 -->
           <img class="sidebar__portrait" src="images/rightcolumn.png" alt="" width="848" height="1264" loading="lazy" decoding="async" />
         </aside>
       </div>
