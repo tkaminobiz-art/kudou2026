@@ -35,6 +35,8 @@
         --font-main: "Noto Sans JP", system-ui, -apple-system, "Segoe UI", sans-serif;
         --font-en: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
 
+        --name-jp-size: clamp(36px, 5vw, 52px);
+
         --content-max: 100%;
         --pad-x: max(20px, 2.5vw);
         --section-pad: clamp(120px, 12vw, 160px);
@@ -156,7 +158,7 @@
       }
       .brand__jp {
         font-weight: 900;
-        font-size: 24px;
+        font-size: var(--name-jp-size);
         letter-spacing: 1.2px;
         white-space: nowrap;
       }
@@ -823,7 +825,7 @@
       }
 
       .profile-info__name {
-        font-size: clamp(36px, 5vw, 52px);
+        font-size: var(--name-jp-size);
         font-weight: 900;
         margin: 0;
         letter-spacing: 3px;
@@ -1460,6 +1462,13 @@
         line-height: 1.6;
         text-align: center;
       }
+      .sidebar__label-role {
+        font-size: 18px;
+      }
+      .sidebar__label-name {
+        font-size: var(--name-jp-size);
+        line-height: 1.1;
+      }
 
       .sidebar__portrait {
         width: 100%;
@@ -1806,7 +1815,10 @@
       <div class="layout-3col">
         <aside class="sidebar sidebar--left" aria-hidden="true">
           <span class="sidebar__text">KUDO MASAYUKI</span>
-          <span class="sidebar__label">奈良県議会議員<br>工藤まさゆき</span>
+          <span class="sidebar__label">
+            <span class="sidebar__label-role">奈良県議会議員</span><br />
+            <span class="sidebar__label-name">工藤まさゆき</span>
+          </span>
         </aside>
 
         <div class="main-content">
