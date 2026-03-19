@@ -511,6 +511,19 @@
         line-height: 2.6;
       }
 
+      .photo-break {
+        width: 100%;
+        height: clamp(300px, 40vw, 500px);
+        overflow: hidden;
+      }
+
+      .photo-break img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+      }
+
       /* 政策セクション v3「成果事実が主役」型 */
       .policy-v3 {
         padding: clamp(100px, 12vw, 160px) 0;
@@ -1496,6 +1509,11 @@
           </p>
         </div>
       </section>
+
+      <!-- 写真帯（視覚的な息継ぎ） -->
+      <div class="photo-break reveal" aria-label="活動風景">
+        <img src="images/outdoor-autumn.jpg" alt="住民との対話風景" loading="lazy" width="2000" height="1400" />
+      </div>
 
       <section id="policy" class="policy-v3" aria-label="政策">
         <div class="container">
