@@ -1429,7 +1429,7 @@
         flex-direction: column;
         align-items: center;
         gap: 12px;
-        padding-top: 80px;
+        padding-top: 118px; /* 約1cm下（80px + 38px） */
       }
 
       .sidebar-sns a {
@@ -2289,6 +2289,148 @@
         );
 
         reveals.forEach((el) => io.observe(el));
+      })();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+    <script>
+      (function () {
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // === A: ヒーローテキストのスタッガーリビール ===
+        // 「工藤まさゆき」の各文字を一文字ずつ下から登場させる
+        const heroName = document.querySelector(".hero__name");
+        if (heroName && typeof SplitType !== "undefined") {
+          const split = new SplitType(heroName, { types: "chars" });
+          gsap.from(split.chars, {
+            yPercent: 110,
+            opacity: 0,
+            stagger: 0.03,
+            duration: 0.8,
+            ease: "power4.out",
+            delay: 0.3,
+          });
+        }
+
+        // === B: ヒーロー写真のパララックス ===
+        const heroSection = document.querySelector(".hero");
+        if (heroSection) {
+          gsap.to(heroSection, {
+            backgroundPositionY: "60%",
+            ease: "none",
+            scrollTrigger: {
+              trigger: heroSection,
+              start: "top top",
+              end: "bottom top",
+              scrub: 1.5,
+            },
+          });
+        }
+
+        // === D: 数値カウントアップ（policy/index.html用） ===
+        document.querySelectorAll(".dv4-num--hero, .dv4-num--xl, .dv4-num--lg").forEach(function (el) {
+          var text = el.textContent.trim();
+          // 数値を抽出（カンマ・+を除去）
+          var num = parseFloat(text.replace(/[,+兆億万件回倍%]/g, ""));
+          if (isNaN(num)) return;
+
+          // 元のテキストから数値部分と接尾辞を分離
+          var suffix = text.replace(/[\d,.]+/g, "");
+
+          gsap.from(el, {
+            textContent: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            snap: { textContent: num > 100 ? 10 : 1 },
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true,
+            },
+            onUpdate: function () {
+              var current = Math.round(parseFloat(el.textContent));
+              if (num >= 1000) {
+                el.textContent = current.toLocaleString() + suffix;
+              } else {
+                el.textContent = current + suffix;
+              }
+            },
+          });
+        });
+
+        // === E: 政策カード・ダッシュボードカードのスタッガー出現 ===
+        document.querySelectorAll(".dv4-grid, .grid-3, .rv3-subs").forEach(function (grid) {
+          var cards = grid.querySelectorAll(".dv4-card, .policy-card, .rv3-sub, .pv3-item");
+          if (cards.length === 0) return;
+
+          gsap.from(cards, {
+            y: 40,
+            opacity: 0,
+            stagger: 0.12,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: grid,
+              start: "top 78%",
+              once: true,
+            },
+          });
+        });
+
+        // === G: プロフィール写真のClipPathリビール ===
+        var profilePhoto = document.querySelector(".profile-photo img");
+        if (profilePhoto) {
+          gsap.from(profilePhoto, {
+            clipPath: "inset(100% 0 0 0)",
+            duration: 1.2,
+            ease: "power4.inOut",
+            scrollTrigger: {
+              trigger: ".profile-section, .profile-main",
+              start: "top 65%",
+              once: true,
+            },
+          });
+        }
+
+        // === K: 活動報告の写真スクロールズームアウト ===
+        document.querySelectorAll(".rv3-feature__photo img, .entry__photo img").forEach(function (img) {
+          gsap.fromTo(
+            img,
+            { scale: 1.12 },
+            {
+              scale: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: img.parentElement,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.5,
+              },
+            }
+          );
+        });
+
+        // === H: プログレスバーのスクロール連動アニメーション ===
+        document.querySelectorAll(".dv4-hbar__fill, .dv4-mini-bar__track span").forEach(function (bar) {
+          var targetWidth = bar.style.width;
+          bar.style.width = "0%";
+
+          gsap.to(bar, {
+            width: targetWidth,
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: bar,
+              start: "top 85%",
+              once: true,
+            },
+          });
+        });
       })();
     </script>
   </body>
