@@ -253,6 +253,16 @@ img{display:block;max-width:100%;height:auto}
   .fv3-main__inner{grid-template-columns:1fr;gap:36px}
   .fv3-office{text-align:left}
 }
+
+/* iPhone 16 基準（393px）でのSP最適化 */
+@media (max-width: 430px){
+  .container{padding:0 18px}
+  .topbar .wrap{padding:0 18px}
+  .header .wrap{padding:12px 18px}
+  .policy-hero{padding:64px 0 52px}
+  .policy-hero__title{letter-spacing:2px}
+  .policy-nav__item{padding:12px 16px}
+}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
