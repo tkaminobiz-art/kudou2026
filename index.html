@@ -948,96 +948,260 @@
         line-height: 2.0;
       }
 
-      .reports {
+      /* 活動報告セクション v3「1フィーチャー＋2サブ」型 */
+      .reports-v3 {
+        padding: clamp(100px, 12vw, 160px) 0;
         background: var(--color-bg-white);
       }
 
-      /* 活動報告セクション用カード（.policy-card 流用） */
-      .policy-card {
-        background: #FFFFFF;
-        border-radius: 16px;
+      .rv3-head {
+        margin-bottom: clamp(48px, 6vw, 72px);
+      }
+
+      .rv3-head__en {
+        font-family: var(--font-en);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+        margin: 0 0 12px;
+      }
+
+      .rv3-head__title {
+        font-size: clamp(36px, 5vw, 56px);
+        font-weight: 900;
+        letter-spacing: 2px;
+        margin: 0;
+      }
+
+      .rv3-feature {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 420px;
+        border-radius: 20px;
         overflow: hidden;
+        background: #FFFFFF;
         box-shadow:
           0 1px 2px rgba(0, 0, 0, 0.04),
-          0 4px 12px rgba(0, 0, 0, 0.04),
-          0 12px 32px rgba(0, 0, 0, 0.03);
+          0 4px 16px rgba(0, 0, 0, 0.04),
+          0 16px 48px rgba(0, 0, 0, 0.03);
+        margin-bottom: clamp(24px, 3vw, 36px);
+        transition: box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .rv3-feature:hover {
+        box-shadow:
+          0 2px 4px rgba(0, 0, 0, 0.04),
+          0 8px 24px rgba(0, 0, 0, 0.06),
+          0 32px 64px rgba(0, 0, 0, 0.05);
+      }
+
+      .rv3-feature__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(32px, 4vw, 56px);
+      }
+
+      .rv3-feature__badge {
+        display: inline-block;
+        width: fit-content;
+        font-family: var(--font-en);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: #fff;
+        background: var(--color-primary);
+        padding: 4px 14px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+
+      .rv3-feature__title {
+        font-size: clamp(24px, 3vw, 32px);
+        font-weight: 900;
+        margin: 0 0 8px;
+        letter-spacing: 1px;
+        line-height: 1.4;
+      }
+
+      .rv3-feature__meta {
+        font-size: 14px;
+        color: var(--color-text-muted);
+        margin: 0 0 24px;
+        letter-spacing: 0.3px;
+      }
+
+      .rv3-feature__highlights {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 28px;
+      }
+
+      .rv3-feature__highlights li {
+        font-size: 15px;
+        line-height: 1.8;
+        padding: 5px 0 5px 18px;
+        position: relative;
+      }
+
+      .rv3-feature__highlights li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 6px;
+        height: 6px;
+        background: var(--color-primary);
+        border-radius: 50%;
+      }
+
+      .rv3-feature__highlights strong {
+        color: var(--color-primary);
+        font-weight: 800;
+      }
+
+      .rv3-feature__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--color-primary);
+        transition: gap 0.3s ease;
+      }
+
+      .rv3-feature__link:hover {
+        gap: 16px;
+      }
+
+      .rv3-feature__link svg {
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .rv3-feature__link:hover svg {
+        transform: translateX(4px);
+      }
+
+      .rv3-feature__photo {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .rv3-feature__photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .rv3-feature:hover .rv3-feature__photo img {
+        transform: scale(1.04);
+      }
+
+      .rv3-subs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(16px, 2vw, 24px);
+        margin-bottom: clamp(48px, 6vw, 72px);
+      }
+
+      .rv3-sub {
+        border-radius: 16px;
+        overflow: hidden;
+        background: #FFFFFF;
+        box-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.04),
+          0 4px 12px rgba(0, 0, 0, 0.04);
         transition:
           transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-          box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow 0.4s ease;
       }
-      .policy-card:hover {
+
+      .rv3-sub:hover {
         transform: translateY(-6px);
         box-shadow:
           0 2px 4px rgba(0, 0, 0, 0.04),
           0 8px 24px rgba(0, 0, 0, 0.06),
           0 24px 48px rgba(0, 0, 0, 0.04);
       }
-      .policy-card__img {
-        position: relative;
-        aspect-ratio: 3 / 2;
+
+      .rv3-sub__inner {
+        display: block;
+        color: inherit;
+      }
+
+      .rv3-sub__photo {
+        aspect-ratio: 16 / 9;
         overflow: hidden;
       }
-      .policy-card__img img {
+
+      .rv3-sub__photo img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .policy-card:hover .policy-card__img img {
+
+      .rv3-sub:hover .rv3-sub__photo img {
         transform: scale(1.05);
       }
-      .policy-card__no {
-        position: absolute;
-        bottom: 12px;
-        left: 16px;
+
+      .rv3-sub__body {
+        padding: 24px;
+      }
+
+      .rv3-sub__no {
         font-family: var(--font-en);
-        font-size: 56px;
+        font-size: 36px;
         font-weight: 800;
-        color: #FFFFFF;
+        color: var(--color-primary);
+        opacity: 0.18;
         line-height: 1;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        display: block;
+        margin-bottom: 8px;
       }
-      .policy-card__body {
-        padding: 24px 24px 28px;
-      }
-      .policy-card__title {
-        font-size: 20px;
+
+      .rv3-sub__title {
+        font-size: 18px;
         font-weight: 900;
-        margin: 0 0 4px;
-        letter-spacing: 1px;
+        margin: 0 0 6px;
+        letter-spacing: 0.5px;
       }
-      .policy-card__subtitle {
-        font-size: 14px;
+
+      .rv3-sub__meta {
+        font-size: 13px;
         color: var(--color-text-muted);
         margin: 0 0 16px;
         line-height: 1.6;
       }
-      .policy-card__link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 15px;
+
+      .rv3-sub__link {
+        font-size: 14px;
         font-weight: 700;
         color: var(--color-primary);
-        transition: gap 0.3s ease;
+        letter-spacing: 0.3px;
       }
-      .policy-card__link:hover {
-        gap: 12px;
+
+      .rv3-cta {
+        text-align: center;
       }
-      .arrow-circle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        border: 1.5px solid var(--color-primary);
-        border-radius: 50%;
-        font-size: 14px;
-        transition: background 0.3s ease, color 0.3s ease;
-      }
-      .policy-card__link:hover .arrow-circle {
-        background: var(--color-primary);
-        color: #FFFFFF;
+
+      @media (max-width: 767px) {
+        .rv3-feature {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+
+        .rv3-feature__photo {
+          aspect-ratio: 16 / 9;
+          order: -1;
+        }
+
+        .rv3-subs {
+          grid-template-columns: 1fr;
+        }
       }
 
       .grid-2 {
@@ -1438,7 +1602,6 @@
         .btn-primary,
         .btn-ghost,
         .card,
-        .policy-card,
         .contact-card,
         .icon-btn,
         .nav a,
@@ -1784,54 +1947,70 @@
         </div>
       </section>
 
-      <section id="reports" class="reports" aria-label="活動報告">
+      <section id="reports" class="reports-v3" aria-label="活動報告">
         <div class="container">
-          <div class="section-head">
-            <p class="section-subtitle">REPORTS</p>
-            <h2 class="section-title">活動報告</h2>
+
+          <div class="rv3-head reveal">
+            <p class="rv3-head__en">REPORTS</p>
+            <h2 class="rv3-head__title">活動報告</h2>
           </div>
 
-          <div class="grid-3">
-            <article class="policy-card reveal">
-              <div class="policy-card__img">
-                <img src="images/speech-point.jpg" alt="令和7年6月定例会" width="3825" height="6119" loading="lazy" />
-                <span class="policy-card__no">NEW</span>
-              </div>
-              <div class="policy-card__body">
-                <h3 class="policy-card__title">令和7年6月定例会</h3>
-                <p class="policy-card__subtitle">市町村支援・土地利用・参道整備・不登校・生理用品</p>
-                <a href="reports/2025-06.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
-              </div>
+          <article class="rv3-feature reveal">
+            <div class="rv3-feature__body">
+              <span class="rv3-feature__badge">LATEST</span>
+              <h3 class="rv3-feature__title">令和7年6月定例会</h3>
+              <p class="rv3-feature__meta">一般質問　5テーマ＋要望1件｜2025.06.24</p>
+              <ul class="rv3-feature__highlights">
+                <li>知事が<strong>「今月中に勉強会設置」</strong>を明言</li>
+                <li>生理用品配置率 <strong>0.4% vs 北海道98.2%</strong> を可視化</li>
+                <li>不登校支援 中3進学 <strong>15名→21名</strong> を公式記録に</li>
+              </ul>
+              <a class="rv3-feature__link" href="reports/2025-06.html">
+                詳しく見る
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+            <div class="rv3-feature__photo">
+              <img src="images/speech-point.jpg" alt="令和7年6月定例会" loading="lazy"/>
+            </div>
+          </article>
+
+          <div class="rv3-subs">
+
+            <article class="rv3-sub reveal">
+              <a href="reports/2024-12.html" class="rv3-sub__inner">
+                <div class="rv3-sub__photo">
+                  <img src="images/speech-mic.jpg" alt="令和6年12月定例会" loading="lazy"/>
+                </div>
+                <div class="rv3-sub__body">
+                  <span class="rv3-sub__no">02</span>
+                  <h3 class="rv3-sub__title">令和6年12月定例会</h3>
+                  <p class="rv3-sub__meta">保育士確保・高校無償化・部活動・道路整備</p>
+                  <span class="rv3-sub__link">詳しく見る →</span>
+                </div>
+              </a>
             </article>
 
-            <article class="policy-card reveal">
-              <div class="policy-card__img">
-                <img src="images/speech-mic.jpg" alt="令和6年12月定例会" width="3714" height="5943" loading="lazy" />
-                <span class="policy-card__no">02</span>
-              </div>
-              <div class="policy-card__body">
-                <h3 class="policy-card__title">令和6年12月定例会</h3>
-                <p class="policy-card__subtitle">保育士確保・私立高校無償化・部活動・道路整備</p>
-                <a href="reports/2024-12.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
-              </div>
+            <article class="rv3-sub reveal">
+              <a href="reports/2023-09.html" class="rv3-sub__inner">
+                <div class="rv3-sub__photo">
+                  <img src="images/outdoor-speech.jpg" alt="令和5年9月定例会" loading="lazy"/>
+                </div>
+                <div class="rv3-sub__body">
+                  <span class="rv3-sub__no">01</span>
+                  <h3 class="rv3-sub__title">令和5年9月定例会</h3>
+                  <p class="rv3-sub__meta">観光振興・子育て支援・医療的ケア児</p>
+                  <span class="rv3-sub__link">詳しく見る →</span>
+                </div>
+              </a>
             </article>
 
-            <article class="policy-card reveal">
-              <div class="policy-card__img">
-                <img src="images/outdoor-speech.jpg" alt="令和5年9月定例会" width="6255" height="4170" loading="lazy" />
-                <span class="policy-card__no">01</span>
-              </div>
-              <div class="policy-card__body">
-                <h3 class="policy-card__title">令和5年9月定例会</h3>
-                <p class="policy-card__subtitle">観光振興・子育て支援・医療的ケア児</p>
-                <a href="reports/2023-09.html" class="policy-card__link">詳しく見る <span class="arrow-circle">→</span></a>
-              </div>
-            </article>
           </div>
 
-          <div class="section-cta">
+          <div class="rv3-cta reveal">
             <a class="btn-primary" href="reports/index.html">活動報告一覧</a>
           </div>
+
         </div>
       </section>
 
