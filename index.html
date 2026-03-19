@@ -495,6 +495,69 @@
         background: var(--color-bg-white);
       }
 
+      .opening {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.6s ease;
+      }
+
+      .opening.is-done {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .opening__content {
+        text-align: center;
+        color: #FFFFFF;
+      }
+
+      .opening__line {
+        opacity: 0;
+        transform: translateY(20px);
+        margin: 0;
+      }
+
+      .opening__line--main {
+        font-size: clamp(36px, 6vw, 64px);
+        font-weight: 900;
+        letter-spacing: 4px;
+      }
+
+      .opening__line--sub {
+        font-size: clamp(16px, 2.5vw, 24px);
+        font-weight: 500;
+        letter-spacing: 2px;
+        margin-top: 16px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .opening__skip {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.6);
+        font-family: var(--font-en);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        padding: 10px 24px;
+        border-radius: 60px;
+        cursor: pointer;
+        transition: color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .opening__skip:hover {
+        color: #FFFFFF;
+        border-color: rgba(255, 255, 255, 0.6);
+      }
+
       .blf-head {
         margin-bottom: clamp(48px, 6vw, 72px);
       }
@@ -1819,6 +1882,15 @@
     </script>
   </head>
   <body>
+    <!-- Opening Animation -->
+    <div id="opening" class="opening">
+      <div class="opening__content">
+        <p class="opening__line opening__line--main" id="openLine1">声は届く。</p>
+        <p class="opening__line opening__line--sub" id="openLine2">あなたの声を、県政に。</p>
+      </div>
+      <button class="opening__skip" id="openSkip">SKIP →</button>
+    </div>
+
     <a class="skip-link" href="#main">本文へスキップ</a>
 
     <div class="topbar" role="banner">
@@ -2395,6 +2467,70 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+    <script>
+      (function () {
+        var opening = document.getElementById("opening");
+        var skip = document.getElementById("openSkip");
+        var line1 = document.getElementById("openLine1");
+        var line2 = document.getElementById("openLine2");
+
+        if (!opening || !line1 || !line2) return;
+
+        // prefers-reduced-motion の場合は即スキップ
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          opening.remove();
+          return;
+        }
+
+        if (typeof gsap === "undefined") {
+          opening.remove();
+          return;
+        }
+
+        // ページのスクロールを一時的に無効化
+        document.body.style.overflow = "hidden";
+
+        function closeOpening() {
+          opening.classList.add("is-done");
+          document.body.style.overflow = "";
+          setTimeout(function () {
+            opening.remove();
+          }, 700);
+        }
+
+        // SKIPボタン
+        if (skip) skip.addEventListener("click", closeOpening);
+
+        // アニメーションシーケンス
+        var tl = gsap.timeline({ onComplete: closeOpening });
+
+        tl.to(line1, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: 0.5,
+        })
+          .to(line1, {
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.in",
+            delay: 1.5,
+          })
+          .to(line2, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          })
+          .to(line2, {
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.in",
+            delay: 1.2,
+          });
+      })();
+    </script>
     <script>
       (function () {
         if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
