@@ -150,6 +150,16 @@
         padding-bottom: 14px;
       }
 
+      /* 左右サイドバー分だけ内側に寄せる（PC/タブレット） */
+      @media (min-width: 1200px) {
+        .topbar .container,
+        .header .container {
+          max-width: none;
+          padding-left: calc(var(--pad-x) + 200px);
+          padding-right: calc(var(--pad-x) + 200px);
+        }
+      }
+
       .brand {
         display: flex;
         flex-direction: column;
@@ -1677,6 +1687,12 @@
         .main-content {
           margin-left: 140px;
           margin-right: 140px;
+        }
+        .topbar .container,
+        .header .container {
+          max-width: none;
+          padding-left: calc(var(--pad-x) + 140px);
+          padding-right: calc(var(--pad-x) + 140px);
         }
         .sidebar__text {
           font-size: 22px;

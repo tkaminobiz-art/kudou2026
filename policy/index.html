@@ -57,6 +57,16 @@ img{display:block;max-width:100%;height:auto}
 .nav a:hover{background:rgba(55,194,0,.1)}
 .nav a.active{background:rgba(55,194,0,.08);font-weight:700}
 
+/* 左右サイドバー分だけ内側に寄せる（PC/タブレット） */
+@media (min-width: 1200px){
+  .topbar .wrap,
+  .header .wrap{
+    max-width:none;
+    padding-left:calc(24px + 200px);
+    padding-right:calc(24px + 200px);
+  }
+}
+
 /* ===== Hero ===== */
 .policy-hero{background:var(--primary);color:#fff;padding:80px 0 60px;text-align:center}
 .policy-hero__label{font-family:var(--en);font-size:13px;font-weight:800;letter-spacing:4px;text-transform:uppercase;opacity:.7;margin-bottom:12px}
@@ -235,6 +245,14 @@ img{display:block;max-width:100%;height:auto}
   .main-content{margin-left:140px;margin-right:140px}
   .dv4-grid{grid-template-columns:repeat(2,1fr)}
   .dv4-card--hero{grid-column:span 2}
+}
+@media (min-width:768px) and (max-width:1199px){
+  .topbar .wrap,
+  .header .wrap{
+    max-width:none;
+    padding-left:calc(24px + 140px);
+    padding-right:calc(24px + 140px);
+  }
 }
 @media(max-width:767px){
   .sidebar{display:none}
