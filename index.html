@@ -1209,104 +1209,156 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: clamp(24px, 3vw, 32px);
       }
-      .contact {
+      /* フッター統合版 v3 */
+      .fv3-sns {
         background: var(--color-primary);
-        color: #ffffff;
+        padding: 0;
       }
-      .contact .section-title {
-        color: #ffffff;
-      }
-      .contact .section-subtitle {
-        color: rgba(255, 255, 255, 0.78);
-      }
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: clamp(24px, 3vw, 32px);
-      }
-      .contact-card {
-        background: #FFFFFF;
-        color: var(--color-text);
-        border-radius: 20px;
-        padding: 36px 32px;
-        box-shadow:
-          0 4px 12px rgba(0, 0, 0, 0.08),
-          0 16px 40px rgba(0, 0, 0, 0.06);
-        transition:
-          transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-          box-shadow 0.4s ease;
-      }
-      .contact-card:hover {
-        transform: translateY(-4px);
-        box-shadow:
-          0 8px 24px rgba(0, 0, 0, 0.1),
-          0 24px 56px rgba(0, 0, 0, 0.08);
-      }
-      .contact-card h3 {
-        margin: 0;
-        font-size: 20px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        line-height: 2.0;
-      }
-      .contact-card p {
-        margin: 10px 0 18px;
-        color: rgba(44, 44, 44, 0.9);
-        line-height: 2.2;
-        font-size: 15px;
-      }
-      .contact-card .btn-primary {
-        width: 100%;
-        padding-left: 24px;
-        padding-right: 24px;
-      }
-      .contact-sub {
-        margin-top: 16px;
-        padding-top: 16px;
-        border-top: 1px solid rgba(26, 51, 36, 0.08);
-        display: grid;
-        gap: 10px;
-      }
-      .contact-sub .btn-primary {
-        padding-left: 22px;
-        padding-right: 22px;
-      }
-
-      footer {
-        background: var(--color-footer-bg);
-        color: var(--color-footer-text);
-        padding: 54px 0 40px;
-      }
-      .footer-nav {
+      .fv3-sns__inner {
         display: flex;
-        flex-wrap: wrap;
-        gap: 14px 18px;
-        margin: 0 0 18px;
+        justify-content: center;
+        gap: 0;
       }
-      .footer-nav a {
-        opacity: 0.9;
-        padding: 8px 10px;
-        border-radius: 12px;
-        transition: background 0.6s var(--ease-out), opacity 0.6s var(--ease-out);
-      }
-      .footer-nav a:hover {
-        background: rgba(255, 255, 255, 0.08);
-        opacity: 1;
-      }
-      .footer-text {
-        margin: 0;
-        opacity: 0.92;
-        line-height: 2.0;
-        letter-spacing: 0.7px;
+      .fv3-sns__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px 32px;
+        color: #FFFFFF;
         font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        transition: background 0.3s ease;
+        white-space: nowrap;
       }
-      .footer-copy {
-        margin-top: 20px;
-        opacity: 0.7;
+      .fv3-sns__item:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .fv3-sns__item svg {
+        flex-shrink: 0;
+      }
+      .fv3-main {
+        background: #1a2e1a;
+        padding: 64px 0 48px;
+      }
+      .fv3-main__inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 32px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 48px;
+        align-items: start;
+      }
+      .fv3-contact__title {
+        font-size: 18px;
+        font-weight: 900;
+        color: #FFFFFF;
+        margin: 0 0 12px;
+        letter-spacing: 1px;
+      }
+      .fv3-contact__text {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0 0 20px;
+        line-height: 1.8;
+      }
+      .fv3-contact__btn {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        color: #FFFFFF;
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 28px;
+        border-radius: 60px;
+        letter-spacing: 0.5px;
+        transition: border-color 0.3s ease, background 0.3s ease;
+      }
+      .fv3-contact__btn:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .fv3-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .fv3-nav a {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 6px 0;
+        letter-spacing: 0.5px;
+        transition: color 0.3s ease;
+      }
+      .fv3-nav a:hover {
+        color: #FFFFFF;
+      }
+      .fv3-office {
+        text-align: right;
+      }
+      .fv3-office__name {
+        font-size: 22px;
+        font-weight: 900;
+        color: #FFFFFF;
+        margin: 0 0 8px;
+        line-height: 1.6;
+        letter-spacing: 2px;
+      }
+      .fv3-office__party {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0 16px;
+        letter-spacing: 0.5px;
+      }
+      .fv3-office__address {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0 4px;
+      }
+      .fv3-office__tel {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0;
         font-family: var(--font-en);
         font-weight: 700;
         letter-spacing: 0.5px;
-        font-size: 13px;
+      }
+      .fv3-copy {
+        background: #142414;
+        padding: 16px 0;
+        text-align: center;
+      }
+      .fv3-copy p {
+        margin: 0;
+        font-family: var(--font-en);
+        font-size: 12px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.5px;
+      }
+      @media (max-width: 767px) {
+        .fv3-sns__inner {
+          flex-direction: column;
+          gap: 0;
+        }
+        .fv3-sns__item {
+          padding: 14px 20px;
+          justify-content: flex-start;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .fv3-main__inner {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+        .fv3-nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 4px 16px;
+        }
+        .fv3-office {
+          text-align: left;
+        }
       }
 
       /* ★ fixedのサイドバーはグリッドから外れるので、layout-3colはblock・main-contentでmargin対応 */
@@ -1554,9 +1606,6 @@
         .profile-bg-text {
           display: none;
         }
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
         .news-item {
           grid-template-columns: 1fr;
           gap: 8px;
@@ -1602,7 +1651,6 @@
         .btn-primary,
         .btn-ghost,
         .card,
-        .contact-card,
         .icon-btn,
         .nav a,
         .line-link,
@@ -2014,35 +2062,6 @@
         </div>
       </section>
 
-      <section id="contact" class="contact" aria-label="お問い合わせ">
-        <div class="container">
-          <div class="section-head">
-            <p class="section-subtitle">CONTACT</p>
-            <h2 class="section-title">お問い合わせ</h2>
-          </div>
-
-          <div class="contact-grid">
-            <div class="contact-card reveal">
-              <h3>フォームから</h3>
-              <p>
-                ホームページの「お問い合わせ」よりご連絡いただけます。<br />
-                匿名でも構いません。
-              </p>
-              <a class="btn-primary" href="#" aria-label="フォームを開く（後日リンク設定）">フォームを開く →</a>
-            </div>
-
-            <div class="contact-card reveal">
-              <h3>公式LINEから</h3>
-              <p>LINE上でのやり取り・情報配信が可能になります（現在はボタンのみ設置、後日URLを差し替え）。</p>
-              <div class="contact-sub" aria-label="公式LINE（2種）">
-                <a class="btn-primary" href="#" aria-label="LINEで相談する（公聴専用・後日リンク設定）">LINEで相談する →</a>
-                <a class="btn-primary" href="#" aria-label="配信LINEを追加する（配信専用・後日リンク設定）">配信LINEを追加する →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
         </div>
 
         <aside class="sidebar sidebar--right" aria-hidden="true">
@@ -2054,22 +2073,51 @@
       </div>
     </main>
 
-    <footer aria-label="フッター">
-      <div class="container">
-        <nav class="footer-nav" aria-label="フッターナビゲーション">
-          <a href="#home">ホーム</a>
-          <a href="#policy">政策</a>
-          <a href="#profile">プロフィール</a>
-          <a href="#reports">活動報告</a>
-          <a href="#news">お知らせ</a>
-          <a href="#contact">お問い合わせ</a>
-        </nav>
-        <p class="footer-text">
-          奈良県議会議員 工藤まさゆき<br />
-          日本維新の会 奈良県議団<br />
-          〒633-0062 桜井市大字栗殿612-8
-        </p>
-        <p class="footer-copy">© 2026 Kudo Masayuki. All Rights Reserved.</p>
+    <footer class="footer-v3" aria-label="フッター">
+      <div class="fv3-sns">
+        <div class="fv3-sns__inner">
+          <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" class="fv3-sns__item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z"/></svg>
+            <span>X（Twitter）</span>
+          </a>
+          <a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" class="fv3-sns__item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2Zm9 2h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4ZM12 7a5 5 0 110 10 5 5 0 010-10Zm0 2a3 3 0 100 6 3 3 0 000-6Zm5.7-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4Z"/></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="#" class="fv3-sns__item" aria-label="LINE公聴専用（後日リンク設定）">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg>
+            <span>LINE（ご相談）</span>
+          </a>
+          <a href="#" class="fv3-sns__item" aria-label="LINE配信専用（後日リンク設定）">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg>
+            <span>LINE（配信）</span>
+          </a>
+        </div>
+      </div>
+      <div class="fv3-main">
+        <div class="fv3-main__inner">
+          <div class="fv3-contact">
+            <h3 class="fv3-contact__title">お問い合わせ</h3>
+            <p class="fv3-contact__text">ご意見・ご相談はお気軽にどうぞ。匿名でも構いません。</p>
+            <a href="#" class="fv3-contact__btn">フォームを開く →</a>
+          </div>
+          <div class="fv3-nav">
+            <a href="#home">ホーム</a>
+            <a href="#policy">政策</a>
+            <a href="#profile">プロフィール</a>
+            <a href="reports/index.html">活動報告</a>
+            <a href="#news">お知らせ</a>
+          </div>
+          <div class="fv3-office">
+            <p class="fv3-office__name">奈良県議会議員<br>工藤まさゆき</p>
+            <p class="fv3-office__party">日本維新の会 奈良県議団</p>
+            <p class="fv3-office__address">〒633-0062 桜井市大字栗殿612-8</p>
+            <p class="fv3-office__tel">TEL 090-9543-0910</p>
+          </div>
+        </div>
+      </div>
+      <div class="fv3-copy">
+        <p>© 2026 Kudo Masayuki. All Rights Reserved.</p>
       </div>
     </footer>
 
