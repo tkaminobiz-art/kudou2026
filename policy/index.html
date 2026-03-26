@@ -241,8 +241,8 @@ img{display:block;max-width:100%;height:auto}
 
 /* ===== Responsive ===== */
 @media(max-width:1199px){
-  .sidebar{width:140px}
-  .main-content{margin-left:140px;margin-right:140px}
+  .sidebar{width:120px}
+  .main-content{margin-left:120px;margin-right:120px}
   .dv4-grid{grid-template-columns:repeat(2,1fr)}
   .dv4-card--hero{grid-column:span 2}
 }
@@ -250,8 +250,8 @@ img{display:block;max-width:100%;height:auto}
   .topbar .wrap,
   .header .wrap{
     max-width:none;
-    padding-left:calc(24px + 140px);
-    padding-right:calc(24px + 140px);
+    padding-left:calc(24px + 120px);
+    padding-right:calc(24px + 120px);
   }
 }
 @media(max-width:767px){
@@ -848,13 +848,15 @@ img{display:block;max-width:100%;height:auto}
   // === D: 数値カウントアップ（policy/index.html用） ===
   document.querySelectorAll('.dv4-num--hero, .dv4-num--xl, .dv4-num--lg').forEach(function(el) {
     var text = el.textContent.trim();
+    // 「兆」を含む複合数値はカウントアップをスキップ（例: 1兆2,500億円）
+    if (/兆/.test(text)) return;
     // 数値を抽出（カンマ・+を除去）
-    var num = parseFloat(text.replace(/[,+兆億万件回倍%]/g, ''));
+    var num = parseFloat(text.replace(/[,+億万件回倍%]/g, ''));
     if (isNaN(num)) return;
-    
+
     // 元のテキストから数値部分と接尾辞を分離
     var suffix = text.replace(/[\d,.]+/g, '');
-    
+
     gsap.from(el, {
       textContent: 0,
       duration: 1.5,
