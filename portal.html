@@ -2,819 +2,792 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="description" content="奈良県議会議員 工藤まさゆき 県民ポータル。教育・福祉・医療・フィルムコミッションの行政サービスにワンクリックでアクセス。"/>
 <title>県民ポータル｜工藤まさゆき 奈良県議会議員</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@700;800&display=swap" rel="stylesheet"/>
-<!-- このコードは星川大地議員サイト(daichi-star.com/support)のデザインにインスパイアされたオリジナル実装です。 -->
 <style>
-:root {
-  --color-primary: #37C200;
-  --color-primary-dark: #2DA000;
-  --color-bg: #fafaf8;
-  --color-bg-alt: #f0f4ee;
-  --color-surface: #ffffff;
-  --color-text: #2c2c2c;
-  --color-text-muted: #6b7280;
-  --color-footer-bg: #1a3324;
-  --color-border: #e2e8f0;
-  --color-hero-bg: #1a3324;
-  --color-hero-text: #ffffff;
-  --color-badge: #1a3324;
-  --color-education: #2563eb;
-  --color-welfare: #dc2626;
-  --color-medical: #059669;
-  --color-film: #7c3aed;
-  --color-assembly: #d97706;
-  --font-main: "Noto Sans JP", system-ui, sans-serif;
-  --font-en: "Montserrat", system-ui, sans-serif;
-  --content-max: 1200px;
-  --sidebar-w: 300px;
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+:root{
+  --primary:#37C200;
+  --bg:#FAFAF8;
+  --bg-light:#F0F4EC;
+  --text:#2C2C2C;
+  --muted:#888;
+  --font:'Noto Sans JP',sans-serif;
+  --en:'Montserrat',sans-serif;
+  --footer-bg:#1a2e1a;
+  --ease:cubic-bezier(.16,1,.3,1);
 }
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-main);
-  color: var(--color-text);
-  background: var(--color-bg);
-  line-height: 1.8;
-  letter-spacing: 0.5px;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:2.0;letter-spacing:.7px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
 
-/* ===== HERO ===== */
-.hero {
-  background: var(--color-hero-bg);
-  color: var(--color-hero-text);
-  padding: 0;
-  position: relative;
-  overflow: hidden;
-}
-.hero__inner {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 60px 32px 48px;
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  position: relative;
-  z-index: 1;
-}
-.hero__text { flex: 1; }
-.hero__badge {
-  display: inline-block;
-  background: var(--color-primary);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 4px 14px;
-  border-radius: 60px;
-  margin-bottom: 16px;
-}
-.hero__title {
-  font-size: clamp(24px, 4vw, 36px);
-  font-weight: 900;
-  line-height: 1.4;
-  margin-bottom: 12px;
-}
-.hero__title span { color: var(--color-primary); }
-.hero__desc {
-  font-size: 14px;
-  line-height: 1.9;
-  opacity: 0.85;
-  max-width: 540px;
-}
-.hero__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #06C755;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 12px 28px;
-  border-radius: 60px;
-  margin-top: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 12px rgba(6,199,85,0.3);
-}
-.hero__cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(6,199,85,0.4);
-}
-.hero__cta svg { width: 20px; height: 20px; }
-.hero__photo {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid rgba(255,255,255,0.15);
-  flex-shrink: 0;
+/* ===== Shared Layout (policy page と同一) ===== */
+.layout-3col{display:block}
+.sidebar{background:var(--primary);position:fixed;top:0;height:100vh;overflow:hidden;z-index:5;width:200px}
+.sidebar--left{left:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:120px 0 40px}
+.sidebar--right{right:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:24px 0}
+.sidebar__text{writing-mode:vertical-lr;font-family:var(--en);font-size:28px;font-weight:800;color:rgba(255,255,255,.15);letter-spacing:6px;text-transform:uppercase;white-space:nowrap}
+.sidebar__label{writing-mode:vertical-rl;font-size:18px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:3px;line-height:1.6;text-align:center}
+.sidebar__portrait{width:100%;height:auto;max-height:80vh;object-fit:contain;object-position:bottom center;opacity:1;pointer-events:none;margin-top:0}
+.sidebar-bubble{position:relative;z-index:2;margin:0 0 14px;margin-top:auto;flex-shrink:0}
+.sidebar-bubble span{display:block;background:#fff;color:var(--text);font-size:20px;font-weight:900;letter-spacing:2px;padding:14px 20px;border-radius:16px;border:3px solid var(--text);position:relative;white-space:nowrap;writing-mode:vertical-rl}
+.sidebar-bubble span::after{content:'';position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:16px solid #fff;filter:drop-shadow(0 3px 0 var(--text))}
+.main-content{margin-left:200px;margin-right:200px;background:var(--bg)}
+.container{max-width:1100px;margin:0 auto;padding:0 32px}
+
+/* ===== Header ===== */
+.topbar{height:34px;background:var(--primary);color:#fff;display:flex;align-items:center}
+.topbar .wrap{max-width:1400px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.topbar__label{font-size:13px;font-weight:700;letter-spacing:.6px}
+.topbar__social{display:flex;gap:12px}
+.topbar__social a{width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.3)}
+.topbar__social svg{width:16px;height:16px;fill:#fff}
+.header{position:sticky;top:0;z-index:50;background:rgba(250,250,248,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(26,51,36,.08)}
+.header .wrap{max-width:1400px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;flex-direction:column;line-height:1.1}
+.brand__jp{font-weight:900;font-size:24px;letter-spacing:1.2px}
+.brand__en{font-family:var(--en);font-weight:700;font-size:12px;opacity:.68;margin-top:2px}
+.nav{display:flex;align-items:center;gap:18px}
+.nav a{font-size:15px;font-weight:500;letter-spacing:.5px;padding:10px 8px;border-radius:10px;transition:background .4s var(--ease)}
+.nav a:hover{background:rgba(55,194,0,.1)}
+.nav a.active{background:rgba(55,194,0,.08);font-weight:700}
+
+@media (min-width: 1200px){
+  .topbar .wrap,
+  .header .wrap{
+    max-width:none;
+    padding-left:calc(24px + 200px);
+    padding-right:calc(24px + 200px);
+  }
 }
 
-/* ===== LAYOUT ===== */
-.layout {
-  max-width: var(--content-max);
-  margin: 0 auto;
-  padding: 32px 24px 80px;
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
-}
-.main { flex: 1; min-width: 0; }
+/* ===== Portal Hero ===== */
+.portal-hero{background:var(--primary);color:#fff;padding:80px 0 60px;text-align:center}
+.portal-hero__label{font-family:var(--en);font-size:13px;font-weight:800;letter-spacing:4px;text-transform:uppercase;opacity:.7;margin-bottom:12px}
+.portal-hero__title{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:4px;margin-bottom:16px}
+.portal-hero__sub{font-size:clamp(15px,2vw,18px);opacity:.85;max-width:600px;margin:0 auto}
 
-/* ===== SIDEBAR ===== */
-.sidebar {
-  width: var(--sidebar-w);
-  flex-shrink: 0;
-  position: sticky;
-  top: 24px;
+/* ===== Portal Nav (Sticky) ===== */
+.portal-nav{
+  position:sticky;top:64px;z-index:10;
+  background:rgba(250,250,248,.95);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  padding:0;
 }
-.sidebar__back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 14px;
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: border-color 0.2s, background 0.2s;
-  cursor: pointer;
+.portal-nav__inner{
+  display:flex;justify-content:center;gap:0;
+  max-width:1100px;margin:0 auto;
 }
-.sidebar__back:hover { border-color: var(--color-primary); background: var(--color-bg-alt); }
-.sidebar__back svg { width: 18px; height: 18px; }
-.sidebar__section {
-  margin-top: 20px;
-  background: var(--color-footer-bg);
-  color: #fff;
-  border-radius: 12px;
-  overflow: hidden;
+.portal-nav__item{
+  padding:16px 24px;font-size:14px;font-weight:700;
+  letter-spacing:.5px;color:var(--muted);
+  border-bottom:3px solid transparent;
+  transition:color .3s ease,border-color .3s ease;
+  cursor:pointer;white-space:nowrap;
 }
-.sidebar__section-title {
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 14px;
-}
-.sidebar__sns { display: flex; flex-direction: column; gap: 0; }
-.sidebar__sns-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: background 0.2s;
-}
-.sidebar__sns-link:hover { background: rgba(255,255,255,0.08); }
-.sidebar__sns-link--line { background: #06C755; }
-.sidebar__sns-link--line:hover { background: #05b34d; }
-.sidebar__sns-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
-.sidebar__sns-text span { display: block; font-size: 11px; opacity: 0.7; font-weight: 400; }
-
-/* ===== SEARCH + FILTERS ===== */
-.search-bar {
-  position: relative;
-  margin-bottom: 16px;
-}
-.search-bar__input {
-  width: 100%;
-  padding: 14px 16px 14px 44px;
-  border: 2px solid var(--color-border);
-  border-radius: 12px;
-  font-family: var(--font-main);
-  font-size: 14px;
-  background: var(--color-surface);
-  outline: none;
-  transition: border-color 0.2s;
-}
-.search-bar__input:focus { border-color: var(--color-primary); }
-.search-bar__icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--color-text-muted);
-  width: 18px;
-  height: 18px;
-}
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--color-border);
-}
-.filter-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
-  border: 1.5px solid var(--color-border);
-  border-radius: 60px;
-  font-size: 13px;
-  font-weight: 600;
-  background: var(--color-surface);
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.filter-tag:hover, .filter-tag.active {
-  border-color: var(--color-primary);
-  background: var(--color-bg-alt);
-  color: var(--color-primary-dark);
+.portal-nav__item:hover,.portal-nav__item.is-active{
+  color:var(--text);border-bottom-color:var(--primary);
 }
 
-/* ===== SECTION HEADING ===== */
-.section-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 3px solid var(--color-text);
+/* ===== Search & Filter ===== */
+.portal-tools{padding:clamp(32px,4vw,48px) 0 0}
+.search-bar{position:relative;margin-bottom:16px}
+.search-bar__input{
+  width:100%;padding:14px 16px 14px 44px;
+  border:2px solid rgba(0,0,0,.08);border-radius:12px;
+  font-family:var(--font);font-size:14px;background:#fff;
+  outline:none;transition:border-color .2s;
 }
-.section-heading__icon { font-size: 24px; }
-.section-heading__title {
-  font-size: clamp(18px, 3vw, 22px);
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-.section-heading[data-theme="education"] { border-color: var(--color-education); }
-.section-heading[data-theme="welfare"]   { border-color: var(--color-welfare); }
-.section-heading[data-theme="medical"]   { border-color: var(--color-medical); }
-.section-heading[data-theme="film"]      { border-color: var(--color-film); }
-.section-heading[data-theme="assembly"]  { border-color: var(--color-assembly); }
+.search-bar__input:focus{border-color:var(--primary)}
+.search-bar__icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);width:18px;height:18px}
 
-/* ===== CARDS ===== */
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 12px;
-}
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 20px;
-  border-top: 4px solid var(--color-border);
-  transition: transform 0.2s var(--ease-out), box-shadow 0.2s;
-  position: relative;
-}
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-.card[data-theme="education"] { border-top-color: var(--color-education); }
-.card[data-theme="welfare"]   { border-top-color: var(--color-welfare); }
-.card[data-theme="medical"]   { border-top-color: var(--color-medical); }
-.card[data-theme="film"]      { border-top-color: var(--color-film); }
-.card[data-theme="assembly"]  { border-top-color: var(--color-assembly); }
-.card__title {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-}
-.card__title a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.2s;
-}
-.card__title a:hover { color: var(--color-primary-dark); }
-.card__external-icon {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-  opacity: 0.4;
-  margin-top: 3px;
-}
-.card__desc {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
+/* ===== Intro ===== */
+.portal-intro{padding:clamp(40px,5vw,60px) 0 0}
+.portal-intro__text{font-size:15px;line-height:2;max-width:680px}
 
-/* ===== KUDO COMMENT ===== */
-.kudo-comment {
-  background: var(--color-bg-alt);
-  border-radius: 8px;
-  padding: 12px 14px;
-}
-.kudo-comment__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: var(--color-badge);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 3px 10px;
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
-.kudo-comment__badge svg { width: 12px; height: 12px; }
-.kudo-comment__text {
-  font-size: 12.5px;
-  line-height: 1.7;
-  color: var(--color-text);
-}
+/* ===== Theme Section ===== */
+.theme-section{padding:clamp(80px,10vw,120px) 0}
+.theme-section--alt{background:var(--bg-light)}
 
-/* ===== THEME COMMENT (below cards) ===== */
-.theme-comment {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-primary);
-  border-radius: 0 8px 8px 0;
-  padding: 16px 20px;
-  margin-bottom: 48px;
-  font-size: 14px;
-  line-height: 1.9;
-}
-.theme-comment strong {
-  color: var(--color-footer-bg);
-  font-weight: 700;
-}
+.theme-head{margin-bottom:clamp(36px,5vw,56px)}
+.theme-head__top{display:flex;align-items:center;gap:20px;margin-bottom:20px}
+.theme-head__no{font-family:var(--en);font-size:clamp(48px,6vw,72px);font-weight:800;line-height:1;opacity:.18;color:var(--primary)}
+.theme-head__line{height:1px;flex:1;background:currentColor;opacity:.15}
+.theme-head__title{font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:2px;margin-bottom:8px}
+.theme-head__catch{font-size:16px;color:var(--muted);letter-spacing:.5px}
 
-/* ===== LINE CTA ===== */
-.line-cta {
-  background: #06C755;
-  color: #fff;
-  border-radius: 12px;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 48px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-.line-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(6,199,85,0.3);
-}
-.line-cta__icon { font-size: 32px; flex-shrink: 0; }
-.line-cta__text { font-size: 14px; font-weight: 700; line-height: 1.6; }
-.line-cta__text span { display: block; font-size: 12px; font-weight: 400; opacity: 0.85; }
+/* テーマごとの番号色 */
+.theme-head--education .theme-head__no{color:var(--primary)}
+.theme-head--welfare .theme-head__no{color:#2196F3}
+.theme-head--medical .theme-head__no{color:#059669}
+.theme-head--film .theme-head__no{color:#7c3aed}
+.theme-head--assembly .theme-head__no{color:#d97706}
 
-/* ===== FOOTER ===== */
-.portal-footer {
-  background: var(--color-footer-bg);
-  color: #fff;
-  text-align: center;
-  padding: 32px 24px;
-  font-size: 12px;
-  opacity: 0.7;
+/* ===== Link List ===== */
+.link-list{margin-bottom:24px}
+.link-item{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:16px 0;border-bottom:1px solid rgba(0,0,0,.06);
+  transition:background .2s ease;
 }
-.portal-footer a { text-decoration: underline; }
+.link-item:last-child{border-bottom:none}
+.link-item:hover{background:rgba(55,194,0,.03)}
+.link-item__dot{width:8px;height:8px;background:var(--primary);border-radius:50%;margin-top:10px;flex-shrink:0}
+.link-item__body{flex:1;min-width:0}
+.link-item__title{font-size:15px;font-weight:700;line-height:1.6;margin-bottom:2px}
+.link-item__title a{display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.link-item__title a:hover{color:var(--primary)}
+.link-item__external{width:14px;height:14px;flex-shrink:0;opacity:.35}
+.link-item__desc{font-size:13px;color:var(--muted);line-height:1.7}
 
-/* ===== SCROLL REVEAL ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s var(--ease-out);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* テーマごとのドット色 */
+.link-item--education .link-item__dot{background:var(--primary)}
+.link-item--welfare .link-item__dot{background:#2196F3}
+.link-item--medical .link-item__dot{background:#059669}
+.link-item--film .link-item__dot{background:#7c3aed}
+.link-item--assembly .link-item__dot{background:#d97706}
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-  .hero__inner { flex-direction: column; text-align: center; padding: 40px 20px 32px; }
-  .hero__photo { width: 140px; height: 140px; order: -1; }
-  .hero__desc { margin: 0 auto; }
-  .layout { flex-direction: column; padding: 20px 16px 60px; }
-  .sidebar { width: 100%; position: static; }
-  .sidebar__section { display: none; }
-  .cards-grid { grid-template-columns: 1fr; }
+/* ===== Kudo Voice ===== */
+.kudo-voice{
+  background:var(--bg-light);border-radius:8px;padding:10px 14px;margin-top:8px;
 }
-@media (max-width: 480px) {
-  .hero__title { font-size: 22px; }
-  .filters { gap: 6px; }
-  .filter-tag { font-size: 12px; padding: 6px 12px; }
+.kudo-voice__badge{
+  display:inline-flex;align-items:center;gap:5px;
+  background:var(--footer-bg);color:#fff;
+  font-size:10px;font-weight:700;letter-spacing:1px;
+  padding:3px 10px;border-radius:4px;margin-bottom:6px;
 }
+.kudo-voice__badge svg{width:12px;height:12px}
+.kudo-voice__text{font-size:12.5px;line-height:1.7;color:var(--text)}
+
+/* ===== Theme Comment ===== */
+.theme-comment{
+  background:#fff;border:1px solid rgba(0,0,0,.06);
+  border-left:4px solid var(--primary);border-radius:0 8px 8px 0;
+  padding:16px 20px;font-size:14px;line-height:1.9;
+}
+.theme-comment strong{color:var(--footer-bg);font-weight:700}
+
+/* ===== Footer (policy page と同一) ===== */
+.fv3-sns{background:var(--primary)}
+.fv3-sns__inner{display:flex;justify-content:center;gap:0}
+.fv3-sns__item{display:flex;align-items:center;justify-content:center;gap:10px;padding:20px 32px;color:#fff;font-size:14px;font-weight:700;letter-spacing:.5px;transition:background .3s ease;white-space:nowrap}
+.fv3-sns__item:hover{background:rgba(255,255,255,.12)}
+.fv3-sns__item svg{flex-shrink:0}
+.fv3-main{background:#1a2e1a;padding:64px 0 48px}
+.fv3-main__inner{max-width:1100px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr auto 1fr;gap:48px;align-items:start}
+.fv3-contact__title{font-size:18px;font-weight:900;color:#fff;margin:0 0 12px;letter-spacing:1px}
+.fv3-contact__text{font-size:14px;color:rgba(255,255,255,.7);margin:0 0 20px;line-height:1.8}
+.fv3-contact__btn{display:inline-block;font-size:14px;font-weight:700;color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:10px 28px;border-radius:60px;letter-spacing:.5px;transition:border-color .3s ease,background .3s ease}
+.fv3-contact__btn:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06)}
+.fv3-nav{display:flex;flex-direction:column;gap:6px}
+.fv3-nav a{font-size:14px;color:rgba(255,255,255,.8);padding:6px 0;letter-spacing:.5px;transition:color .3s ease}
+.fv3-nav a:hover{color:#fff}
+.fv3-office{text-align:right}
+.fv3-office__name{font-size:22px;font-weight:900;color:#fff;margin:0 0 8px;line-height:1.6;letter-spacing:2px}
+.fv3-office__party{font-size:13px;color:rgba(255,255,255,.6);margin:0 0 16px;letter-spacing:.5px}
+.fv3-office__address,.fv3-office__tel{font-size:13px;color:rgba(255,255,255,.6);margin:0 0 4px}
+.fv3-office__tel{font-family:var(--en);font-weight:700;letter-spacing:.5px}
+.fv3-copy{background:#142414;padding:16px 0;text-align:center}
+.fv3-copy p{margin:0;font-family:var(--en);font-size:12px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:.5px}
+
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+
+/* ===== Responsive ===== */
+@media(max-width:1199px){
+  .sidebar{width:140px}
+  .main-content{margin-left:140px;margin-right:140px}
+}
+@media (min-width:768px) and (max-width:1199px){
+  .topbar .wrap,
+  .header .wrap{
+    max-width:none;
+    padding-left:calc(24px + 140px);
+    padding-right:calc(24px + 140px);
+  }
+}
+@media(max-width:767px){
+  .sidebar{display:none}
+  .main-content{margin:0}
+  .nav{display:none}
+  .portal-nav__inner{overflow-x:auto;justify-content:flex-start}
+  .portal-nav__item{white-space:nowrap;padding:14px 16px;font-size:13px}
+  .fv3-sns__inner{flex-direction:column}
+  .fv3-main__inner{grid-template-columns:1fr;gap:36px}
+  .fv3-office{text-align:left}
+}
+@media (max-width: 430px){
+  .container{padding:0 18px}
+  .topbar .wrap{padding:0 18px}
+  .header .wrap{padding:12px 18px}
+  .portal-hero{padding:64px 0 52px}
+  .portal-hero__title{letter-spacing:2px}
+  .portal-nav__item{padding:12px 14px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
-<header class="hero">
-  <div class="hero__inner">
-    <div class="hero__text">
-      <div class="hero__badge">PORTAL</div>
-      <h1 class="hero__title"><span>声は届く。</span><br/>奈良県の行政サービスに<br/>ここからアクセス。</h1>
-      <p class="hero__desc">工藤まさゆきがメインで取り組む政策テーマ（教育・福祉・医療・フィルムコミッション）に限り、奈良県公式HPの関連ページへ直接アクセスできる仕組みを作りました。</p>
-      <a href="#" class="hero__cta">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.14 2 11.2c0 2.94 1.56 5.55 4 7.23V22l3.27-1.8c.88.24 1.8.37 2.73.37 5.52 0 10-4.14 10-9.2S17.52 2 12 2z"/></svg>
-        公聴専用LINEで声を届ける
-      </a>
+<!-- Topbar -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar__label">奈良県議会議員 / 日本維新の会</div>
+    <div class="topbar__social">
+      <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z"/></svg></a>
+      <a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2Zm9 2h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4ZM12 7a5 5 0 110 10 5 5 0 010-10Zm0 2a3 3 0 100 6 3 3 0 000-6Zm5.7-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4Z"/></svg></a>
     </div>
-    <img class="hero__photo" src="images/message-smile.jpg" alt="工藤まさゆき" onerror="this.style.background='rgba(255,255,255,0.1)';this.alt='写真'"/>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand__jp">工藤まさゆき</span>
+      <span class="brand__en">Kudo Masayuki Official Site</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">ホーム</a>
+      <a href="policy/index.html">政策</a>
+      <a href="index.html#profile">プロフィール</a>
+      <a href="reports/index.html">活動報告</a>
+      <a href="portal.html" class="active">県民ポータル</a>
+      <a href="index.html#news">お知らせ</a>
+    </nav>
   </div>
 </header>
 
-<!-- ===== LAYOUT ===== -->
-<div class="layout">
-<main class="main">
+<!-- 3-Column Layout -->
+<div class="layout-3col">
+  <aside class="sidebar sidebar--left" aria-hidden="true">
+    <span class="sidebar__text">KUDO MASAYUKI</span>
+    <span class="sidebar__label">奈良県議会議員<br>工藤まさゆき</span>
+  </aside>
 
-<!-- INTRO -->
-<div class="reveal" style="margin-bottom:28px; max-width:680px;">
-  <p style="font-size:15px;line-height:2;">桜井市議会議員を三期、そして今、奈良県議会へ。<br/>奈良県の公式ウェブサイトは情報量が多く、目的のページにたどり着くのが難しい状況にあります。<br/>このポータルから、あなたに必要な行政サービスを見つけてください。</p>
+  <div class="main-content">
+
+    <!-- Hero -->
+    <div class="portal-hero">
+      <p class="portal-hero__label">CITIZEN PORTAL</p>
+      <h1 class="portal-hero__title">県民ポータル</h1>
+      <p class="portal-hero__sub">教育・福祉・医療・フィルムコミッション。<br>奈良県の行政サービスに、ここからアクセス。</p>
+    </div>
+
+    <!-- Sticky Nav -->
+    <nav class="portal-nav" id="portalNav">
+      <div class="portal-nav__inner">
+        <a class="portal-nav__item is-active" data-filter="all">すべて</a>
+        <a class="portal-nav__item" data-filter="education">01 教育</a>
+        <a class="portal-nav__item" data-filter="welfare">02 福祉</a>
+        <a class="portal-nav__item" data-filter="medical">03 医療</a>
+        <a class="portal-nav__item" data-filter="film">04 FC</a>
+        <a class="portal-nav__item" data-filter="assembly">05 議会</a>
+      </div>
+    </nav>
+
+    <!-- Intro + Search -->
+    <div class="portal-intro">
+      <div class="container">
+        <p class="portal-intro__text reveal">奈良県の公式ウェブサイトは情報量が多く、目的のページにたどり着くのが難しい状況にあります。工藤まさゆきがメインで取り組む政策テーマに限り、関連ページへ直接アクセスできる仕組みを作りました。</p>
+        <div class="portal-tools">
+          <div class="search-bar reveal">
+            <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" class="search-bar__input" id="searchInput" placeholder="キーワード検索（例：不登校、介護、救急）"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 01 教育 ==================== -->
+    <section id="education" class="theme-section" data-category="education">
+      <div class="container">
+        <div class="theme-head theme-head--education reveal">
+          <div class="theme-head__top">
+            <span class="theme-head__no">01</span>
+            <div class="theme-head__line"></div>
+          </div>
+          <h2 class="theme-head__title">教育・子育て</h2>
+          <p class="theme-head__catch">すべての子どもに、学びの土台を。</p>
+        </div>
+
+        <div class="link-list">
+          <div class="link-item link-item--education reveal" data-keywords="学校 教育 小学校 中学校 高校 不登校 いじめ 学校保健 特別支援">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kyouiku/gakkoukyouiku/index.html" target="_blank" rel="noopener">学校教育（総合）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">小・中・高・特別支援・不登校・いじめ・学校保健等の総合入口</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="いじめ 不登校 ヤングケアラー 教育支援 SC SSW 生徒指導">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n167/1697.html" target="_blank" rel="noopener">教育支援部（いじめ・不登校・ヤングケアラー）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">県教育委員会の生徒指導支援室。SC/SSW配置、いじめ重大事態対応等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="いじめ 防止 対策 連絡協議会 早期対応 マニュアル">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kyouiku/gakkoukyouiku/kyouikuiinkai/shien/ijime/index.html" target="_blank" rel="noopener">いじめ対策<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">いじめ防止基本方針、いじめ対策連絡協議会、早期対応マニュアル</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="不登校 支援 データ 方針 教員 しるべ">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n167/43394.html" target="_blank" rel="noopener">不登校関連資料<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">不登校の現状データ、支援方針、教員向け「支援のしるべ」等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="特別支援 発達障害 肢体不自由 知的障害 教育推進">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/54805.htm" target="_blank" rel="noopener">特別支援教育推進室<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">発達障害・肢体不自由・知的障害等の特別支援教育に関する施策・相談</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="就学支援金 授業料 軽減 無償化 高校">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kyouiku/gakkoukyouiku/index.html" target="_blank" rel="noopener">高等学校等就学支援金・授業料軽減<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">高校授業料の支援金制度。所得に応じた軽減・無償化の案内</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="子育て 支援 保育 幼児教育 放課後 対策">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kyouiku/kosodate/shien/index.html" target="_blank" rel="noopener">子育て支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">子育て全般の相談・支援窓口。保育・幼児教育・放課後対策等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="教育研究所 研修 資料 教育機関 教員">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.e-net.nara.jp/" target="_blank" rel="noopener">奈良県立教育研究所<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">教育研究や研修資料を提供する県の教育機関</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="保育 人材 バンク 保育士 求人 就職">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://nara-hoikushibank.jp/" target="_blank" rel="noopener">奈良県保育人材バンク<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">保育士の人材確保・就職支援サイト。子育て支援の基盤</p>
+            </div>
+          </div>
+        </div>
+        <div class="theme-comment reveal"><strong>工藤コメント：</strong>「教育は未来への投資です。お子さんや保護者の方が困ったとき、どこに相談すればいいか、このページから見つけてください。」</div>
+      </div>
+    </section>
+
+    <!-- ==================== 02 福祉 ==================== -->
+    <section id="welfare" class="theme-section theme-section--alt" data-category="welfare">
+      <div class="container">
+        <div class="theme-head theme-head--welfare reveal">
+          <div class="theme-head__top">
+            <span class="theme-head__no">02</span>
+            <div class="theme-head__line"></div>
+          </div>
+          <h2 class="theme-head__title">福祉・くらし</h2>
+          <p class="theme-head__catch">「助けて」と言える社会をつくる。</p>
+        </div>
+
+        <div class="link-list">
+          <div class="link-item link-item--welfare reveal" data-keywords="障害者 福祉 サービス 手帳 手当 助成 発達障害 医療的ケア児">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kenkou/shougaifukushi/index.html" target="_blank" rel="noopener">障害者福祉（総合）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">障害福祉サービス、手帳・手当・助成、発達障害、医療的ケア児等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="障害福祉 案内 支援制度 ガイド">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/11597.htm" target="_blank" rel="noopener">障害福祉のご案内<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">障害がある方への支援制度の総合ガイド</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="発達障害 相談窓口 リンクぷらす サポートブック">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/52504.htm" target="_blank" rel="noopener">発達障害 相談窓口<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">発達障害の相談窓口・サポートブック「リンクぷらす」等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="扶養共済 障害者 保護者 年金 任意加入">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/29362.htm" target="_blank" rel="noopener">心身障害者扶養共済制度<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">保護者が万一の際、障がいのある方に年金を支給する任意加入制度</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="高齢者 介護 介護保険 地域包括ケア シルバー人材">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kenkou/koureifukushi/index.html" target="_blank" rel="noopener">高齢者福祉・介護<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">介護保険制度、地域包括ケア、高齢者施設、シルバー人材センター</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="介護保険 要介護認定 サービス利用 施設情報">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/11982.htm" target="_blank" rel="noopener">介護保険のしくみ<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">介護保険課。要介護認定、サービス利用、施設情報等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="児童 福祉 ひとり親 虐待防止 保育 幼児教育 手当">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kenkou/jidou/index.html" target="_blank" rel="noopener">児童福祉（子ども・ひとり親）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">児童虐待防止、ひとり親支援、保育・幼児教育、各種手当</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="生活保護 生活困窮者 自立支援 地域福祉">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kenkou/seikatsufukushi/index.html" target="_blank" rel="noopener">生活保護・生活困窮者支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">生活保護の相談窓口、生活困窮者自立支援、地域福祉</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="ヤングケアラー 支援 実態調査 若者 介護 子ども">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/69323.htm" target="_blank" rel="noopener">ヤングケアラー支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">家族の介護を担う子ども・若者への実態調査・支援施策</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="障害者 雇用 就労支援 相談 支援機関">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/34799.htm" target="_blank" rel="noopener">障害者雇用支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">障害者就労支援機関、障害者はたらく応援団なら、農福連携等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="temono 障害 商品 カタログ 就労 社会参加">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://naratemono.com/" target="_blank" rel="noopener">nara temono（障害のある人の商品カタログ）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">奈良の障害のある人が作った商品カタログサイト。就労支援・社会参加を応援</p>
+            </div>
+          </div>
+          <div class="link-item link-item--welfare reveal" data-keywords="社会福祉 総合 センター 相談 窓口">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/1640.htm" target="_blank" rel="noopener">社会福祉総合センター<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">福祉サービスや相談窓口の案内を行う施設</p>
+            </div>
+          </div>
+        </div>
+        <div class="theme-comment reveal"><strong>工藤コメント：</strong>「『助けて』と言える社会をつくりたい。制度を知らないまま困っている方を、このページで一人でも減らしたいと思っています。」</div>
+      </div>
+    </section>
+
+    <!-- ==================== 03 医療 ==================== -->
+    <section id="medical" class="theme-section" data-category="medical">
+      <div class="container">
+        <div class="theme-head theme-head--medical reveal">
+          <div class="theme-head__top">
+            <span class="theme-head__no">03</span>
+            <div class="theme-head__line"></div>
+          </div>
+          <h2 class="theme-head__title">医療・健康</h2>
+          <p class="theme-head__catch">いのちと暮らしを、まっすぐ守る。</p>
+        </div>
+
+        <div class="link-list">
+          <div class="link-item link-item--medical reveal" data-keywords="医療 医療保険 病院 救急 がん 地域医療">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kenkou/iryouhoken/index.html" target="_blank" rel="noopener">医療・医療保険（総合）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">救急医療・がん対策・地域医療・病院情報等の総合入口</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="救急 安心 センター 7119 相談 看護師">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/53886.htm" target="_blank" rel="noopener">奈良県救急安心センター（#7119）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">看護師・相談員による24時間救急相談（0744-20-0119）</p>
+              <div class="kudo-voice">
+                <div class="kudo-voice__badge"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> 工藤 VOICE</div>
+                <p class="kudo-voice__text">「救急車を呼ぶべきか？」迷った時のプロの判断。医療リソースを守るためにも適正利用を。</p>
+              </div>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="こども 救急 電話相談 8000 小児 夜間 休日">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/44823.htm" target="_blank" rel="noopener">こども救急電話相談（#8000）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">小児の急病対応。夜間・休日の相談窓口（0742-20-8119）</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="救急医療 告示病院 休日 夜間 診療所">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/67887.htm" target="_blank" rel="noopener">救急医療（休日夜間診療所一覧）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">県内救急告示医療機関一覧、休日夜間応急診療所の一覧</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="がん 検診 相談 患者サロン がんネットなら">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www3.pref.nara.jp/gannet/" target="_blank" rel="noopener">がん対策（がんネットなら）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">がん検診・相談窓口・患者サロン。奈良県のがん医療情報ポータル</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="脳卒中 心臓病 循環器 支援センター">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/65630.htm" target="_blank" rel="noopener">脳卒中・心臓病 総合支援センター<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">脳卒中・循環器病の連携・支援情報</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="難病 医療費助成 相談窓口 患者会">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/38207.htm" target="_blank" rel="noopener">難病対策<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">指定難病の医療費助成制度、相談窓口、患者会情報等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="福祉医療 子ども ひとり親 障害者 医療費助成">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/1944.htm" target="_blank" rel="noopener">福祉医療制度（子ども・ひとり親・障害者）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">子ども医療費助成、ひとり親家庭等医療費助成、心身障害者医療費助成</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="精神保健 こころ 健康 相談 医療機関 依存症">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/4151.htm" target="_blank" rel="noopener">精神保健・こころの健康<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">こころの健康相談、精神科医療機関情報、依存症支援等</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="医療情報 ナビイ 病院 診療所 検索">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.iryou.teikyouseido.mhlw.go.jp/znk-web/juminkanja/S2310/initialize?pref=29" target="_blank" rel="noopener">医療情報ネット（ナビイ）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">診療科・地域・受付時間などで奈良県内の医療機関を検索</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="健康 食 運動 すこやか 予防">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/sukoyaka/index.html" target="_blank" rel="noopener">すこやかネットなら（健康情報）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">食・運動など健康情報をまとめた県のサイト。予防医療の観点</p>
+            </div>
+          </div>
+          <div class="link-item link-item--medical reveal" data-keywords="看護師 応援 就業支援 研修 医療人材">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/60498.htm" target="_blank" rel="noopener">なら看護師応援ネット<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">看護職の就業支援・研修情報。医療人材確保に直結</p>
+            </div>
+          </div>
+        </div>
+        <div class="theme-comment reveal"><strong>工藤コメント：</strong>「南部・山間部では医療機関へのアクセスが難しい現実があります。まずはここから、必要な情報・窓口に繋がってほしい。」</div>
+      </div>
+    </section>
+
+    <!-- ==================== 04 フィルムコミッション ==================== -->
+    <section id="film" class="theme-section theme-section--alt" data-category="film">
+      <div class="container">
+        <div class="theme-head theme-head--film reveal">
+          <div class="theme-head__top">
+            <span class="theme-head__no">04</span>
+            <div class="theme-head__line"></div>
+          </div>
+          <h2 class="theme-head__title">フィルムコミッション</h2>
+          <p class="theme-head__catch">奈良の魅力を、映像で世界に届ける。</p>
+        </div>
+
+        <div class="link-list">
+          <div class="link-item link-item--film reveal" data-keywords="フィルムコミッション ロケ 撮影 支援窓口 申請">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://nara-fc.pref.nara.jp/" target="_blank" rel="noopener">奈良県フィルムコミッション（専用サイト）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">奈良県内のロケ候補地検索・撮影申請・支援窓口の専用サイト</p>
+            </div>
+          </div>
+          <div class="link-item link-item--film reveal" data-keywords="観光 戦略 観光力 創造 撮影支援 誘致">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.jp/3534.htm" target="_blank" rel="noopener">観光戦略課・観光力創造課<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">奈良県のフィルムコミッション担当部署。撮影支援・誘致事業の窓口</p>
+            </div>
+          </div>
+          <div class="link-item link-item--film reveal" data-keywords="観光 文化 スポーツ イベント 施策">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kankou/index.html" target="_blank" rel="noopener">観光・文化・スポーツ（総合）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">奈良県の観光施策・文化資源・イベント情報の総合入口</p>
+            </div>
+          </div>
+          <div class="link-item link-item--film reveal" data-keywords="ロケ地 データベース 全国 候補地 映画 ドラマ">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://jl-db.nfaj.go.jp/fc/2902/" target="_blank" rel="noopener">ロケ地情報（全国ロケーションDB 奈良県分）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">奈良県内のロケ候補地一覧（全国フィルムコミッション連携データベース）</p>
+            </div>
+          </div>
+          <div class="link-item link-item--film reveal" data-keywords="映画 ドラマ 奈良 ゆかり ロケ地 舞台">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://yamatoji.nara-kankou.or.jp/020movie/" target="_blank" rel="noopener">奈良にゆかりの映画情報<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">奈良が舞台・ロケ地となった映画・ドラマの情報（奈良県観光公式サイト）</p>
+            </div>
+          </div>
+        </div>
+        <div class="theme-comment reveal"><strong>工藤コメント：</strong>「奈良には大仏だけじゃない魅力がある。映画やドラマのロケ地になることで、住んでいる私たち自身が奈良の素晴らしさを再発見できる。そのための仕組みを県に作らせたい。」</div>
+      </div>
+    </section>
+
+    <!-- ==================== 05 議会活動 ==================== -->
+    <section id="assembly" class="theme-section" data-category="assembly">
+      <div class="container">
+        <div class="theme-head theme-head--assembly reveal">
+          <div class="theme-head__top">
+            <span class="theme-head__no">05</span>
+            <div class="theme-head__line"></div>
+          </div>
+          <h2 class="theme-head__title">議会活動</h2>
+          <p class="theme-head__catch">すべて公開。ご自身の目で確かめてください。</p>
+        </div>
+
+        <div class="link-list">
+          <div class="link-item link-item--assembly reveal" data-keywords="議会 会議録 検索 質問 答弁">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://ssp.kaigiroku.net/tenant/prefnara/pg/index.html" target="_blank" rel="noopener">奈良県議会 会議録検索システム<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">奈良県議会の会議録を検索・閲覧。工藤まさゆきの議会質問を全文で確認できます</p>
+              <div class="kudo-voice">
+                <div class="kudo-voice__badge"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> 工藤 VOICE</div>
+                <p class="kudo-voice__text">「工藤まさゆき」で検索してみてください。何を聞き、行政がどう答えたか、すべて公開されています。</p>
+              </div>
+            </div>
+          </div>
+          <div class="link-item link-item--assembly reveal" data-keywords="議会 中継 ライブ 録画 動画 本会議 委員会">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://pref-nara.gijiroku.com/" target="_blank" rel="noopener">奈良県議会 議会中継システム<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">本会議・委員会のライブ配信・録画配信。議会の様子を動画で確認できます</p>
+            </div>
+          </div>
+        </div>
+        <div class="theme-comment reveal"><strong>工藤コメント：</strong>「私の議会質問は全て公開されています。何を聞き、行政がどう答えたか。ぜひご自身の目で確かめてください。」</div>
+      </div>
+    </section>
+
+  </div>
+
+  <aside class="sidebar sidebar--right" aria-hidden="true">
+    <div class="sidebar-bubble"><span>声は届く！</span></div>
+    <img class="sidebar__portrait" src="images/rightcolumn.png" alt=""/>
+  </aside>
 </div>
 
-<!-- SEARCH -->
-<div class="search-bar reveal">
-  <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-  <input type="text" class="search-bar__input" id="searchInput" placeholder="キーワード検索（例：不登校、介護、救急）"/>
-</div>
-
-<!-- FILTERS -->
-<div class="filters reveal">
-  <button class="filter-tag active" data-filter="all">すべて</button>
-  <button class="filter-tag" data-filter="education">📚 教育</button>
-  <button class="filter-tag" data-filter="welfare">❤️ 福祉</button>
-  <button class="filter-tag" data-filter="medical">🏥 医療</button>
-  <button class="filter-tag" data-filter="film">🎬 フィルムコミッション</button>
-  <button class="filter-tag" data-filter="assembly">🏛️ 議会活動</button>
-</div>
-
-<!-- LINE CTA -->
-<a href="#" class="line-cta reveal" data-section="all">
-  <span class="line-cta__icon">💬</span>
-  <div class="line-cta__text">
-    このページについてご意見を。公聴専用LINEで声を届ける
-    <span>※お寄せいただいた声は、政策立案の参考にさせていただきます。</span>
-  </div>
-</a>
-
-<!-- ==================== テーマ① 教育 ==================== -->
-<section data-category="education" class="reveal">
-<div class="section-heading" data-theme="education">
-  <span class="section-heading__icon">📚</span>
-  <h2 class="section-heading__title">【学ぶ】教育・子育て</h2>
-</div>
-<div class="cards-grid">
-
-  <div class="card" data-theme="education" data-keywords="学校 教育 小学校 中学校 高校 不登校 いじめ 学校保健 特別支援">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kyouiku/gakkoukyouiku/index.html" target="_blank" rel="noopener">学校教育（総合）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">小・中・高・特別支援・不登校・いじめ・学校保健等の総合入口</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="いじめ 不登校 ヤングケアラー 教育支援 SC SSW 生徒指導">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/n167/1697.html" target="_blank" rel="noopener">教育支援部（いじめ・不登校・ヤングケアラー）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">県教育委員会の生徒指導支援室。SC/SSW配置、いじめ重大事態対応等</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="いじめ 防止 対策 連絡協議会 早期対応 マニュアル">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kyouiku/gakkoukyouiku/kyouikuiinkai/shien/ijime/index.html" target="_blank" rel="noopener">いじめ対策<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">いじめ防止基本方針、いじめ対策連絡協議会、早期対応マニュアル</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="不登校 支援 データ 方針 教員 しるべ">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/n167/43394.html" target="_blank" rel="noopener">不登校関連資料<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">不登校の現状データ、支援方針、教員向け「支援のしるべ」等</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="特別支援 発達障害 肢体不自由 知的障害 教育推進">
-    <div class="card__title"><a href="https://www.pref.nara.jp/54805.htm" target="_blank" rel="noopener">特別支援教育推進室<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">発達障害・肢体不自由・知的障害等の特別支援教育に関する施策・相談</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="就学支援金 授業料 軽減 無償化 高校">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kyouiku/gakkoukyouiku/index.html" target="_blank" rel="noopener">高等学校等就学支援金・授業料軽減<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">高校授業料の支援金制度。所得に応じた軽減・無償化の案内</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="子育て 支援 保育 幼児教育 放課後 対策">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kyouiku/kosodate/shien/index.html" target="_blank" rel="noopener">子育て支援<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">子育て全般の相談・支援窓口。保育・幼児教育・放課後対策等</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="教育研究所 研修 資料 教育機関 教員">
-    <div class="card__title"><a href="https://www.e-net.nara.jp/" target="_blank" rel="noopener">奈良県立教育研究所<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">教育研究や研修資料を提供する県の教育機関</div>
-  </div>
-
-  <div class="card" data-theme="education" data-keywords="保育 人材 バンク 保育士 求人 就職">
-    <div class="card__title"><a href="https://nara-hoikushibank.jp/" target="_blank" rel="noopener">奈良県保育人材バンク<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">保育士の人材確保・就職支援サイト。子育て支援の基盤</div>
-  </div>
-
-</div>
-<div class="theme-comment reveal"><strong>工藤コメント：</strong>「教育は未来への投資です。お子さんや保護者の方が困ったとき、どこに相談すればいいか、このページから見つけてください。」</div>
-</section>
-
-<!-- ==================== テーマ② 福祉 ==================== -->
-<section data-category="welfare" class="reveal">
-<div class="section-heading" data-theme="welfare">
-  <span class="section-heading__icon">❤️</span>
-  <h2 class="section-heading__title">【支える】福祉・くらし</h2>
-</div>
-<div class="cards-grid">
-
-  <div class="card" data-theme="welfare" data-keywords="障害者 福祉 サービス 手帳 手当 助成 発達障害 医療的ケア児">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kenkou/shougaifukushi/index.html" target="_blank" rel="noopener">障害者福祉（総合）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">障害福祉サービス、手帳・手当・助成、発達障害、医療的ケア児等</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="障害福祉 案内 支援制度 ガイド">
-    <div class="card__title"><a href="https://www.pref.nara.jp/11597.htm" target="_blank" rel="noopener">障害福祉のご案内<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">障害がある方への支援制度の総合ガイド</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="発達障害 相談窓口 リンクぷらす サポートブック">
-    <div class="card__title"><a href="https://www.pref.nara.jp/52504.htm" target="_blank" rel="noopener">発達障害 相談窓口<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">発達障害の相談窓口・サポートブック「リンクぷらす」等</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="扶養共済 障害者 保護者 年金 任意加入">
-    <div class="card__title"><a href="https://www.pref.nara.jp/29362.htm" target="_blank" rel="noopener">心身障害者扶養共済制度<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">保護者が万一の際、障がいのある方に年金を支給する任意加入制度</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="高齢者 介護 介護保険 地域包括ケア シルバー人材">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kenkou/koureifukushi/index.html" target="_blank" rel="noopener">高齢者福祉・介護<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">介護保険制度、地域包括ケア、高齢者施設、シルバー人材センター</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="介護保険 要介護認定 サービス利用 施設情報">
-    <div class="card__title"><a href="https://www.pref.nara.jp/11982.htm" target="_blank" rel="noopener">介護保険のしくみ<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">介護保険課。要介護認定、サービス利用、施設情報等</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="児童 福祉 ひとり親 虐待防止 保育 幼児教育 手当">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kenkou/jidou/index.html" target="_blank" rel="noopener">児童福祉（子ども・ひとり親）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">児童虐待防止、ひとり親支援、保育・幼児教育、各種手当</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="生活保護 生活困窮者 自立支援 地域福祉">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kenkou/seikatsufukushi/index.html" target="_blank" rel="noopener">生活保護・生活困窮者支援<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">生活保護の相談窓口、生活困窮者自立支援、地域福祉</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="ヤングケアラー 支援 実態調査 若者 介護 子ども">
-    <div class="card__title"><a href="https://www.pref.nara.jp/69323.htm" target="_blank" rel="noopener">ヤングケアラー支援<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">家族の介護を担う子ども・若者への実態調査・支援施策</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="障害者 雇用 就労支援 相談 支援機関">
-    <div class="card__title"><a href="https://www.pref.nara.jp/34799.htm" target="_blank" rel="noopener">障害者雇用支援<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">障害者就労支援機関、障害者はたらく応援団なら、農福連携等</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="temono 障害 商品 カタログ 就労 社会参加">
-    <div class="card__title"><a href="https://naratemono.com/" target="_blank" rel="noopener">nara temono（障害のある人の商品カタログ）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">奈良の障害のある人が作った商品カタログサイト。就労支援・社会参加を応援</div>
-  </div>
-
-  <div class="card" data-theme="welfare" data-keywords="社会福祉 総合 センター 相談 窓口">
-    <div class="card__title"><a href="https://www.pref.nara.jp/1640.htm" target="_blank" rel="noopener">社会福祉総合センター<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">福祉サービスや相談窓口の案内を行う施設</div>
-  </div>
-
-</div>
-<div class="theme-comment reveal"><strong>工藤コメント：</strong>「『助けて』と言える社会をつくりたい。制度を知らないまま困っている方を、このページで一人でも減らしたいと思っています。」</div>
-</section>
-
-<!-- ==================== テーマ③ 医療 ==================== -->
-<section data-category="medical" class="reveal">
-<div class="section-heading" data-theme="medical">
-  <span class="section-heading__icon">🏥</span>
-  <h2 class="section-heading__title">【守る】医療・健康</h2>
-</div>
-<div class="cards-grid">
-
-  <div class="card" data-theme="medical" data-keywords="医療 医療保険 病院 救急 がん 地域医療">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kenkou/iryouhoken/index.html" target="_blank" rel="noopener">医療・医療保険（総合）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">救急医療・がん対策・地域医療・病院情報等の総合入口</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="救急 安心 センター 7119 相談 看護師">
-    <div class="card__title"><a href="https://www.pref.nara.jp/53886.htm" target="_blank" rel="noopener">奈良県救急安心センター（#7119）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">看護師・相談員による24時間救急相談（0744-20-0119）</div>
-    <div class="kudo-comment">
-      <div class="kudo-comment__badge"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> 工藤 VOICE</div>
-      <div class="kudo-comment__text">「救急車を呼ぶべきか？」迷った時のプロの判断。医療リソースを守るためにも適正利用を。</div>
+<!-- Footer -->
+<footer class="footer-v3">
+  <div class="fv3-sns">
+    <div class="fv3-sns__inner">
+      <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" class="fv3-sns__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z"/></svg><span>X（Twitter）</span></a>
+      <a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" class="fv3-sns__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2Zm9 2h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4ZM12 7a5 5 0 110 10 5 5 0 010-10Zm0 2a3 3 0 100 6 3 3 0 000-6Zm5.7-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4Z"/></svg><span>Instagram</span></a>
+      <a href="#" class="fv3-sns__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg><span>LINE（ご相談）</span></a>
+      <a href="#" class="fv3-sns__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg><span>LINE（配信）</span></a>
     </div>
   </div>
-
-  <div class="card" data-theme="medical" data-keywords="こども 救急 電話相談 8000 小児 夜間 休日">
-    <div class="card__title"><a href="https://www.pref.nara.jp/44823.htm" target="_blank" rel="noopener">こども救急電話相談（#8000）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">小児の急病対応。夜間・休日の相談窓口（0742-20-8119）</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="救急医療 告示病院 休日 夜間 診療所">
-    <div class="card__title"><a href="https://www.pref.nara.jp/67887.htm" target="_blank" rel="noopener">救急医療（休日夜間診療所一覧）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">県内救急告示医療機関一覧、休日夜間応急診療所の一覧</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="がん 検診 相談 患者サロン がんネットなら">
-    <div class="card__title"><a href="https://www3.pref.nara.jp/gannet/" target="_blank" rel="noopener">がん対策（がんネットなら）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">がん検診・相談窓口・患者サロン。奈良県のがん医療情報ポータル</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="脳卒中 心臓病 循環器 支援センター">
-    <div class="card__title"><a href="https://www.pref.nara.jp/65630.htm" target="_blank" rel="noopener">脳卒中・心臓病 総合支援センター<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">脳卒中・循環器病の連携・支援情報</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="難病 医療費助成 相談窓口 患者会">
-    <div class="card__title"><a href="https://www.pref.nara.jp/38207.htm" target="_blank" rel="noopener">難病対策<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">指定難病の医療費助成制度、相談窓口、患者会情報等</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="福祉医療 子ども ひとり親 障害者 医療費助成">
-    <div class="card__title"><a href="https://www.pref.nara.jp/1944.htm" target="_blank" rel="noopener">福祉医療制度（子ども・ひとり親・障害者）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">子ども医療費助成、ひとり親家庭等医療費助成、心身障害者医療費助成</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="精神保健 こころ 健康 相談 医療機関 依存症">
-    <div class="card__title"><a href="https://www.pref.nara.jp/4151.htm" target="_blank" rel="noopener">精神保健・こころの健康<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">こころの健康相談、精神科医療機関情報、依存症支援等</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="医療情報 ナビイ 病院 診療所 検索">
-    <div class="card__title"><a href="https://www.iryou.teikyouseido.mhlw.go.jp/znk-web/juminkanja/S2310/initialize?pref=29" target="_blank" rel="noopener">医療情報ネット（ナビイ）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">診療科・地域・受付時間などで奈良県内の医療機関を検索</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="健康 食 運動 すこやか 予防">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/sukoyaka/index.html" target="_blank" rel="noopener">すこやかネットなら（健康情報）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">食・運動など健康情報をまとめた県のサイト。予防医療の観点</div>
-  </div>
-
-  <div class="card" data-theme="medical" data-keywords="看護師 応援 就業支援 研修 医療人材">
-    <div class="card__title"><a href="https://www.pref.nara.jp/60498.htm" target="_blank" rel="noopener">なら看護師応援ネット<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">看護職の就業支援・研修情報。医療人材確保に直結</div>
-  </div>
-
-</div>
-<div class="theme-comment reveal"><strong>工藤コメント：</strong>「南部・山間部では医療機関へのアクセスが難しい現実があります。まずはここから、必要な情報・窓口に繋がってほしい。」</div>
-</section>
-
-<!-- ==================== テーマ④ フィルムコミッション ==================== -->
-<section data-category="film" class="reveal">
-<div class="section-heading" data-theme="film">
-  <span class="section-heading__icon">🎬</span>
-  <h2 class="section-heading__title">【魅せる】フィルムコミッション</h2>
-</div>
-<div class="cards-grid">
-
-  <div class="card" data-theme="film" data-keywords="フィルムコミッション ロケ 撮影 支援窓口 申請">
-    <div class="card__title"><a href="https://nara-fc.pref.nara.jp/" target="_blank" rel="noopener">奈良県フィルムコミッション（専用サイト）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">奈良県内のロケ候補地検索・撮影申請・支援窓口の専用サイト</div>
-  </div>
-
-  <div class="card" data-theme="film" data-keywords="観光 戦略 観光力 創造 撮影支援 誘致">
-    <div class="card__title"><a href="https://www.pref.nara.jp/3534.htm" target="_blank" rel="noopener">観光戦略課・観光力創造課<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">奈良県のフィルムコミッション担当部署。撮影支援・誘致事業の窓口</div>
-  </div>
-
-  <div class="card" data-theme="film" data-keywords="観光 文化 スポーツ イベント 施策">
-    <div class="card__title"><a href="https://www.pref.nara.lg.jp/kankou/index.html" target="_blank" rel="noopener">観光・文化・スポーツ（総合）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">奈良県の観光施策・文化資源・イベント情報の総合入口</div>
-  </div>
-
-  <div class="card" data-theme="film" data-keywords="ロケ地 データベース 全国 候補地 映画 ドラマ">
-    <div class="card__title"><a href="https://jl-db.nfaj.go.jp/fc/2902/" target="_blank" rel="noopener">ロケ地情報（全国ロケーションDB 奈良県分）<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">奈良県内のロケ候補地一覧（全国フィルムコミッション連携データベース）</div>
-  </div>
-
-  <div class="card" data-theme="film" data-keywords="映画 ドラマ 奈良 ゆかり ロケ地 舞台">
-    <div class="card__title"><a href="https://yamatoji.nara-kankou.or.jp/020movie/" target="_blank" rel="noopener">奈良にゆかりの映画情報<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">奈良が舞台・ロケ地となった映画・ドラマの情報（奈良県観光公式サイト）</div>
-  </div>
-
-</div>
-<div class="theme-comment reveal"><strong>工藤コメント：</strong>「奈良には大仏だけじゃない魅力がある。映画やドラマのロケ地になることで、住んでいる私たち自身が奈良の素晴らしさを再発見できる。そのための仕組みを県に作らせたい。」</div>
-</section>
-
-<!-- ==================== テーマ⑤ 議会活動 ==================== -->
-<section data-category="assembly" class="reveal">
-<div class="section-heading" data-theme="assembly">
-  <span class="section-heading__icon">🏛️</span>
-  <h2 class="section-heading__title">【確かめる】議会活動</h2>
-</div>
-<div class="cards-grid">
-
-  <div class="card" data-theme="assembly" data-keywords="議会 会議録 検索 質問 答弁">
-    <div class="card__title"><a href="https://ssp.kaigiroku.net/tenant/prefnara/pg/index.html" target="_blank" rel="noopener">奈良県議会 会議録検索システム<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">奈良県議会の会議録を検索・閲覧。工藤まさゆきの議会質問を全文で確認できます</div>
-    <div class="kudo-comment">
-      <div class="kudo-comment__badge"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> 工藤 VOICE</div>
-      <div class="kudo-comment__text">「工藤まさゆき」で検索してみてください。何を聞き、行政がどう答えたか、すべて公開されています。</div>
+  <div class="fv3-main">
+    <div class="fv3-main__inner">
+      <div class="fv3-contact">
+        <h3 class="fv3-contact__title">お問い合わせ</h3>
+        <p class="fv3-contact__text">ご意見・ご相談はお気軽にどうぞ。匿名でも構いません。</p>
+        <a href="#" class="fv3-contact__btn">フォームを開く →</a>
+      </div>
+      <div class="fv3-nav">
+        <a href="index.html">ホーム</a>
+        <a href="policy/index.html">政策</a>
+        <a href="index.html#profile">プロフィール</a>
+        <a href="reports/index.html">活動報告</a>
+        <a href="portal.html">県民ポータル</a>
+        <a href="index.html#news">お知らせ</a>
+      </div>
+      <div class="fv3-office">
+        <p class="fv3-office__name">奈良県議会議員<br>工藤まさゆき</p>
+        <p class="fv3-office__party">日本維新の会 奈良県議団</p>
+        <p class="fv3-office__address">〒633-0062 桜井市大字栗殿612-8</p>
+        <p class="fv3-office__tel">TEL 090-9543-0910</p>
+      </div>
     </div>
   </div>
-
-  <div class="card" data-theme="assembly" data-keywords="議会 中継 ライブ 録画 動画 本会議 委員会">
-    <div class="card__title"><a href="https://pref-nara.gijiroku.com/" target="_blank" rel="noopener">奈良県議会 議会中継システム<svg class="card__external-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-    <div class="card__desc">本会議・委員会のライブ配信・録画配信。議会の様子を動画で確認できます</div>
-  </div>
-
-</div>
-<div class="theme-comment reveal"><strong>工藤コメント：</strong>「私の議会質問は全て公開されています。何を聞き、行政がどう答えたか。ぜひご自身の目で確かめてください。」</div>
-</section>
-
-</main>
-
-<!-- ===== SIDEBAR ===== -->
-<aside class="sidebar">
-  <a href="index.html" class="sidebar__back">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
-    公式サイトへ戻る
-  </a>
-  <div class="sidebar__section">
-    <div class="sidebar__section-title">SNS 公式アカウント</div>
-    <div class="sidebar__sns">
-      <a href="#" class="sidebar__sns-link sidebar__sns-link--line">
-        <span class="sidebar__sns-icon">💬</span>
-        <div class="sidebar__sns-text">公式LINE<span>友だち追加はこちら</span></div>
-      </a>
-      <a href="#" class="sidebar__sns-link">
-        <span class="sidebar__sns-icon">𝕏</span>
-        <div class="sidebar__sns-text">Twitter(X)<span>最新情報を発信中</span></div>
-      </a>
-      <a href="#" class="sidebar__sns-link">
-        <span class="sidebar__sns-icon">📸</span>
-        <div class="sidebar__sns-text">Instagram<span>活動の様子を紹介</span></div>
-      </a>
-      <a href="#" class="sidebar__sns-link">
-        <span class="sidebar__sns-icon">📘</span>
-        <div class="sidebar__sns-text">Facebook<span>活動アルバム</span></div>
-      </a>
-    </div>
-  </div>
-</aside>
-</div>
-
-<!-- ===== FOOTER ===== -->
-<footer class="portal-footer">
-  <p>&copy; 2026 工藤まさゆき事務所 ｜ <a href="index.html">公式サイトへ戻る</a></p>
+  <div class="fv3-copy"><p>&copy; 2026 Kudo Masayuki. All Rights Reserved.</p></div>
 </footer>
 
-<!-- ===== SCRIPTS ===== -->
 <script>
-// Scroll Reveal
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }});
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}})
+  },{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
 
-// Filter
-const filterTags = document.querySelectorAll('.filter-tag');
-const sections = document.querySelectorAll('section[data-category]');
-filterTags.forEach(tag => {
-  tag.addEventListener('click', () => {
-    filterTags.forEach(t => t.classList.remove('active'));
-    tag.classList.add('active');
-    const f = tag.dataset.filter;
-    sections.forEach(s => {
-      s.style.display = (f === 'all' || s.dataset.category === f) ? '' : 'none';
+  // === Filter by nav tabs ===
+  var navItems=document.querySelectorAll('.portal-nav__item');
+  var sections=document.querySelectorAll('.theme-section');
+  navItems.forEach(function(item){
+    item.addEventListener('click',function(){
+      navItems.forEach(function(n){n.classList.remove('is-active')});
+      item.classList.add('is-active');
+      var f=item.dataset.filter;
+      sections.forEach(function(s){
+        s.style.display=(f==='all'||s.dataset.category===f)?'':'none';
+      });
+      // Scroll to top of content if filtering
+      if(f!=='all'){
+        var target=document.getElementById(f);
+        if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+      }
     });
   });
-});
 
-// Search
-const searchInput = document.getElementById('searchInput');
-searchInput.addEventListener('input', () => {
-  const q = searchInput.value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card => {
-    const keywords = (card.dataset.keywords || '').toLowerCase();
-    const title = card.querySelector('.card__title').textContent.toLowerCase();
-    const desc = card.querySelector('.card__desc')?.textContent.toLowerCase() || '';
-    card.style.display = (!q || keywords.includes(q) || title.includes(q) || desc.includes(q)) ? '' : 'none';
+  // === Keyword search ===
+  var searchInput=document.getElementById('searchInput');
+  searchInput.addEventListener('input',function(){
+    var q=searchInput.value.toLowerCase();
+    document.querySelectorAll('.link-item').forEach(function(item){
+      var keywords=(item.dataset.keywords||'').toLowerCase();
+      var title=item.querySelector('.link-item__title').textContent.toLowerCase();
+      var desc=item.querySelector('.link-item__desc');
+      desc=desc?desc.textContent.toLowerCase():'';
+      item.style.display=(!q||keywords.indexOf(q)!==-1||title.indexOf(q)!==-1||desc.indexOf(q)!==-1)?'':'none';
+    });
+    // Show all sections when searching
+    if(q){
+      sections.forEach(function(s){s.style.display=''});
+      navItems.forEach(function(n){n.classList.remove('is-active')});
+      navItems[0].classList.add('is-active');
+    }
   });
-  // Show all sections when searching
-  if (q) {
-    sections.forEach(s => s.style.display = '');
-    filterTags.forEach(t => t.classList.remove('active'));
-    filterTags[0].classList.add('active');
-  }
-});
+
+  // === Sticky nav active state on scroll ===
+  var sectionObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var cat=e.target.dataset.category;
+        navItems.forEach(function(n){
+          n.classList.toggle('is-active',n.dataset.filter===cat);
+        });
+      }
+    });
+  },{threshold:0,rootMargin:'-30% 0px -60% 0px'});
+  sections.forEach(function(s){sectionObs.observe(s)});
+})();
 </script>
+
 </body>
 </html>
