@@ -1057,7 +1057,7 @@
             </ul>
           </section>
 
-          <section class="section container" aria-label="テーマ別詳細">
+          <section class="section container js-stagger" aria-label="テーマ別詳細">
             <section class="theme-section reveal">
               <div class="theme-header">
                 <span class="theme-no">01</span>
@@ -1444,6 +1444,39 @@
         <p class="footer-copy">© 2026 Kudo Masayuki. All Rights Reserved.</p>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+    <script>
+      (function () {
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (typeof gsap === "undefined") return;
+        if (typeof ScrollTrigger !== "undefined") gsap.registerPlugin(ScrollTrigger);
+
+        // .reveal（opacity:0）と併用するため、終了状態を明示（fromTo）
+        document.querySelectorAll(".js-stagger").forEach(function (grid) {
+          var cards = grid.querySelectorAll(
+            ".dv4-card, .policy-card, .rv3-sub, .pv3-item, .link-item, .entry, .theme-section"
+          );
+          if (!cards || cards.length === 0) return;
+          gsap.fromTo(
+            cards,
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.12,
+              duration: 0.7,
+              ease: "power3.out",
+              scrollTrigger:
+                typeof ScrollTrigger === "undefined"
+                  ? undefined
+                  : { trigger: grid, start: "top 78%", once: true },
+            }
+          );
+        });
+      })();
+    </script>
 
     <script>
       (function () {
