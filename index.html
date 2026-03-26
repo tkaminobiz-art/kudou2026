@@ -2305,7 +2305,7 @@
             </div>
           </article>
 
-          <div class="rv3-subs">
+          <div class="rv3-subs js-stagger">
 
             <article class="rv3-sub reveal">
               <a href="reports/2024-12.html" class="rv3-sub__inner">
@@ -2613,9 +2613,10 @@
           });
         });
 
-        // === E: 政策カード・ダッシュボードカードのスタッガー出現 ===
-        // .reveal（opacity:0）付きカードと併用するため、終了状態を明示（gsap.from だと CSS の opacity:0 に戻って消える）
-        document.querySelectorAll(".dv4-grid, .grid-3, .rv3-subs").forEach(function (grid) {
+        // === E: カード類のスタッガー出現（共通） ===
+        // .reveal（opacity:0）付き要素と併用するため、終了状態を明示（gsap.from だと CSS の opacity:0 に戻って消える）
+        // 対象はコンテナ側で .js-stagger を付与して明示する（ページごとの差分/二重発火を減らす）
+        document.querySelectorAll(".js-stagger").forEach(function (grid) {
           var cards = grid.querySelectorAll(".dv4-card, .policy-card, .rv3-sub, .pv3-item");
           if (cards.length === 0) return;
 
