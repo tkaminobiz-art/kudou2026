@@ -321,7 +321,7 @@ img{display:block;max-width:100%;height:auto}
           <p class="theme-head__catch">すべての子どもに、学びの土台を。</p>
         </div>
 
-        <div class="link-list">
+        <div class="link-list js-stagger">
           <div class="link-item link-item--education reveal" data-keywords="学校 教育 小学校 中学校 高校 不登校 いじめ 学校保健 特別支援">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
@@ -402,7 +402,7 @@ img{display:block;max-width:100%;height:auto}
           <p class="theme-head__catch">「助けて」と言える社会をつくる。</p>
         </div>
 
-        <div class="link-list">
+        <div class="link-list js-stagger">
           <div class="link-item link-item--welfare reveal" data-keywords="障害者 福祉 サービス 手帳 手当 助成 発達障害 医療的ケア児">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
@@ -504,7 +504,7 @@ img{display:block;max-width:100%;height:auto}
           <p class="theme-head__catch">いのちと暮らしを、まっすぐ守る。</p>
         </div>
 
-        <div class="link-list">
+        <div class="link-list js-stagger">
           <div class="link-item link-item--medical reveal" data-keywords="医療 医療保険 病院 救急 がん 地域医療">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
@@ -610,7 +610,7 @@ img{display:block;max-width:100%;height:auto}
           <p class="theme-head__catch">奈良の魅力を、映像で世界に届ける。</p>
         </div>
 
-        <div class="link-list">
+        <div class="link-list js-stagger">
           <div class="link-item link-item--film reveal" data-keywords="フィルムコミッション ロケ 撮影 支援窓口 申請">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
@@ -663,7 +663,7 @@ img{display:block;max-width:100%;height:auto}
           <p class="theme-head__catch">すべて公開。ご自身の目で確かめてください。</p>
         </div>
 
-        <div class="link-list">
+        <div class="link-list js-stagger">
           <div class="link-item link-item--assembly reveal" data-keywords="議会 会議録 検索 質問 答弁">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
@@ -789,6 +789,26 @@ img{display:block;max-width:100%;height:auto}
     });
   },{threshold:0,rootMargin:'-30% 0px -60% 0px'});
   sections.forEach(function(s){sectionObs.observe(s)});
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  if(typeof gsap==='undefined')return;
+  if(typeof ScrollTrigger!=='undefined')gsap.registerPlugin(ScrollTrigger);
+
+  // .reveal（opacity:0）と併用するため、終了状態を明示（fromTo）
+  document.querySelectorAll('.js-stagger').forEach(function(grid){
+    var cards=grid.querySelectorAll('.dv4-card, .policy-card, .rv3-sub, .pv3-item, .link-item, .entry');
+    if(!cards||cards.length===0)return;
+    gsap.fromTo(cards,{y:32,opacity:0},{
+      y:0,opacity:1,stagger:0.08,duration:0.65,ease:'power3.out',
+      scrollTrigger:(typeof ScrollTrigger==='undefined')?undefined:{trigger:grid,start:'top 78%',once:true}
+    });
+  });
 })();
 </script>
 
