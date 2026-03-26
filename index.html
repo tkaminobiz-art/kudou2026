@@ -1801,6 +1801,24 @@
         :root {
           --pad-x: 18px;
         }
+        body {
+          overflow-x: hidden;
+        }
+        .container {
+          padding-left: var(--pad-x);
+          padding-right: var(--pad-x);
+        }
+        .topbar .container,
+        .header .container {
+          padding-left: var(--pad-x);
+          padding-right: var(--pad-x);
+        }
+        table {
+          display: block;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
         .hero__name {
           font-size: 48px;
           letter-spacing: 2px;

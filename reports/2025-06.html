@@ -932,6 +932,9 @@
         :root {
           --pad-x: 18px;
         }
+        body {
+          overflow-x: hidden;
+        }
         .container {
           padding: 0 var(--pad-x);
         }
@@ -942,6 +945,12 @@
         }
         .section-title {
           letter-spacing: 1px;
+        }
+        .data-table {
+          display: block;
+          max-width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
         }
       }
       @media (min-width: 768px) and (max-width: 1199px) {
