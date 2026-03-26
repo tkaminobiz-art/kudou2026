@@ -29,12 +29,11 @@ img{display:block;max-width:100%;height:auto}
 .layout-3col{display:block}
 .sidebar{background:var(--primary);position:fixed;top:0;height:100vh;overflow:hidden;z-index:5;width:200px}
 .sidebar--left{left:0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:120px 0 40px}
-.sidebar--right{right:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:24px 0}
+.sidebar--right{right:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .sidebar__text{writing-mode:vertical-lr;font-family:var(--en);font-size:28px;font-weight:800;color:rgba(255,255,255,.15);letter-spacing:6px;text-transform:uppercase;white-space:nowrap}
 .sidebar__label{writing-mode:vertical-rl;font-size:18px;font-weight:900;color:rgba(255,255,255,.9);letter-spacing:3px;line-height:1.6;text-align:center}
 .sidebar__portrait{width:100%;height:auto;max-height:80vh;object-fit:contain;object-position:bottom center;opacity:1;pointer-events:none;margin-top:auto}
-.sidebar__portrait{margin-top:0}
-.sidebar-bubble{position:relative;z-index:2;margin:0 0 14px;margin-top:auto;flex-shrink:0}
+.sidebar-bubble{position:absolute;top:12%;left:50%;transform:translateX(-50%);z-index:2}
 .sidebar-bubble span{display:block;background:#fff;color:var(--text);font-size:20px;font-weight:900;letter-spacing:2px;padding:14px 20px;border-radius:16px;border:3px solid var(--text);position:relative;white-space:nowrap;writing-mode:vertical-rl}
 .sidebar-bubble span::after{content:'';position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:16px solid #fff;filter:drop-shadow(0 3px 0 var(--text))}
 .main-content{margin-left:200px;margin-right:200px;background:var(--bg)}
@@ -56,16 +55,6 @@ img{display:block;max-width:100%;height:auto}
 .nav a{font-size:15px;font-weight:500;letter-spacing:.5px;padding:10px 8px;border-radius:10px;transition:background .4s var(--ease)}
 .nav a:hover{background:rgba(55,194,0,.1)}
 .nav a.active{background:rgba(55,194,0,.08);font-weight:700}
-
-/* 左右サイドバー分だけ内側に寄せる（PC/タブレット） */
-@media (min-width: 1200px){
-  .topbar .wrap,
-  .header .wrap{
-    max-width:none;
-    padding-left:calc(24px + 200px);
-    padding-right:calc(24px + 200px);
-  }
-}
 
 /* ===== Hero ===== */
 .policy-hero{background:var(--primary);color:#fff;padding:80px 0 60px;text-align:center}
@@ -246,14 +235,6 @@ img{display:block;max-width:100%;height:auto}
   .dv4-grid{grid-template-columns:repeat(2,1fr)}
   .dv4-card--hero{grid-column:span 2}
 }
-@media (min-width:768px) and (max-width:1199px){
-  .topbar .wrap,
-  .header .wrap{
-    max-width:none;
-    padding-left:calc(24px + 140px);
-    padding-right:calc(24px + 140px);
-  }
-}
 @media(max-width:767px){
   .sidebar{display:none}
   .main-content{margin:0}
@@ -271,16 +252,6 @@ img{display:block;max-width:100%;height:auto}
   .fv3-sns__inner{flex-direction:column}
   .fv3-main__inner{grid-template-columns:1fr;gap:36px}
   .fv3-office{text-align:left}
-}
-
-/* iPhone 16 基準（393px）でのSP最適化 */
-@media (max-width: 430px){
-  .container{padding:0 18px}
-  .topbar .wrap{padding:0 18px}
-  .header .wrap{padding:12px 18px}
-  .policy-hero{padding:64px 0 52px}
-  .policy-hero__title{letter-spacing:2px}
-  .policy-nav__item{padding:12px 16px}
 }
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
@@ -802,153 +773,6 @@ img{display:block;max-width:100%;height:auto}
     });
   },{threshold:0,rootMargin:'-30% 0px -60% 0px'});
   sections.forEach(function(s){sectionObs.observe(s)});
-})();
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
-<script>
-(function() {
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  
-  gsap.registerPlugin(ScrollTrigger);
-
-  // === A: ヒーローテキストのスタッガーリビール ===
-  // 「工藤まさゆき」の各文字を一文字ずつ下から登場させる
-  const heroName = document.querySelector('.hero__name');
-  if (heroName && typeof SplitType !== 'undefined') {
-    const split = new SplitType(heroName, { types: 'chars' });
-    gsap.from(split.chars, {
-      yPercent: 110,
-      opacity: 0,
-      stagger: 0.03,
-      duration: 0.8,
-      ease: 'power4.out',
-      delay: 0.3
-    });
-  }
-
-  // === B: ヒーロー写真のパララックス ===
-  const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    gsap.to(heroSection, {
-      backgroundPositionY: '60%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroSection,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.5
-      }
-    });
-  }
-
-  // === D: 数値カウントアップ（policy/index.html用） ===
-  document.querySelectorAll('.dv4-num--hero, .dv4-num--xl, .dv4-num--lg').forEach(function(el) {
-    var text = el.textContent.trim();
-    // 数値を抽出（カンマ・+を除去）
-    var num = parseFloat(text.replace(/[,+兆億万件回倍%]/g, ''));
-    if (isNaN(num)) return;
-    
-    // 元のテキストから数値部分と接尾辞を分離
-    var suffix = text.replace(/[\d,.]+/g, '');
-    
-    gsap.from(el, {
-      textContent: 0,
-      duration: 1.5,
-      ease: 'power2.out',
-      snap: { textContent: num > 100 ? 10 : 1 },
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        once: true
-      },
-      onUpdate: function() {
-        var current = Math.round(parseFloat(el.textContent));
-        if (num >= 1000) {
-          el.textContent = current.toLocaleString() + suffix;
-        } else {
-          el.textContent = current + suffix;
-        }
-      }
-    });
-  });
-
-  // === E: 政策カード・ダッシュボードカードのスタッガー出現 ===
-  // .reveal（opacity:0）付きカードと併用するため終了状態を明示
-  document.querySelectorAll('.dv4-grid, .grid-3, .rv3-subs').forEach(function(grid) {
-    var cards = grid.querySelectorAll('.dv4-card, .policy-card, .rv3-sub, .pv3-item');
-    if (cards.length === 0) return;
-    
-    gsap.fromTo(
-      cards,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.12,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: grid,
-          start: 'top 78%',
-          once: true
-        }
-      }
-    );
-  });
-
-  // === G: プロフィール写真のClipPathリビール ===
-  var profilePhoto = document.querySelector('.profile-photo img');
-  if (profilePhoto) {
-    gsap.from(profilePhoto, {
-      clipPath: 'inset(100% 0 0 0)',
-      duration: 1.2,
-      ease: 'power4.inOut',
-      scrollTrigger: {
-        trigger: '.profile-section, .profile-main',
-        start: 'top 65%',
-        once: true
-      }
-    });
-  }
-
-  // === K: 活動報告の写真スクロールズームアウト ===
-  document.querySelectorAll('.rv3-feature__photo img, .entry__photo img').forEach(function(img) {
-    gsap.fromTo(img,
-      { scale: 1.12 },
-      {
-        scale: 1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: img.parentElement,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.5
-        }
-      }
-    );
-  });
-
-  // === H: プログレスバーのスクロール連動アニメーション ===
-  document.querySelectorAll('.dv4-hbar__fill, .dv4-mini-bar__track span').forEach(function(bar) {
-    var targetWidth = bar.style.width;
-    bar.style.width = '0%';
-    
-    gsap.to(bar, {
-      width: targetWidth,
-      duration: 1.2,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: bar,
-        start: 'top 85%',
-        once: true
-      }
-    });
-  });
-
 })();
 </script>
 </body>
