@@ -2600,22 +2600,27 @@
         });
 
         // === E: 政策カード・ダッシュボードカードのスタッガー出現 ===
+        // .reveal（opacity:0）付きカードと併用するため、終了状態を明示（gsap.from だと CSS の opacity:0 に戻って消える）
         document.querySelectorAll(".dv4-grid, .grid-3, .rv3-subs").forEach(function (grid) {
           var cards = grid.querySelectorAll(".dv4-card, .policy-card, .rv3-sub, .pv3-item");
           if (cards.length === 0) return;
 
-          gsap.from(cards, {
-            y: 40,
-            opacity: 0,
-            stagger: 0.12,
-            duration: 0.7,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: grid,
-              start: "top 78%",
-              once: true,
-            },
-          });
+          gsap.fromTo(
+            cards,
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              stagger: 0.12,
+              duration: 0.7,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: grid,
+                start: "top 78%",
+                once: true,
+              },
+            }
+          );
         });
 
         // === G: プロフィール写真のClipPathリビール ===
