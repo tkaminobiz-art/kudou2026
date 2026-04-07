@@ -2510,6 +2510,14 @@
 
         if (!opening || !line1 || !line2) return;
 
+        // 同一セッション内での再生を防止（ページ遷移/再読み込みでも再生しない）
+        try {
+          if (window.sessionStorage && sessionStorage.getItem("openingDone") === "1") {
+            opening.remove();
+            return;
+          }
+        } catch (e) {}
+
         // prefers-reduced-motion の場合は即スキップ
         if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           opening.remove();
@@ -2527,6 +2535,9 @@
         function closeOpening() {
           opening.classList.add("is-done");
           document.body.style.overflow = "";
+          try {
+            if (window.sessionStorage) sessionStorage.setItem("openingDone", "1");
+          } catch (e) {}
           setTimeout(function () {
             opening.remove();
           }, 700);
