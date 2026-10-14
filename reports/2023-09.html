@@ -925,11 +925,12 @@
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/refinements.css">
 <link rel="stylesheet" href="/assets/site-shell.css">
+<link rel="stylesheet" href="/assets/reports-layout.css">
 <script src="/assets/site-shell.js" defer></script>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 
-  <body>
+  <body class="report-page report-detail">
     <a class="skip-link" href="#main">本文へスキップ</a>
 
     <div class="topbar" role="navigation" aria-label="SNSリンク">
@@ -972,20 +973,17 @@
 </header>
 
     <main id="main">
-      <div class="layout-3col">
-        <aside class="sidebar sidebar--left" aria-hidden="true">
-          <span class="sidebar__text">KUDO MASAYUKI</span>
-          <span class="sidebar__label">奈良県議会議員<br />工藤まさゆき</span>
-        </aside>
+      <div class="report-layout">
 
         <div class="main-content">
           <div class="report-hero">
             <p class="report-hero__label">REPORT</p>
-            <h1 class="report-hero__title">令和5年9月定例会（第356回）</h1>
+            <h1 class="report-hero__title"><span>令和5年9月定例会</span><span>（第356回）</span></h1>
             <p class="report-hero__subtitle">一般質問（初質問）｜2023年9月22日（金）</p>
             <a class="backlink" href="index.html"><span>←</span>一覧へ戻る</a>
           </div>
 
+          <div class="report-body">
           <div class="overview-card reveal">
             <div class="overview-card__item">
               <p class="overview-card__label">議員名</p>
@@ -1045,12 +1043,12 @@
                     <tbody>
                       <tr>
                         <td>日帰り訪問者数</td>
-                        <td><strong>延べ 1,664万人</strong></td>
+                        <td><strong>延べ <span class="report-number">1,664万人</span></strong></td>
                         <td>大阪・京都からの日帰り客が大半</td>
                       </tr>
                       <tr>
                         <td>宿泊者数</td>
-                        <td><strong>延べ 約168万人</strong></td>
+                        <td><strong>延べ 約<span class="report-number">168万人</span></strong></td>
                         <td>日帰りの約10分の1（全国最下位水準）</td>
                       </tr>
                     </tbody>
@@ -1108,7 +1106,7 @@
                       <tr><th>項目</th><th>数値・内容</th><th>備考</th></tr>
                     </thead>
                     <tbody>
-                      <tr><td>奈良県内の全分娩件数</td><td><strong>7,793件</strong></td><td>令和3年人口動態統計。令和5年9月定例会のこども・女性局長答弁</td></tr><tr><td>うち多胎児分娩</td><td><strong>90件（約1.2%）</strong></td><td>全分娩7,793件を分母とする</td></tr>
+                      <tr><td>奈良県内の全分娩件数</td><td><strong>7,793件</strong></td><td>令和3年人口動態統計。令和5年9月定例会のこども・女性局長答弁</td></tr><tr><td>うち多胎児分娩</td><td><strong>90件（約<span class="report-number">1.2%</span>）</strong></td><td>全分娩7,793件を分母とする</td></tr>
                       <tr><td>県の支援ツール</td><td><strong>リトルベビーハンドブック</strong></td><td>県が令和4年度に作成し、医療機関で配布</td></tr>
                     </tbody>
                   </table>
@@ -1217,14 +1215,8 @@
               <a href="index.html">一覧へ戻る</a>
             </nav>
           </section>
-        </div>
-
-        <aside class="sidebar sidebar--right" aria-hidden="true">
-          <div class="sidebar-bubble">
-            <span>声は届く！</span>
           </div>
-          <img class="sidebar__portrait" src="../images/rightcolumn.png" alt="" width="848" height="1264" loading="lazy" decoding="async" />
-        </aside>
+        </div>
       </div>
     </main>
 

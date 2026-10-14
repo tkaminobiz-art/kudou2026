@@ -999,11 +999,12 @@
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/refinements.css">
 <link rel="stylesheet" href="/assets/site-shell.css">
+<link rel="stylesheet" href="/assets/reports-layout.css">
 <script src="/assets/site-shell.js" defer></script>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 
-  <body>
+  <body class="report-page report-detail">
     <a class="skip-link" href="#main">本文へスキップ</a>
 
     <header class="header site-header">
@@ -1028,20 +1029,17 @@
 </header>
 
     <main id="main">
-      <div class="layout-3col">
-        <aside class="sidebar sidebar--left" aria-hidden="true">
-          <span class="sidebar__text">KUDO MASAYUKI</span>
-          <span class="sidebar__label">奈良県議会議員<br />工藤まさゆき</span>
-        </aside>
+      <div class="report-layout">
 
         <div class="main-content">
           <div class="report-hero">
             <p class="report-hero__label">REPORT</p>
-            <h1 class="report-hero__title">令和7年6月定例会（第363回）</h1>
+            <h1 class="report-hero__title"><span>令和7年6月定例会</span><span>（第363回）</span></h1>
             <p class="report-hero__subtitle">一般質問｜2025年6月24日（火）</p>
             <a class="backlink" href="index.html"><span>←</span>一覧へ戻る</a>
           </div>
 
+          <div class="report-body">
           <div class="overview-card reveal">
             <div class="overview-card__item">
               <p class="overview-card__label">議員名</p>
@@ -1271,9 +1269,9 @@
                     <tr><th>指標</th><th>実績・状況</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>フレキシスクール登録者数（令和7年3月末）</td><td><strong>44名</strong></td></tr>
-                    <tr><td>フレキシスクールの中3進学実績（令和5年度）</td><td><strong>15名が進学</strong></td></tr>
-                    <tr><td>フレキシスクールの中3進学実績（令和6年度）</td><td><strong class="highlight-cell">21名が進学（R5比+6名増）</strong></td></tr>
+                    <tr><td>フレキシスクール登録者数（令和7年3月末）</td><td><strong><span class="report-number">44名</span></strong></td></tr>
+                    <tr><td>フレキシスクールの中3進学実績（令和5年度）</td><td><strong><span class="report-number">15名</span>が進学</strong></td></tr>
+                    <tr><td>フレキシスクールの中3進学実績（令和6年度）</td><td><strong class="highlight-cell"><span class="report-number">21名</span>が進学（R5比+<span class="report-number">6名</span>増）</strong></td></tr>
                     <tr><td>ならコネクトの対象拡大</td><td>小学5〜6年生への拡大を予定</td></tr>
                     <tr><td>ならコネクトの新機能</td><td><strong>メタバース（仮想空間）を活用した交流・学習環境の導入</strong></td></tr>
                     <tr><td>ならコネクトの開校予定</td><td><strong>令和7年6月末に開校予定</strong></td></tr>
@@ -1336,8 +1334,8 @@
                     <tr><th>都道府県</th><th>学校トイレへの生理用品配置率</th><th>備考</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>北海道</td><td><strong>98.2%</strong></td><td>工藤議員が北海道担当職員に直接電話でヒアリング実施</td></tr>
-                    <tr><td>奈良県</td><td><strong class="highlight-cell">0.4%（アンケート結果）</strong></td><td>実質的にほぼ未実施の状態</td></tr>
+                    <tr><td>北海道</td><td><strong><span class="report-number">98.2%</span></strong></td><td>工藤議員が北海道担当職員に直接電話でヒアリング実施</td></tr>
+                    <tr><td>奈良県</td><td><strong class="highlight-cell"><span class="report-number">0.4%</span>（アンケート結果）</strong></td><td>実質的にほぼ未実施の状態</td></tr>
                     <tr><td>全国平均</td><td>調査中</td><td>都道府県間で大きな格差</td></tr>
                   </tbody>
                 </table>
@@ -1438,14 +1436,8 @@
               <a href="index.html">一覧に戻る</a>
             </nav>
           </section>
-        </div>
-
-        <aside class="sidebar sidebar--right" aria-hidden="true">
-          <div class="sidebar-bubble">
-            <span>声は届く！</span>
           </div>
-          <img class="sidebar__portrait" src="../images/rightcolumn.png" alt="" width="848" height="1264" loading="lazy" decoding="async" />
-        </aside>
+        </div>
       </div>
     </main>
 

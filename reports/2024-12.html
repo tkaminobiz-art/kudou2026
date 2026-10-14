@@ -765,11 +765,12 @@
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/refinements.css">
 <link rel="stylesheet" href="/assets/site-shell.css">
+<link rel="stylesheet" href="/assets/reports-layout.css">
 <script src="/assets/site-shell.js" defer></script>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 
-  <body>
+  <body class="report-page report-detail">
     <a class="skip-link" href="#main">本文へスキップ</a>
 
     <header class="header site-header">
@@ -794,20 +795,17 @@
 </header>
 
     <main id="main">
-      <div class="layout-3col">
-        <aside class="sidebar sidebar--left" aria-hidden="true">
-          <span class="sidebar__text">KUDO MASAYUKI</span>
-          <span class="sidebar__label">奈良県議会議員<br />工藤まさゆき</span>
-        </aside>
+      <div class="report-layout">
 
         <div class="main-content">
           <div class="report-hero">
             <p class="report-hero__label">REPORT</p>
-            <h1 class="report-hero__title">令和6年12月定例会（第361回）</h1>
+            <h1 class="report-hero__title"><span>令和6年12月定例会</span><span>（第361回）</span></h1>
             <p class="report-hero__subtitle">一般質問｜2024年12月6日（金）</p>
             <a class="backlink" href="index.html"><span>←</span>一覧へ戻る</a>
           </div>
 
+          <div class="report-body">
           <div class="overview-card reveal">
             <div class="overview-card__item">
               <p class="overview-card__label">議員名</p>
@@ -861,8 +859,8 @@
                     <tr><th>指標</th><th>推移</th><th>備考</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>全国の待機児童数（2017年→2024年4月）</td><td><strong>26,081人 → 2,567人</strong></td><td>減少傾向</td></tr>
-                    <tr><td>桜井市の待機児童数</td><td><strong class="highlight-cell">0人 → 18人</strong></td><td>令和6年度。奈良県全体でも待機児童が増加</td></tr>
+                    <tr><td>全国の待機児童数（2017年→2024年4月）</td><td><strong><span class="report-number">26,081人</span> → <span class="report-number">2,567人</span></strong></td><td>減少傾向</td></tr>
+                    <tr><td>桜井市の待機児童数</td><td><strong class="highlight-cell"><span class="report-number">0人</span> → <span class="report-number">18人</span></strong></td><td>令和6年度。奈良県全体でも待機児童が増加</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -916,7 +914,7 @@
                   </thead>
                   <tbody>
                     <tr><td>所得制限撤廃の追加財源</td><td><strong class="highlight-cell">「試算していない」</strong>（知事答弁）</td><td>議員自身で概算試算を行い、議論の前提を作る</td></tr>
-                    <tr><td>進め方</td><td>100%財源を待つと停滞</td><td><strong>「30%の財源でも段階的に上乗せ」</strong>を提案</td></tr>
+                    <tr><td>進め方</td><td><span class="report-number">100%</span>財源を待つと停滞</td><td><strong>「<span class="report-number">30%</span>の財源でも段階的に上乗せ」</strong>を提案</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -1032,14 +1030,8 @@
               <a href="2025-06.html">令和7年6月定例会 →</a>
             </nav>
           </section>
-        </div>
-
-        <aside class="sidebar sidebar--right" aria-hidden="true">
-          <div class="sidebar-bubble">
-            <span>声は届く！</span>
           </div>
-          <img class="sidebar__portrait" src="../images/rightcolumn.png" alt="" width="848" height="1264" loading="lazy" decoding="async" />
-        </aside>
+        </div>
       </div>
     </main>
 

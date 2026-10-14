@@ -1,0 +1,104 @@
+/* Activity reports use a single reading column (client direction, 2026-10-15).
+   Loaded only by reports/*.html; the other pages retain their three-column shell. */
+.report-page { --report-gutter: clamp(20px, 4vw, 40px); }
+.report-page .main-content { margin: 0; min-width: 0; }
+.report-page .site-footer { margin-inline: 0; }
+.report-page .topbar .wrap,
+.report-page .topbar .container {
+  max-width: none;
+  padding-inline: max(24px, calc((100% - 1100px) / 2));
+}
+.report-page .report-hero { padding: 64px var(--report-gutter) 56px; }
+.report-page .report-hero > * { max-width: 1000px; margin-inline: auto; }
+.report-detail .report-hero__title > span { display: inline-block; }
+
+/* One shared edge for the overview, highlights, prose, tables and article links.
+   Explicitly reset .section padding, which used to cancel .container gutters. */
+.report-body {
+  width: min(800px, calc(100% - var(--report-gutter) * 2));
+  margin: 48px auto 0;
+}
+.report-body > .section.container { width: 100%; max-width: none; margin: 0; padding: 0 0 64px; }
+.report-body .overview-card { margin-bottom: 24px; border: 1px solid rgba(26,51,36,.1); }
+.report-body .overview-card__item { padding: 24px; }
+.report-body .theme-tags { margin: 24px 0; }
+.report-body .highlights { padding: 32px; margin-bottom: 64px; border-radius: 12px; }
+.report-body .highlights__title { margin-bottom: 20px; font-size: 26px; }
+.report-body .highlights__list li { gap: 12px; }
+/* The explicit check icon replaces the old generated duplicate. */
+.report-body .highlights__list li::before { content: none; }
+.report-body .highlights__list li .check-icon {
+  width: 24px; height: 24px; font-size: 14px; margin-top: 3px;
+  color: var(--refine-ink); box-shadow: none;
+}
+.report-body .theme-header { align-items: baseline; gap: 16px; margin-bottom: 32px; }
+.report-body .theme-no { flex-shrink: 0; font-size: 48px; }
+.report-body .theme-title { font-size: 28px; line-height: 1.6; }
+.report-body .theme-section { margin-bottom: 64px; padding-bottom: 64px; }
+.report-body .theme-block__text,
+.report-body .claim-list li { line-height: 2; }
+.report-body .answer-card { padding: 28px; }
+.report-body .answer-item {
+  padding: 20px 0 0; border: 0; border-top: 1px solid rgba(26,51,36,.12);
+  border-radius: 0; background: transparent; box-shadow: none;
+}
+.report-body .answer-item p,
+.report-body .theme-result p { font-size: 16px; line-height: 2; }
+.report-body .theme-result { padding: 24px 28px; }
+.report-body .viewpoints-summary { padding: 32px; }
+.report-body .viewpoints-summary__grid { grid-template-columns: 1fr; gap: 16px; }
+.report-body .viewpoint-mini { padding: 20px 24px; box-shadow: none; }
+.report-body .viewpoint-mini p { font-size: 16px; line-height: 1.9; }
+.report-body .closing-quote { padding: 32px; }
+.report-body .data-table {
+  width: 100%; margin: 24px 0; border-collapse: separate; border-spacing: 0;
+  border-radius: 12px; overflow: hidden; font-size: 15px; line-height: 1.9;
+  border: 1px solid rgba(26,51,36,.1); box-shadow: none;
+}
+.report-body .data-table thead { background: var(--refine-green); }
+.report-body .data-table th,
+.report-body .data-table td { padding: 14px 20px; vertical-align: top; text-align: left; }
+.report-body .data-table td { background: #fff; border-bottom: 1px solid rgba(26,51,36,.08); }
+.report-body .data-table tbody tr:last-child td { border-bottom: 0; }
+.report-body .report-number { white-space: nowrap; }
+.report-body .report-nav { flex-wrap: wrap; gap: 12px; }
+.report-body .report-nav a { padding: 12px 18px; }
+
+/* The archive has one outer column; each entry keeps its photo/text pairing. */
+.report-index .entries,
+.report-index .viewpoints-footer {
+  width: min(1100px, calc(100% - var(--report-gutter) * 2));
+  margin-inline: auto;
+}
+.report-index .entries { padding-top: 48px; }
+.report-index .entry { min-height: 0; grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+.report-index .entry__body { min-width: 0; padding: 40px; }
+.report-index .entry__photo { min-height: 360px; }
+.report-index .viewpoints-footer { padding: 48px 0 64px; }
+
+@media (max-width: 767px) {
+  .report-page .report-hero { padding-block: 44px 40px; }
+  .report-detail .report-hero__title { font-size: clamp(24px, 7vw, 30px); }
+  .report-body { margin-top: 32px; }
+  .report-body .overview-card__item { padding: 18px 20px; }
+  .report-body .highlights { padding: 24px 20px; margin-bottom: 48px; }
+  .report-body .highlights__title { font-size: 24px; }
+  .report-body .theme-header { gap: 12px; margin-bottom: 28px; }
+  .report-body .theme-no { font-size: 36px; }
+  .report-body .theme-title { font-size: 24px; }
+  .report-body .theme-section { margin-bottom: 48px; padding-bottom: 48px; }
+  .report-body .theme-block { margin-bottom: 32px; }
+  .report-body .answer-card,
+  .report-body .theme-result,
+  .report-body .closing-quote,
+  .report-body .viewpoints-summary { padding: 24px 20px; }
+  .report-body .viewpoint-mini { padding: 16px; }
+  .report-body .data-table th,
+  .report-body .data-table td { padding: 12px; }
+  .report-body .report-nav { align-items: stretch; }
+  .report-body .report-nav a { flex: 1 1 100%; justify-content: center; }
+  .report-index .entries { padding-top: 32px; }
+  .report-index .entry { grid-template-columns: minmax(0,1fr); }
+  .report-index .entry__photo { min-height: 0; }
+  .report-index .entry__body { padding: 28px 0; }
+}
