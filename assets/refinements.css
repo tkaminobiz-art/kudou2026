@@ -2,6 +2,8 @@
 /* Full-page audit: protect reading width, table labels and shared rail geometry. */
 .ticker { position: relative; z-index: 6; }
 .blf-item__title, .dv4-card__title { text-wrap: balance; }
+.blf-item__title > span, .policy-label-part { display: inline-block; }
+.policy-label-part { white-space: nowrap; }
 .pi > p, .pi__fact p, .pi__catch, .policy-date-note { max-width: 44em; }
 .pi__table { display: table; table-layout: fixed; line-break: strict; }
 .pi__table:not(.pi__table--stack) tr > :first-child { width: 40%; }
@@ -308,4 +310,8 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .btn-primary, .btn-ghost, .pv3-item__link { transition: none; transform: none; }
+}
+
+@media (max-width: 359px) {
+  .pi__table:not(.pi__table--stack) tr > :first-child { width: 50%; }
 }

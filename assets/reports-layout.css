@@ -155,3 +155,22 @@
     font-size: 13px; font-weight: 700; line-height: 1.6;
   }
 }
+
+/* Keep long labels together; narrow screens present each key/value pair as a unit. */
+.report-label-part { display: inline-block; white-space: nowrap; }
+@media (max-width: 600px) {
+  .report-body .data-table.report-table--keyvalue,
+  .report-body .report-table--keyvalue tbody,
+  .report-body .report-table--keyvalue tr,
+  .report-body .report-table--keyvalue td { display: block; width: 100%; }
+  .report-body .data-table.report-table--keyvalue tr > :first-child { width: 100%; }
+  .report-body .report-table--keyvalue thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+  }
+  .report-body .report-table--keyvalue tbody tr { border-bottom: 2px solid var(--refine-mid, #c8f0b8); }
+  .report-body .report-table--keyvalue tbody tr:last-child { border-bottom: 0; }
+  .report-body .report-table--keyvalue td { border: 0; padding: 12px 20px; font-size: 16px; }
+  .report-body .report-table--keyvalue td:first-child { background: var(--refine-light); }
+  .report-body .report-table--keyvalue td:last-child { padding-bottom: 20px; }
+}
