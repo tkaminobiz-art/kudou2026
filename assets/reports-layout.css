@@ -52,7 +52,7 @@
 .report-body .closing-quote { padding: 32px; }
 .report-body .data-table {
   width: 100%; margin: 24px 0; border-collapse: separate; border-spacing: 0;
-  border-radius: 12px; overflow: hidden; font-size: 15px; line-height: 1.9;
+  border-radius: 12px; overflow-x: auto; font-size: 15px; line-height: 1.9;
   border: 1px solid rgba(26,51,36,.1); box-shadow: none;
 }
 .report-body .data-table thead { background: var(--refine-green); }
@@ -61,6 +61,7 @@
 .report-body .data-table td { background: #fff; border-bottom: 1px solid rgba(26,51,36,.08); }
 .report-body .data-table tbody tr:last-child td { border-bottom: 0; }
 .report-body .report-number { white-space: nowrap; }
+.report-table-label { display: none; }
 .report-body .report-nav { flex-wrap: wrap; gap: 12px; }
 .report-body .report-nav a { padding: 12px 18px; }
 
@@ -76,6 +77,15 @@
 .report-index .entry__photo { min-height: 360px; }
 .report-index .viewpoints-footer { padding: 48px 0 64px; }
 
+@media (min-width: 768px) and (max-width: 1199px) {
+  .report-body .data-table:not(.report-table--stack) tr > :first-child { width: 34%; }
+}
+@media (max-width: 1023px) {
+  .report-index .entry { grid-template-columns: minmax(0,1fr); direction: ltr; }
+  .report-index .entry__photo { min-height: 0; aspect-ratio: 16 / 9; }
+  .report-index .entry__body { padding: 28px 0; }
+  .report-index .entry__date { top: 16px; left: 16px; right: auto; }
+}
 @media (max-width: 767px) {
   .report-page .report-hero { padding-block: 44px 40px; }
   .report-detail .report-hero__title { font-size: clamp(24px, 7vw, 30px); }
@@ -101,4 +111,27 @@
   .report-index .entry { grid-template-columns: minmax(0,1fr); }
   .report-index .entry__photo { min-height: 0; }
   .report-index .entry__body { padding: 28px 0; }
+}
+
+/* On a narrow screen, keep each three-column record together with its original
+   column labels. Explicit table roles preserve the relationships for readers
+   using assistive technology; the repeated visual labels are aria-hidden. */
+@media (max-width: 600px) {
+  .report-body .report-table--stack,
+  .report-body .report-table--stack tbody,
+  .report-body .report-table--stack tr,
+  .report-body .report-table--stack td { display: block; width: 100%; }
+  .report-body .report-table--stack thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+  }
+  .report-body .report-table--stack tbody tr { border-bottom: 2px solid var(--refine-mid, #c8f0b8); }
+  .report-body .report-table--stack tbody tr:last-child { border-bottom: 0; }
+  .report-body .report-table--stack td { border: 0; padding: 12px 20px; font-size: 16px; }
+  .report-body .report-table--stack td:first-child { background: var(--refine-light); }
+  .report-body .report-table--stack td:last-child { padding-bottom: 20px; }
+  .report-body .report-table--stack .report-table-label {
+    display: block; margin-bottom: 4px; color: var(--refine-deep);
+    font-size: 13px; font-weight: 700; line-height: 1.6;
+  }
 }
