@@ -1,8 +1,11 @@
 /* Revision 3: shared wayfinding and legible comparisons, within the client's shell. */
-:root { --site-header-height: 78px; --site-anchor-gap: 22px; --muted: #626b62; --color-text-muted: #626b62; }
+:root { --site-header-height: 79px; --site-secondary-nav-height: 0px; --site-anchor-gap: 22px; --muted: #626b62; --color-text-muted: #626b62; }
 [hidden] { display: none !important; }
-#home, #profile, #news, #policy, #reports, #siteFooter, [id^="theme"], .theme-section,
-#education, #welfare, #community { scroll-margin-top: calc(var(--site-header-height) + var(--site-anchor-gap)); }
+#main, #home, #profile, #news, #policy, #reports, #siteFooter, [id^="theme"], .theme-section,
+#education, #welfare, #community { scroll-margin-top: calc(var(--site-header-height) + var(--site-secondary-nav-height) + var(--site-anchor-gap)); }
+.policy-nav, .portal-nav { top: var(--site-header-height); }
+button.portal-nav__item { appearance: none; border: 0; border-bottom: 3px solid transparent; background: transparent; font-family: inherit; line-height: inherit; }
+button.portal-nav__item:hover, button.portal-nav__item.is-active { border-bottom-color: var(--primary); }
 .reveal { opacity: 1; transform: none; }
 /* Keep the bright brand surfaces; use existing dark ink for readable foregrounds. */
 .sidebar__text { color: var(--refine-ink); opacity: .7; }
@@ -115,7 +118,8 @@
   .hero__cta a { padding: 13px 18px; font-size: 15px; }
 }
 @media (max-width: 767px) {
-  :root { --site-header-height: 74px; --site-anchor-gap: 16px; }
+  :root { --site-header-height: 75px; --site-anchor-gap: 16px; }
+  .portal-nav { top: 0; }
   .site-header__inner { padding: 10px 20px; }
   .site-header .brand__jp { font-size: 22px; }
   .site-header .brand__en { font-size: 10px; }

@@ -32,11 +32,22 @@
     mobile.addEventListener('change', () => close());
     // Only the compact header counts toward the anchor offset, never its open menu.
     const measure = () => {
-      const height = header.querySelector('.site-header__inner').getBoundingClientRect().height;
+      const height = header.getBoundingClientRect().height;
       document.documentElement.style.setProperty('--site-header-height', `${Math.ceil(height)}px`);
     };
     measure();
     if ('ResizeObserver' in window) new ResizeObserver(measure).observe(header.querySelector('.site-header__inner'));
+  }
+
+  const secondaryNav = document.querySelector('.policy-nav, .portal-nav');
+  if (secondaryNav) {
+    const measureSecondary = () => {
+      const height = getComputedStyle(secondaryNav).position === 'sticky' ? secondaryNav.getBoundingClientRect().height : 0;
+      document.documentElement.style.setProperty('--site-secondary-nav-height', `${Math.ceil(height)}px`);
+    };
+    measureSecondary();
+    if ('ResizeObserver' in window) new ResizeObserver(measureSecondary).observe(secondaryNav);
+    window.addEventListener('resize', measureSecondary, { passive: true });
   }
 
   const targetForHash = () => {

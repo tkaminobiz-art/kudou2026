@@ -303,12 +303,12 @@ img{display:block;max-width:100%;height:auto}
     <!-- Sticky Nav -->
     <nav class="portal-nav" id="portalNav">
       <div class="portal-nav__inner">
-        <a class="portal-nav__item is-active" data-filter="all">すべて</a>
-        <a class="portal-nav__item" data-filter="education">01 教育</a>
-        <a class="portal-nav__item" data-filter="welfare">02 福祉</a>
-        <a class="portal-nav__item" data-filter="medical">03 医療</a>
-        <a class="portal-nav__item" data-filter="film">04 FC</a>
-        <a class="portal-nav__item" data-filter="assembly">05 議会</a>
+        <button type="button" class="portal-nav__item is-active" data-filter="all" aria-pressed="true">すべて</button>
+        <button type="button" class="portal-nav__item" data-filter="education" aria-pressed="false">01 教育</button>
+        <button type="button" class="portal-nav__item" data-filter="welfare" aria-pressed="false">02 福祉</button>
+        <button type="button" class="portal-nav__item" data-filter="medical" aria-pressed="false">03 医療</button>
+        <button type="button" class="portal-nav__item" data-filter="film" aria-pressed="false">04 FC</button>
+        <button type="button" class="portal-nav__item" data-filter="assembly" aria-pressed="false">05 議会</button>
       </div>
     </nav>
 
@@ -748,11 +748,17 @@ img{display:block;max-width:100%;height:auto}
   // === Filter by nav tabs ===
   var navItems=document.querySelectorAll('.portal-nav__item');
   var sections=document.querySelectorAll('.theme-section');
+  function selectFilter(filter){
+    navItems.forEach(function(item){
+      var selected=item.dataset.filter===filter;
+      item.classList.toggle('is-active',selected);
+      item.setAttribute('aria-pressed',String(selected));
+    });
+  }
   navItems.forEach(function(item){
     item.addEventListener('click',function(){
-      navItems.forEach(function(n){n.classList.remove('is-active')});
-      item.classList.add('is-active');
       var f=item.dataset.filter;
+      selectFilter(f);
       sections.forEach(function(s){
         s.style.display=(f==='all'||s.dataset.category===f)?'':'none';
       });
@@ -778,23 +784,11 @@ img{display:block;max-width:100%;height:auto}
     // Show all sections when searching
     if(q){
       sections.forEach(function(s){s.style.display=''});
-      navItems.forEach(function(n){n.classList.remove('is-active')});
-      navItems[0].classList.add('is-active');
+      selectFilter('all');
     }
   });
 
-  // === Sticky nav active state on scroll ===
-  var sectionObs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var cat=e.target.dataset.category;
-        navItems.forEach(function(n){
-          n.classList.toggle('is-active',n.dataset.filter===cat);
-        });
-      }
-    });
-  },{threshold:0,rootMargin:'-30% 0px -60% 0px'});
-  sections.forEach(function(s){sectionObs.observe(s)});
+  // These controls show the selected filter, independent of the scroll position.
 })();
 </script>
 
