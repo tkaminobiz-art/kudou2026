@@ -65,7 +65,7 @@
     const root = document.documentElement;
     const previous = root.style.scrollBehavior;
     root.style.scrollBehavior = 'auto';
-    window.scrollTo({ top: target.id === 'home' ? 0 : Math.max(0, top - margin), behavior: 'instant' });
+    window.scrollTo({ top: target.id === 'home' ? 0 : Math.max(0, top - margin), behavior: 'auto' });
     root.style.scrollBehavior = previous;
   };
   let initialAlignmentPending = Boolean(location.hash);
@@ -80,7 +80,8 @@
     const link = event.target.closest('a[href]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank') return;
     const url = new URL(link.href, location.href);
-    if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;
+    const normalizedPath = path => path.replace(/\/index\.html$/, '/');
+    if (url.origin !== location.origin || normalizedPath(url.pathname) !== normalizedPath(location.pathname) || url.search !== location.search || !url.hash) return;
     let target;
     try { target = document.getElementById(decodeURIComponent(url.hash.slice(1))); } catch { return; }
     if (!target) return;
