@@ -125,7 +125,32 @@
   });
   renderStatus();
   if (state === null) {
-    panel.hidden = false;
-    settings.setAttribute('aria-expanded', 'true');
+    // Deferred scripts finish before DOMContentLoaded, so the opening controller
+    // has either started its animation or removed the intro by this point.
+    const showInitialChoice = () => {
+      if (state !== null) return;
+      panel.hidden = false;
+      settings.setAttribute('aria-expanded', 'true');
+    };
+    const afterOpening = () => {
+      const opening = document.getElementById('opening');
+      if (!opening || opening.hidden) { showInitialChoice(); return; }
+      let timer;
+      const finish = () => {
+        observer.disconnect();
+        clearTimeout(timer);
+        showInitialChoice();
+      };
+      const observer = new MutationObserver(() => {
+        if (!opening.isConnected || opening.hidden) finish();
+      });
+      observer.observe(opening.parentNode, { childList: true });
+      observer.observe(opening, { attributes: true, attributeFilter: ['hidden'] });
+      // The intro has its own three-second fail-open timer. This also keeps the
+      // choice reachable if a later change stops removing the intro element.
+      timer = setTimeout(finish, 3500);
+    };
+    if (document.readyState === 'complete') afterOpening();
+    else document.addEventListener('DOMContentLoaded', afterOpening, { once: true });
   }
 })();

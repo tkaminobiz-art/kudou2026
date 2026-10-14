@@ -1,5 +1,7 @@
 /* Activity reports use a single reading column (client direction, 2026-10-15).
    Loaded only by reports/*.html; the other pages retain their three-column shell. */
+.report-page .skip-link { position: absolute; left: -9999px; top: 10px; z-index: 999; padding: 10px 12px; border-radius: 8px; background: #fff; color: var(--refine-ink); }
+.report-page .skip-link:focus { left: 12px; }
 .report-page { --report-gutter: clamp(20px, 4vw, 40px); }
 .report-page .main-content { margin: 0; min-width: 0; }
 .report-page .site-footer { margin-inline: 0; }
@@ -33,7 +35,8 @@
 }
 .report-body .theme-header { align-items: baseline; gap: 16px; margin-bottom: 32px; }
 .report-body .theme-no { flex-shrink: 0; font-size: 48px; }
-.report-body .theme-title { font-size: 28px; line-height: 1.6; }
+.report-body .theme-title { font-size: 28px; line-height: 1.6; text-wrap: balance; }
+.report-body .viewpoints-summary__title { text-wrap: balance; }
 .report-body .theme-section { margin-bottom: 64px; padding-bottom: 64px; }
 .report-body .theme-block__text,
 .report-body .claim-list li { line-height: 2; }
@@ -42,8 +45,14 @@
   padding: 20px 0 0; border: 0; border-top: 1px solid rgba(26,51,36,.12);
   border-radius: 0; background: transparent; box-shadow: none;
 }
+.report-body .answer-item__label {
+  display: inline-block; margin-bottom: 8px; padding: 2px 10px;
+  border-radius: 4px; background: var(--refine-green); color: var(--refine-ink);
+  font-size: 13px; font-weight: 700; line-height: 1.9;
+}
 .report-body .answer-item p,
 .report-body .theme-result p { font-size: 16px; line-height: 2; }
+.report-body .theme-result h3, .report-body .viewpoint-mini h3 { color: var(--refine-deep); }
 .report-body .theme-result { padding: 24px 28px; }
 .report-body .viewpoints-summary { padding: 32px; }
 .report-body .viewpoints-summary__grid { grid-template-columns: 1fr; gap: 16px; }
@@ -51,7 +60,7 @@
 .report-body .viewpoint-mini p { font-size: 16px; line-height: 1.9; }
 .report-body .closing-quote { padding: 32px; }
 .report-body .data-table {
-  width: 100%; margin: 24px 0; border-collapse: separate; border-spacing: 0;
+  width: 100%; margin: 24px 0; table-layout: fixed; line-break: strict; border-collapse: separate; border-spacing: 0;
   border-radius: 12px; overflow-x: auto; font-size: 15px; line-height: 1.9;
   border: 1px solid rgba(26,51,36,.1); box-shadow: none;
 }
@@ -63,7 +72,12 @@
 .report-body .report-number { white-space: nowrap; }
 .report-table-label { display: none; }
 .report-body .report-nav { flex-wrap: wrap; gap: 12px; }
-.report-body .report-nav a { padding: 12px 18px; }
+.report-body .report-nav a {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 12px 18px; border: 1px solid rgba(26,51,36,.2);
+  border-radius: 10px; background: #fff; color: var(--refine-deep);
+}
+.report-body .report-nav a:hover { background: var(--refine-light); border-color: var(--refine-deep); }
 
 /* The archive has one outer column; each entry keeps its photo/text pairing. */
 .report-index .entries,
@@ -75,10 +89,16 @@
 .report-index .entry { min-height: 0; grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
 .report-index .entry__body { min-width: 0; padding: 40px; }
 .report-index .entry__photo { min-height: 360px; }
+.report-index .entry__photo img { position: absolute; inset: 0; }
+.report-index .entry__title a:hover { text-decoration: underline; text-underline-offset: .2em; }
 .report-index .viewpoints-footer { padding: 48px 0 64px; }
 
-@media (min-width: 768px) and (max-width: 1199px) {
-  .report-body .data-table:not(.report-table--stack) tr > :first-child { width: 34%; }
+/* Reserve space for labels instead of allowing a long description to shrink them. */
+.report-body .data-table:not(.report-table--stack) { display: table; }
+.report-body .data-table:not(.report-table--stack) tr > :first-child { width: 34%; }
+@media (min-width: 601px) {
+  .report-body .report-table--stack tr > :first-child { width: 30%; }
+  .report-body .report-table--stack tr > :nth-child(2) { width: 26%; }
 }
 @media (max-width: 1023px) {
   .report-index .entry { grid-template-columns: minmax(0,1fr); direction: ltr; }

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/footer-v3.html",
+      "destination": "/#siteFooter",
+      "permanent": true
+    }
+  ]
+}

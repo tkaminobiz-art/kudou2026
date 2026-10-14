@@ -1,4 +1,38 @@
 /* Component refinements. Preserve the original three-column shell and palette. */
+/* Full-page audit: protect reading width, table labels and shared rail geometry. */
+.ticker { position: relative; z-index: 6; }
+.blf-item__title, .dv4-card__title { text-wrap: balance; }
+.pi > p, .pi__fact p, .pi__catch, .policy-date-note { max-width: 44em; }
+.pi__table { display: table; table-layout: fixed; line-break: strict; }
+.pi__table:not(.pi__table--stack) tr > :first-child { width: 40%; }
+.policy-table-label { display: none; }
+@media (min-width: 768px) and (max-width: 1199px) {
+  .sidebar { width: 140px; }
+  body:not(.report-page) .main-content { margin-inline: 140px; }
+  .topbar .wrap, .header .wrap { padding-inline: 164px; }
+}
+@media (max-width: 767px) {
+  .profile-info__highlights { text-align: left; }
+  .pi__catch br { display: none; }
+  .pi__table th, .pi__table td { padding: 12px; }
+}
+@media (max-width: 600px) {
+  .pi__table--stack, .pi__table--stack tbody,
+  .pi__table--stack tr, .pi__table--stack td { display: block; width: 100%; }
+  .pi__table--stack thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+  }
+  .pi__table--stack tbody tr { border-bottom: 2px solid var(--color-bg-light, var(--bg-light)); }
+  .pi__table--stack tbody tr:last-child { border-bottom: 0; }
+  .pi__table--stack td { border: 0; padding: 12px 16px; }
+  .pi__table--stack td:first-child { background: var(--color-bg-light, var(--bg-light)); font-weight: 700; }
+  .pi__table--stack td:last-child { padding-bottom: 20px; }
+  .pi__table--stack .policy-table-label {
+    display: block; margin-bottom: 4px; color: var(--color-footer-bg, var(--footer-bg));
+    font-size: 13px; font-weight: 700; line-height: 1.6;
+  }
+}
 :root {
   --refine-font: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
   --refine-ink: var(--color-text, var(--text, #2c2c2c));

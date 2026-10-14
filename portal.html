@@ -107,6 +107,15 @@ img{display:block;max-width:100%;height:auto}
 .search-bar__input:focus{border-color:var(--primary)}
 .search-bar__icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);width:18px;height:18px}
 
+/* Search feedback stays beside the input for every category and query. */
+.search-label{display:block;margin-bottom:10px;font-size:16px;font-weight:700}
+.search-feedback{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;font-size:14px;color:var(--muted)}
+.search-feedback p{margin:0}
+.search-reset{min-height:44px;padding:8px 14px;border:1px solid currentColor;border-radius:8px;background:#fff;color:var(--text);font:inherit;font-weight:700;cursor:pointer}
+.search-reset:hover{background:var(--bg-light)}
+.search-empty{margin:20px 0 32px;padding:20px;border-left:3px solid var(--primary);background:var(--bg-light);font-size:16px;line-height:1.9}
+#portalSearch{scroll-margin-top:calc(var(--site-header-height) + var(--site-secondary-nav-height) + var(--site-anchor-gap))}
+
 /* ===== Intro ===== */
 .portal-intro{padding:clamp(40px,5vw,60px) 0 0}
 .portal-intro__text{font-size:15px;line-height:2;max-width:680px}
@@ -316,11 +325,17 @@ img{display:block;max-width:100%;height:auto}
     <div class="portal-intro">
       <div class="container">
         <p class="portal-intro__text reveal">奈良県の公式ウェブサイトは情報量が多く、目的のページにたどり着くのが難しい状況にあります。工藤まさゆきがメインで取り組む政策テーマに限り、関連ページへ直接アクセスできる仕組みを作りました。</p>
-        <div class="portal-tools">
+        <div class="portal-tools" id="portalSearch">
+          <label class="search-label" for="searchInput">キーワードで探す</label>
           <div class="search-bar reveal">
             <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" class="search-bar__input" id="searchInput" placeholder="キーワード検索（例：不登校、介護、救急）"/>
+            <input type="text" class="search-bar__input" id="searchInput" placeholder="例：不登校、介護、救急"/>
           </div>
+          <div class="search-feedback" hidden>
+            <p id="searchStatus" role="status" aria-live="polite" aria-atomic="true">検索結果：<span id="searchCount"></span>件</p>
+            <button class="search-reset" id="searchReset" type="button" hidden>検索条件をクリア</button>
+          </div>
+          <p class="search-empty" id="searchEmpty" hidden>一致する情報は見つかりませんでした。別のキーワードをお試しください。</p>
         </div>
       </div>
     </div>
@@ -348,7 +363,7 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--education reveal" data-keywords="いじめ 不登校 ヤングケアラー 教育支援 SC SSW 生徒指導">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n167/1697.html" target="_blank" rel="noopener">教育支援部（いじめ・不登校・ヤングケアラー）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n179/1697.html" target="_blank" rel="noopener">教育支援部（いじめ・不登校・ヤングケアラー）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">県教育委員会の生徒指導支援室。SC/SSW配置、いじめ重大事態対応等</p>
             </div>
           </div>
@@ -362,22 +377,29 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--education reveal" data-keywords="不登校 支援 データ 方針 教員 しるべ">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n167/43394.html" target="_blank" rel="noopener">不登校関連資料<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n179/43394.html" target="_blank" rel="noopener">不登校関連資料<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">不登校の現状データ、支援方針、教員向け「支援のしるべ」等</p>
             </div>
           </div>
           <div class="link-item link-item--education reveal" data-keywords="特別支援 発達障害 肢体不自由 知的障害 教育推進">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/54805.htm" target="_blank" rel="noopener">特別支援教育推進室<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n168/54805.html" target="_blank" rel="noopener">特別支援教育推進室<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">発達障害・肢体不自由・知的障害等の特別支援教育に関する施策・相談</p>
             </div>
           </div>
           <div class="link-item link-item--education reveal" data-keywords="就学支援金 授業料 軽減 無償化 高校">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/kyouiku/gakkoukyouiku/index.html" target="_blank" rel="noopener">高等学校等就学支援金・授業料軽減<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-              <p class="link-item__desc">高校授業料の支援金制度。所得に応じた軽減・無償化の案内</p>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n164/69290.html" target="_blank" rel="noopener">県立・市町村立高校の就学支援金<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">県立・市町村立高校の授業料支援。対象・申請方法などを確認できます。</p>
+            </div>
+          </div>
+          <div class="link-item link-item--education reveal" data-keywords="就学支援金 授業料 軽減 無償化 高校">
+            <span class="link-item__dot"></span>
+            <div class="link-item__body">
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n056/54792.html" target="_blank" rel="noopener">私立高校の就学支援金・授業料軽減<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">私立高校の授業料支援。対象校・受給資格・申請方法などを確認できます。</p>
             </div>
           </div>
           <div class="link-item link-item--education reveal" data-keywords="子育て 支援 保育 幼児教育 放課後 対策">
@@ -390,7 +412,7 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--education reveal" data-keywords="教育研究所 研修 資料 教育機関 教員">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.e-net.nara.jp/" target="_blank" rel="noopener">奈良県立教育研究所<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://kenkyo.e-net.nara.jp/" target="_blank" rel="noopener">奈良県立教育研究所<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">教育研究や研修資料を提供する県の教育機関</p>
             </div>
           </div>
@@ -429,21 +451,21 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--welfare reveal" data-keywords="障害福祉 案内 支援制度 ガイド">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/11597.htm" target="_blank" rel="noopener">障害福祉のご案内<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n064/11597.html" target="_blank" rel="noopener">障害福祉のご案内<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">障害がある方への支援制度の総合ガイド</p>
             </div>
           </div>
           <div class="link-item link-item--welfare reveal" data-keywords="発達障害 相談窓口 リンクぷらす サポートブック">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/52504.htm" target="_blank" rel="noopener">発達障害 相談窓口<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n064/52504.html" target="_blank" rel="noopener">発達障害 相談窓口<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">発達障害の相談窓口・サポートブック「リンクぷらす」等</p>
             </div>
           </div>
           <div class="link-item link-item--welfare reveal" data-keywords="扶養共済 障害者 保護者 年金 任意加入">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/29362.htm" target="_blank" rel="noopener">心身障害者扶養共済制度<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n064/29362.html" target="_blank" rel="noopener">心身障害者扶養共済制度<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">保護者が万一の際、障がいのある方に年金を支給する任意加入制度</p>
             </div>
           </div>
@@ -457,7 +479,7 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--welfare reveal" data-keywords="介護保険 要介護認定 サービス利用 施設情報">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/11982.htm" target="_blank" rel="noopener">介護保険のしくみ<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n066/p011000.html" target="_blank" rel="noopener">介護保険課（制度・サービス）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">介護保険課。要介護認定、サービス利用、施設情報等</p>
             </div>
           </div>
@@ -478,14 +500,14 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--welfare reveal" data-keywords="ヤングケアラー 支援 実態調査 若者 介護 子ども">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/69323.htm" target="_blank" rel="noopener">ヤングケアラー支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n055/69323.html" target="_blank" rel="noopener">ヤングケアラー支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">家族の介護を担う子ども・若者への実態調査・支援施策</p>
             </div>
           </div>
           <div class="link-item link-item--welfare reveal" data-keywords="障害者 雇用 就労支援 相談 支援機関">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/34799.htm" target="_blank" rel="noopener">障害者雇用支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n064/34799.html" target="_blank" rel="noopener">障害者雇用支援<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">障害者就労支援機関、障害者はたらく応援団なら、農福連携等</p>
             </div>
           </div>
@@ -499,7 +521,7 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--welfare reveal" data-keywords="社会福祉 総合 センター 相談 窓口">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/1640.htm" target="_blank" rel="noopener">社会福祉総合センター<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.narafukushi.com/" target="_blank" rel="noopener">社会福祉総合センター<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">福祉サービスや相談窓口の案内を行う施設</p>
             </div>
           </div>
@@ -531,7 +553,7 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--medical reveal" data-keywords="救急 安心 センター 7119 相談 看護師">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/53886.htm" target="_blank" rel="noopener">奈良県救急安心センター（#7119）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n081/53886.html" target="_blank" rel="noopener">奈良県救急安心センター（#7119）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">看護師・相談員による24時間救急相談（0744-20-0119）</p>
               <div class="kudo-voice">
                 <div class="kudo-voice__badge"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg> 工藤 VOICE</div>
@@ -542,15 +564,15 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--medical reveal" data-keywords="こども 救急 電話相談 8000 小児 夜間 休日">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/44823.htm" target="_blank" rel="noopener">こども救急電話相談（#8000）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n081/44823.html" target="_blank" rel="noopener">こども救急電話相談（#8000）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">小児の急病対応。夜間・休日の相談窓口（0742-20-8119）</p>
             </div>
           </div>
           <div class="link-item link-item--medical reveal" data-keywords="救急医療 告示病院 休日 夜間 診療所">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/67887.htm" target="_blank" rel="noopener">救急医療（休日夜間診療所一覧）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
-              <p class="link-item__desc">県内救急告示医療機関一覧、休日夜間応急診療所の一覧</p>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n081/67887.html" target="_blank" rel="noopener">救急医療（休日夜間診療所一覧）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <p class="link-item__desc">県内の休日夜間応急診療所と診療時間などの一覧</p>
             </div>
           </div>
           <div class="link-item link-item--medical reveal" data-keywords="がん 検診 相談 患者サロン がんネットなら">
@@ -563,28 +585,28 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--medical reveal" data-keywords="脳卒中 心臓病 循環器 支援センター">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/65630.htm" target="_blank" rel="noopener">脳卒中・心臓病 総合支援センター<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n081/65040.html" target="_blank" rel="noopener">脳卒中・心臓病 総合支援センター<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">脳卒中・循環器病の連携・支援情報</p>
             </div>
           </div>
           <div class="link-item link-item--medical reveal" data-keywords="難病 医療費助成 相談窓口 患者会">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/38207.htm" target="_blank" rel="noopener">難病対策<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n069/38207.html" target="_blank" rel="noopener">難病対策<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">指定難病の医療費助成制度、相談窓口、患者会情報等</p>
             </div>
           </div>
           <div class="link-item link-item--medical reveal" data-keywords="福祉医療 子ども ひとり親 障害者 医療費助成">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/1944.htm" target="_blank" rel="noopener">福祉医療制度（子ども・ひとり親・障害者）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n065/1944.html" target="_blank" rel="noopener">福祉医療制度（子ども・ひとり親・障害者）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">子ども医療費助成、ひとり親家庭等医療費助成、心身障害者医療費助成</p>
             </div>
           </div>
           <div class="link-item link-item--medical reveal" data-keywords="精神保健 こころ 健康 相談 医療機関 依存症">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/4151.htm" target="_blank" rel="noopener">精神保健・こころの健康<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n087/1743.html" target="_blank" rel="noopener">精神保健・こころの健康<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">こころの健康相談、精神科医療機関情報、依存症支援等</p>
             </div>
           </div>
@@ -605,7 +627,7 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--medical reveal" data-keywords="看護師 応援 就業支援 研修 医療人材">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/60498.htm" target="_blank" rel="noopener">なら看護師応援ネット<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/nsouennet/index.html" target="_blank" rel="noopener">なら看護師応援ネット<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">看護職の就業支援・研修情報。医療人材確保に直結</p>
             </div>
           </div>
@@ -637,7 +659,7 @@ img{display:block;max-width:100%;height:auto}
           <div class="link-item link-item--film reveal" data-keywords="観光 戦略 観光力 創造 撮影支援 誘致">
             <span class="link-item__dot"></span>
             <div class="link-item__body">
-              <div class="link-item__title"><a href="https://www.pref.nara.jp/3534.htm" target="_blank" rel="noopener">観光戦略課・観光力創造課<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
+              <div class="link-item__title"><a href="https://www.pref.nara.lg.jp/n110/p061000.html" target="_blank" rel="noopener">地域観光課（フィルムコミッション）<svg class="link-item__external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6m4-3h6v6m-11 5L21 3"/></svg></a></div>
               <p class="link-item__desc">奈良県のフィルムコミッション担当部署。撮影支援・誘致事業の窓口</p>
             </div>
           </div>
@@ -745,48 +767,54 @@ img{display:block;max-width:100%;height:auto}
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
   }
 
-  // === Filter by nav tabs ===
+  // Category and keyword conditions apply together, with explicit empty feedback.
   var navItems=document.querySelectorAll('.portal-nav__item');
   var sections=document.querySelectorAll('.theme-section');
-  function selectFilter(filter){
+  var searchInput=document.getElementById('searchInput');
+  var searchCount=document.getElementById('searchCount');
+  var searchEmpty=document.getElementById('searchEmpty');
+  var searchReset=document.getElementById('searchReset');
+  var activeFilter='all';
+  function normalize(value){return value.normalize('NFKC').trim().toLowerCase();}
+  function updateResults(){
+    var query=normalize(searchInput.value);
+    var terms=query?query.split(/\s+/):[];
+    var count=0;
+    sections.forEach(function(section){
+      var categoryMatches=activeFilter==='all'||section.dataset.category===activeFilter;
+      var matches=0;
+      section.querySelectorAll('.link-item').forEach(function(item){
+        var text=normalize((item.dataset.keywords||'')+' '+item.querySelector('.link-item__title').textContent+' '+item.querySelector('.link-item__desc').textContent);
+        var visible=categoryMatches&&terms.every(function(term){return text.indexOf(term)!==-1;});
+        item.hidden=!visible;
+        if(visible)matches++;
+      });
+      section.hidden=matches===0;
+      count+=matches;
+    });
     navItems.forEach(function(item){
-      var selected=item.dataset.filter===filter;
+      var selected=item.dataset.filter===activeFilter;
       item.classList.toggle('is-active',selected);
       item.setAttribute('aria-pressed',String(selected));
     });
+    searchCount.textContent=count;
+    searchEmpty.hidden=count!==0;
+    searchReset.hidden=!query&&activeFilter==='all';
   }
   navItems.forEach(function(item){
     item.addEventListener('click',function(){
-      var f=item.dataset.filter;
-      selectFilter(f);
-      sections.forEach(function(s){
-        s.style.display=(f==='all'||s.dataset.category===f)?'':'none';
-      });
-      // Scroll to top of content if filtering
-      if(f!=='all'){
-        var target=document.getElementById(f);
-        if(target) target.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
-      }
+      activeFilter=item.dataset.filter;
+      updateResults();
+      document.getElementById('portalSearch').scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'start'});
     });
   });
-
-  // === Keyword search ===
-  var searchInput=document.getElementById('searchInput');
-  searchInput.addEventListener('input',function(){
-    var q=searchInput.value.toLowerCase();
-    document.querySelectorAll('.link-item').forEach(function(item){
-      var keywords=(item.dataset.keywords||'').toLowerCase();
-      var title=item.querySelector('.link-item__title').textContent.toLowerCase();
-      var desc=item.querySelector('.link-item__desc');
-      desc=desc?desc.textContent.toLowerCase():'';
-      item.style.display=(!q||keywords.indexOf(q)!==-1||title.indexOf(q)!==-1||desc.indexOf(q)!==-1)?'':'none';
-    });
-    // Show all sections when searching
-    if(q){
-      sections.forEach(function(s){s.style.display=''});
-      selectFilter('all');
-    }
+  searchInput.addEventListener('input',function(event){if(!event.isComposing)updateResults();});
+  searchInput.addEventListener('compositionend',updateResults);
+  searchReset.addEventListener('click',function(){
+    searchInput.value='';activeFilter='all';updateResults();searchInput.focus();
   });
+  updateResults();
+  document.querySelector('.search-feedback').hidden=false;
 
   // These controls show the selected filter, independent of the scroll position.
 })();
