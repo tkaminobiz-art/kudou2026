@@ -1920,10 +1920,14 @@
 
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/refinements.css">
+<link rel="stylesheet" href="/assets/site-shell.css">
+<script src="/assets/site-shell.js" defer></script>
+<script src="/assets/opening.js" defer></script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
   <body>
     <!-- Opening Animation -->
-    <div id="opening" class="opening">
+    <div id="opening" class="opening" hidden>
       <div class="opening__content">
         <p class="opening__line opening__line--main" id="openLine1">声は届く。</p>
         <p class="opening__line opening__line--sub" id="openLine2">あなたの声を、県政に。</p>
@@ -1955,53 +1959,33 @@
       </div>
     </div>
 
-    <header class="header" aria-label="ヘッダー">
-      <div class="container">
-        <a class="brand" href="#home">
-          <span class="brand__jp">工藤まさゆき</span>
-          <span class="brand__en">Kudo Masayuki Official Site</span>
-        </a>
-
-        <nav class="nav" aria-label="グローバルナビゲーション">
-          <a href="#home">ホーム</a>
-          <a href="policy/index.html">政策</a>
-          <a href="#profile">プロフィール</a>
-          <a href="reports/index.html">活動報告</a>
-          <a href="portal.html">県民ポータル</a>
-          <a href="#news">お知らせ</a>
-          <a class="line-link" href="https://lin.ee/6mbk8Gl" target="_blank" rel="noreferrer noopener" aria-label="LINE（公式）を開く">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Zm-11 1.7H7.3c-.2 0-.4-.2-.4-.4V9.2c0-.2.2-.4.4-.4s.4.2.4.4v3.1h1.2c.2 0 .4.2.4.4s-.2.5-.4.5Zm2.8 0c-.2 0-.4-.2-.4-.4V9.2c0-.2.2-.4.4-.4s.4.2.4.4v3.6c0 .2-.2.4-.4.4Zm4.6 0c-.1 0-.3-.1-.3-.2l-1.9-2.6v2.4c0 .2-.2.4-.4.4s-.4-.2-.4-.4V9.2c0-.2.2-.4.4-.4.1 0 .3.1.3.2l1.9 2.6V9.2c0-.2.2-.4.4-.4s.4.2.4.4v3.6c0 .2-.2.4-.4.4Zm2.9-3.5h-1.6v.9h1.4c.2 0 .4.2.4.4s-.2.4-.4.4h-1.4v1h1.6c.2 0 .4.2.4.4s-.2.4-.4.4h-2c-.2 0-.4-.2-.4-.4V9.2c0-.2.2-.4.4-.4h2c.2 0 .4.2.4.4s-.2.5-.4.5Z"
-              />
-            </svg>
-            <span>LINE</span>
-          </a>
-        </nav>
-
-        <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobilePanel">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
-      <div class="mobile-panel" id="mobilePanel" hidden>
-        <div class="container" aria-label="モバイルメニュー">
-          <a href="#home">ホーム</a>
-          <a href="policy/index.html">政策</a>
-          <a href="#profile">プロフィール</a>
-          <a href="reports/index.html">活動報告</a>
-          <a href="portal.html">県民ポータル</a>
-          <a href="#news">お知らせ</a>
-          <a href="https://lin.ee/6mbk8Gl" target="_blank" rel="noreferrer noopener" aria-label="LINE（公式）を開く">LINE</a>
-        </div>
-      </div>
-    </header>
+    <header class="header site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/index.html#home"><span class="brand__jp">工藤まさゆき</span><span class="brand__en">Kudo Masayuki Official Site</span></a>
+    <nav class="nav site-nav" aria-label="グローバルナビゲーション"><a href="/index.html#home" aria-current="page">ホーム</a>
+<a href="/policy/index.html">政策</a>
+<a href="/index.html#profile">プロフィール</a>
+<a href="/reports/index.html">活動報告</a>
+<a href="/portal.html">県民ポータル</a>
+<a href="/index.html#news">お知らせ</a>
+<a href="/index.html#siteFooter">お問い合わせ</a></nav>
+    <button class="menu-btn site-menu-toggle" id="menuBtn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobilePanel" hidden><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-panel site-mobile-nav" id="mobilePanel" aria-label="モバイルメニュー" hidden><div class="site-mobile-nav__inner"><a href="/index.html#home" aria-current="page">ホーム</a>
+<a href="/policy/index.html">政策</a>
+<a href="/index.html#profile">プロフィール</a>
+<a href="/reports/index.html">活動報告</a>
+<a href="/portal.html">県民ポータル</a>
+<a href="/index.html#news">お知らせ</a>
+<a href="/index.html#siteFooter">お問い合わせ</a></div></nav>
+</header>
 
     <main id="main">
       <section id="home" class="hero" aria-label="ファーストビュー">
         <picture class="hero__picture">
-          <source media="(max-width: 767px)" srcset="/assets/images/hero-sp-768.webp" />
-          <img src="/assets/images/hero-pc-1376.webp" alt="" class="hero__img" width="1920" height="1080" fetchpriority="high" />
+          <source type="image/webp" media="(max-width: 767px)" srcset="/assets/images/portrait-0659-960.webp 960w, /assets/images/portrait-0659-1600.webp 1600w" sizes="100vw">
+          <source type="image/webp" srcset="/assets/images/portrait-0659-960.webp 960w, /assets/images/portrait-0659-1600.webp 1600w, /assets/images/portrait-0659-2400.webp 2400w" sizes="(min-width: 2000px) 1100px, (min-width: 922px) 55vw, 510px">
+          <img src="/assets/images/portrait-0659-1600.jpg" srcset="/assets/images/portrait-0659-960.jpg 960w, /assets/images/portrait-0659-1600.jpg 1600w, /assets/images/portrait-0659-2400.jpg 2400w" sizes="(max-width: 767px) 100vw, (min-width: 2000px) 1100px, (min-width: 922px) 55vw, 510px" alt="" class="hero__img" width="4480" height="6720" fetchpriority="high" decoding="async">
         </picture>
         <div class="container">
           <div class="hero__meta">奈良県議会議員</div>
@@ -2263,7 +2247,7 @@
           </div>
 
           <div class="section-cta">
-            <a class="btn-primary" href="reports/index.html" aria-label="活動報告一覧">活動報告一覧</a>
+            <a class="btn-primary" href="/reports/index.html" aria-label="活動報告一覧">活動報告一覧</a>
           </div>
         </div>
       </section>
@@ -2329,7 +2313,7 @@
           </div>
 
           <div class="rv3-cta reveal">
-            <a class="btn-primary" href="reports/index.html">活動報告一覧</a>
+            <a class="btn-primary" href="/reports/index.html">活動報告一覧</a>
           </div>
 
         </div>
@@ -2337,7 +2321,7 @@
 
         </div>
 
-        <aside class="sidebar sidebar--right" aria-hidden="true">
+        <aside class="sidebar sidebar--right">
           <!-- SNSアイコン（上部） -->
           <div class="sidebar-sns">
             <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" aria-label="X">
@@ -2360,75 +2344,32 @@
       </div>
     </main>
 
-    <footer class="footer-v3" id="siteFooter" aria-label="フッター">
-      <div class="fv3-sns">
-        <div class="fv3-sns__inner">
-          <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" class="fv3-sns__item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z"/></svg>
-            <span>X（Twitter）</span>
-          </a>
-          <a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" class="fv3-sns__item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2Zm9 2h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4ZM12 7a5 5 0 110 10 5 5 0 010-10Zm0 2a3 3 0 100 6 3 3 0 000-6Zm5.7-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4Z"/></svg>
-            <span>Instagram</span>
-          </a>
-          <a href="https://lin.ee/6mbk8Gl" target="_blank" rel="noreferrer noopener" class="fv3-sns__item" aria-label="LINE（公式）を開く">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg>
-            <span>LINE（ご相談）</span>
-          </a>
-          <a href="https://lin.ee/6mbk8Gl" target="_blank" rel="noreferrer noopener" class="fv3-sns__item" aria-label="LINE（公式）を開く">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg>
-            <span>LINE（配信）</span>
-          </a>
-        </div>
-      </div>
-      <div class="fv3-main">
-        <div class="fv3-main__inner">
-          <div class="fv3-contact">
-            <h3 class="fv3-contact__title">お問い合わせ</h3>
-            <p class="fv3-contact__text">ご意見・ご相談はお気軽にどうぞ。匿名でも構いません。</p>
-            <a href="#" class="fv3-contact__btn">フォームを開く →</a>
-          </div>
-          <div class="fv3-nav">
-            <a href="#home">ホーム</a>
-            <a href="policy/index.html">政策</a>
-            <a href="#profile">プロフィール</a>
-            <a href="reports/index.html">活動報告</a>
-            <a href="#news">お知らせ</a>
-          </div>
-          <div class="fv3-office">
-            <p class="fv3-office__name">奈良県議会議員<br>工藤まさゆき</p>
-            <p class="fv3-office__party">日本維新の会 奈良県議団</p>
-            <p class="fv3-office__address">〒633-0062 桜井市大字粟殿612-8</p>
-            <p class="fv3-office__tel">TEL 090-9543-0910</p>
-          </div>
-        </div>
-      </div>
-      <div class="fv3-copy">
-        <p>© 2026 Kudo Masayuki. All Rights Reserved.</p>
-      </div>
-    </footer>
+    <footer class="site-footer" id="siteFooter">
+  <div class="site-footer__inner">
+    <div class="site-footer__contact">
+      <h2>お問い合わせ</h2>
+      <p>ご意見・ご相談は、公式LINEへお寄せください。</p>
+      <a class="site-line-button" href="https://lin.ee/6mbk8Gl" target="_blank" rel="noopener noreferrer">LINEで相談する<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div>
+    <div class="site-footer__office">
+      <p class="site-footer__role">奈良県議会議員</p><p class="site-footer__name">工藤まさゆき</p>
+      <p>日本維新の会 奈良県議団<br>〒633-0062 桜井市大字粟殿612-8<br><a href="tel:09095430910">TEL 090-9543-0910</a></p>
+      <div class="site-footer__social"><a href="https://x.com/masayuki_kudoh" target="_blank" rel="noopener noreferrer">X（Twitter）</a><a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
+    </div>
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション"><a href="/index.html#home">ホーム</a>
+<a href="/policy/index.html">政策</a>
+<a href="/index.html#profile">プロフィール</a>
+<a href="/reports/index.html">活動報告</a>
+<a href="/portal.html">県民ポータル</a>
+<a href="/index.html#news">お知らせ</a>
+<a href="/index.html#siteFooter">お問い合わせ</a></nav>
+    <p class="site-footer__copyright">© 2026 Kudo Masayuki. All Rights Reserved.</p>
+  </div>
+</footer>
 
     <script>
       (function () {
         const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        const menuBtn = document.getElementById("menuBtn");
-        const mobilePanel = document.getElementById("mobilePanel");
-
-        function setMenu(open) {
-          menuBtn.setAttribute("aria-expanded", String(open));
-          menuBtn.setAttribute("aria-label", open ? "メニューを閉じる" : "メニューを開く");
-          mobilePanel.hidden = !open;
-        }
-
-        if (menuBtn && mobilePanel) {
-          setMenu(false);
-          menuBtn.addEventListener("click", () => setMenu(mobilePanel.hidden));
-          mobilePanel.addEventListener("click", (e) => {
-            const a = e.target.closest("a");
-            if (a && a.getAttribute("href") && a.getAttribute("href").startsWith("#")) setMenu(false);
-          });
-        }
 
         // ティッカー：継ぎ目なくループするため、要素をクローンして距離をCSS変数で渡す
         const track = document.getElementById("tickerTrack");
@@ -2469,228 +2410,7 @@
       })();
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
-    <script>
-      (function () {
-        var opening = document.getElementById("opening");
-        var skip = document.getElementById("openSkip");
-        var line1 = document.getElementById("openLine1");
-        var line2 = document.getElementById("openLine2");
 
-        if (!opening || !line1 || !line2) return;
 
-        // 同一セッション内での再生を防止（ページ遷移/再読み込みでも再生しない）
-        try {
-          if (window.sessionStorage && sessionStorage.getItem("openingDone") === "1") {
-            opening.remove();
-            return;
-          }
-        } catch (e) {}
-
-        // prefers-reduced-motion の場合は即スキップ
-        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          opening.remove();
-          return;
-        }
-
-        if (typeof gsap === "undefined") {
-          opening.remove();
-          return;
-        }
-
-        // ページのスクロールを一時的に無効化
-        document.body.style.overflow = "hidden";
-
-        function closeOpening() {
-          opening.classList.add("is-done");
-          document.body.style.overflow = "";
-          try {
-            if (window.sessionStorage) sessionStorage.setItem("openingDone", "1");
-          } catch (e) {}
-          setTimeout(function () {
-            opening.remove();
-          }, 700);
-        }
-
-        // SKIPボタン
-        if (skip) skip.addEventListener("click", closeOpening);
-
-        // アニメーションシーケンス
-        var tl = gsap.timeline({ onComplete: closeOpening });
-        tl.timeScale(3);
-
-        tl.to(line1, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          delay: 0.5,
-        })
-          .to(line1, {
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.in",
-            delay: 1.5,
-          })
-          .to(line2, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          })
-          .to(line2, {
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.in",
-            delay: 1.2,
-          });
-      })();
-    </script>
-    <script>
-      (function () {
-        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-        if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
-
-        gsap.registerPlugin(ScrollTrigger);
-
-        // === A: ヒーローテキストのスタッガーリビール ===
-        // 「工藤まさゆき」の各文字を一文字ずつ下から登場させる
-        const heroName = document.querySelector(".hero__name");
-        if (heroName && typeof SplitType !== "undefined") {
-          const split = new SplitType(heroName, { types: "chars" });
-          gsap.from(split.chars, {
-            yPercent: 110,
-            opacity: 0,
-            stagger: 0.03,
-            duration: 0.8,
-            ease: "power4.out",
-            delay: 0.3,
-          });
-        }
-
-        // === B: ヒーロー写真のパララックス ===
-        const heroSection = document.querySelector(".hero");
-        if (heroSection) {
-          gsap.to(heroSection, {
-            backgroundPositionY: "60%",
-            ease: "none",
-            scrollTrigger: {
-              trigger: heroSection,
-              start: "top top",
-              end: "bottom top",
-              scrub: 1.5,
-            },
-          });
-        }
-
-        // === D: 数値カウントアップ（policy/index.html用） ===
-        document.querySelectorAll(".dv4-num--hero, .dv4-num--xl, .dv4-num--lg").forEach(function (el) {
-          var text = el.textContent.trim();
-          // 数値を抽出（カンマ・+を除去）
-          var num = parseFloat(text.replace(/[,+兆億万件回倍%]/g, ""));
-          if (isNaN(num)) return;
-
-          // 元のテキストから数値部分と接尾辞を分離
-          var suffix = text.replace(/[\d,.]+/g, "");
-
-          gsap.from(el, {
-            textContent: 0,
-            duration: 1.5,
-            ease: "power2.out",
-            snap: { textContent: num > 100 ? 10 : 1 },
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              once: true,
-            },
-            onUpdate: function () {
-              var current = Math.round(parseFloat(el.textContent));
-              if (num >= 1000) {
-                el.textContent = current.toLocaleString() + suffix;
-              } else {
-                el.textContent = current + suffix;
-              }
-            },
-          });
-        });
-
-        // === E: カード類のスタッガー出現（共通） ===
-        // .reveal（opacity:0）付き要素と併用するため、終了状態を明示（gsap.from だと CSS の opacity:0 に戻って消える）
-        // 対象はコンテナ側で .js-stagger を付与して明示する（ページごとの差分/二重発火を減らす）
-        document.querySelectorAll(".js-stagger").forEach(function (grid) {
-          var cards = grid.querySelectorAll(".dv4-card, .policy-card, .rv3-sub, .pv3-item");
-          if (cards.length === 0) return;
-
-          gsap.fromTo(
-            cards,
-            { y: 40, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              stagger: 0.12,
-              duration: 0.7,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: grid,
-                start: "top 78%",
-                once: true,
-              },
-            }
-          );
-        });
-
-        // === G: プロフィール写真のClipPathリビール ===
-        var profilePhoto = document.querySelector(".profile-photo img");
-        if (profilePhoto) {
-          gsap.from(profilePhoto, {
-            clipPath: "inset(100% 0 0 0)",
-            duration: 1.2,
-            ease: "power4.inOut",
-            scrollTrigger: {
-              trigger: ".profile-section, .profile-main",
-              start: "top 65%",
-              once: true,
-            },
-          });
-        }
-
-        // === K: 活動報告の写真スクロールズームアウト ===
-        document.querySelectorAll(".rv3-feature__photo img, .entry__photo img").forEach(function (img) {
-          gsap.fromTo(
-            img,
-            { scale: 1.12 },
-            {
-              scale: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: img.parentElement,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.5,
-              },
-            }
-          );
-        });
-
-        // === H: プログレスバーのスクロール連動アニメーション ===
-        document.querySelectorAll(".dv4-hbar__fill, .dv4-mini-bar__track span").forEach(function (bar) {
-          var targetWidth = bar.style.width;
-          bar.style.width = "0%";
-
-          gsap.to(bar, {
-            width: targetWidth,
-            duration: 1.2,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: bar,
-              start: "top 85%",
-              once: true,
-            },
-          });
-        });
-      })();
-    </script>
   </body>
 </html>

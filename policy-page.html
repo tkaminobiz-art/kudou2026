@@ -5,6 +5,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>政策｜工藤まさゆき</title>
+<meta name="description" content="奈良県議会議員・工藤まさゆきの政策。教育、医療・福祉、地域・行政の取り組みと議会での質問・成果を紹介します。">
 
 
 
@@ -304,6 +305,9 @@ img{display:block;max-width:100%;height:auto}
 
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/refinements.css">
+<link rel="stylesheet" href="/assets/site-shell.css">
+<script src="/assets/site-shell.js" defer></script>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
@@ -319,21 +323,25 @@ img{display:block;max-width:100%;height:auto}
 </div>
 
 <!-- Header -->
-<header class="header">
-  <div class="wrap">
-    <a class="brand" href="index.html">
-      <span class="brand__jp">工藤まさゆき</span>
-      <span class="brand__en">Kudo Masayuki Official Site</span>
-    </a>
-    <nav class="nav" aria-label="グローバルナビゲーション">
-      <a href="index.html">ホーム</a>
-      <a href="policy/index.html" class="active">政策</a>
-      <a href="index.html#profile">プロフィール</a>
-      <a href="reports/index.html">活動報告</a>
-      <a href="/portal.html">県民ポータル</a>
-      <a href="index.html#news">お知らせ</a>
-    </nav>
+<header class="header site-header">
+  <div class="site-header__inner">
+    <a class="brand" href="/index.html#home"><span class="brand__jp">工藤まさゆき</span><span class="brand__en">Kudo Masayuki Official Site</span></a>
+    <nav class="nav site-nav" aria-label="グローバルナビゲーション"><a href="/index.html#home">ホーム</a>
+<a href="/policy/index.html" aria-current="page">政策</a>
+<a href="/index.html#profile">プロフィール</a>
+<a href="/reports/index.html">活動報告</a>
+<a href="/portal.html">県民ポータル</a>
+<a href="/index.html#news">お知らせ</a>
+<a href="/index.html#siteFooter">お問い合わせ</a></nav>
+    <button class="menu-btn site-menu-toggle" id="menuBtn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobilePanel" hidden><span></span><span></span><span></span></button>
   </div>
+  <nav class="mobile-panel site-mobile-nav" id="mobilePanel" aria-label="モバイルメニュー" hidden><div class="site-mobile-nav__inner"><a href="/index.html#home">ホーム</a>
+<a href="/policy/index.html" aria-current="page">政策</a>
+<a href="/index.html#profile">プロフィール</a>
+<a href="/reports/index.html">活動報告</a>
+<a href="/portal.html">県民ポータル</a>
+<a href="/index.html#news">お知らせ</a>
+<a href="/index.html#siteFooter">お問い合わせ</a></div></nav>
 </header>
 
 <!-- 3-Column -->
@@ -343,7 +351,7 @@ img{display:block;max-width:100%;height:auto}
     <span class="sidebar__label">奈良県議会議員<br>工藤まさゆき</span>
   </aside>
 
-  <div class="main-content">
+  <main class="main-content" id="main">
 
     <!-- Hero -->
     <div class="policy-hero">
@@ -382,23 +390,14 @@ img{display:block;max-width:100%;height:auto}
           <div class="dv4-card reveal">
             <p class="dv4-card__cat dv4-card__cat--blue">女子生徒の声</p>
             <p class="dv4-card__title">学校のトイレに生理用品を置いてほしい。奈良県の配置率は0.4%</p>
-            <div class="dv4-donut-wrap">
-              <div class="dv4-donut-item">
-                <svg viewBox="0 0 120 120" class="dv4-donut"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="10"/><circle cx="60" cy="60" r="52" fill="none" stroke="#ef4444" stroke-width="10" stroke-dasharray="1.3 325.2" stroke-dashoffset="81.7" stroke-linecap="round"/><text x="60" y="56" text-anchor="middle" fill="#ef4444" font-size="22" font-weight="800" font-family="Montserrat">0.4</text><text x="60" y="72" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700" font-family="Montserrat">%</text></svg>
-                <span class="dv4-donut-label">奈良県</span>
-              </div>
-              <div class="dv4-donut-item">
-                <svg viewBox="0 0 120 120" class="dv4-donut"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="10"/><circle cx="60" cy="60" r="52" fill="none" stroke="#37C200" stroke-width="10" stroke-dasharray="320.9 6.0" stroke-dashoffset="81.7" stroke-linecap="round"/><text x="60" y="56" text-anchor="middle" fill="#37C200" font-size="22" font-weight="800" font-family="Montserrat">98.2</text><text x="60" y="72" text-anchor="middle" fill="#37C200" font-size="11" font-weight="700" font-family="Montserrat">%</text></svg>
-                <span class="dv4-donut-label">北海道</span>
-              </div>
-            </div>
+            <dl class="rate-comparison"><div><dt>奈良県</dt><dd>0.4<span>%</span></dd></div><div><dt>北海道</dt><dd>98.2<span>%</span></dd></div></dl>
             <span class="dv4-badge dv4-badge--progress">→ 実態調査の実施が決定</span>
           </div>
           <div class="dv4-card reveal">
             <p class="dv4-card__cat dv4-card__cat--blue">預けたいのに預けられない</p>
             <p class="dv4-card__title">桜井市で保育園に入れない子どもが0人→18人に増加</p>
             <div class="dv4-hbar-group">
-              <div class="dv4-hbar"><span class="dv4-hbar__label">以前</span><div class="dv4-hbar__track"><span class="dv4-hbar__fill dv4-hbar__fill--green" style="width:2%"></span></div><span class="dv4-hbar__val">0</span></div>
+              <div class="dv4-hbar"><span class="dv4-hbar__label">以前</span><div class="dv4-hbar__track"><span class="dv4-hbar__fill dv4-hbar__fill--green" style="width:0%"></span></div><span class="dv4-hbar__val">0</span></div>
               <div class="dv4-hbar"><span class="dv4-hbar__label">R6年</span><div class="dv4-hbar__track"><span class="dv4-hbar__fill dv4-hbar__fill--red" style="width:100%"></span></div><span class="dv4-hbar__val dv4-hbar__val--red">18</span></div>
             </div>
             <span class="dv4-badge dv4-badge--done">✓ 保育士確保に向けた6県共同要望の実施を議会で確認</span>
@@ -433,9 +432,19 @@ img{display:block;max-width:100%;height:auto}
             <span class="dv4-badge dv4-badge--done">✓ 知事が宿泊施設の誘致セミナーを東京で開催</span>
           </div>
           <!-- 新データ：桜井市の学力 -->
-          <div class="dv4-card dv4-card--learning reveal"><p class="dv4-card__cat dv4-card__cat--green">桜井市の子どもたち（独自調査）</p><p class="dv4-card__title">県内他市との差が見られる（独自調査）</p><div class="dv4-learning-scale" aria-hidden="true"><span>0点</span><span>260点</span></div><div class="dv4-hbar-group">
-              <div class="dv4-hbar"><span class="dv4-hbar__label">他市</span><div class="dv4-hbar__track" role="img" aria-label="他市240〜250点台（独自調査）"><span class="dv4-hbar__fill dv4-hbar__fill--green" style="width:92.3077%"></span><span class="dv4-hbar__range" style="left:92.3077%;width:7.3077%"></span></div><span class="dv4-hbar__val">240〜250点台<br><small>（独自調査）</small></span></div>
-              <div class="dv4-hbar"><span class="dv4-hbar__label">桜井市</span><div class="dv4-hbar__track" role="img" aria-label="桜井市218点（独自調査）"><span class="dv4-hbar__fill dv4-hbar__fill--red" style="width:83.8462%"></span></div><span class="dv4-hbar__val dv4-hbar__val--red">218点<br><small>（独自調査）</small></span></div></div><p class="dv4-card__note">学力分布の二極化が課題（独自調査）</p></div>
+          <div class="dv4-card dv4-card--learning reveal">
+  <p class="dv4-card__cat">桜井市の子どもたち</p>
+  <h3 class="dv4-card__title">県内他市との差が見られる</h3>
+  <div class="learning-chart">
+    <div class="learning-row"><span class="learning-label">他市</span><div class="learning-track" aria-hidden="true"><div class="learning-grid"><span></span><span></span><span></span><span></span><span></span></div><span class="learning-fill learning-fill--comparison" style="width:92.3077%"></span><span class="learning-range" style="left:92.3077%;width:7.3077%"></span></div><strong class="learning-value">240〜250点台</strong></div>
+    <div class="learning-row"><span class="learning-label">桜井市</span><div class="learning-track" aria-hidden="true"><div class="learning-grid"><span></span><span></span><span></span><span></span><span></span></div><span class="learning-fill learning-fill--sakurai" style="width:83.8462%"></span></div><strong class="learning-value">218点</strong></div>
+    <div class="learning-scale"><span>0点</span><span>65点</span><span>130点</span><span>195点</span><span>260点</span></div>
+  </div>
+  <p class="learning-legend"><span aria-hidden="true"></span>240〜250点台の範囲</p>
+  <p class="learning-difference">240点と218点の差：22点</p>
+  <p class="dv4-card__note">学力分布の二極化が課題</p>
+  <p class="learning-note">独自調査。250点台は250〜259点として表示しています。<br>260点はグラフ表示の上限で、満点を示すものではありません。</p>
+</div>
           <!-- 新データ：介護予防の経済効果 -->
           <div class="dv4-card reveal"><p class="dv4-card__cat dv4-card__cat--green">高齢者の暮らし</p><p class="dv4-card__title">介護にならない人を、1人でも増やす</p><p class="dv4-card__note">要介護の方の平均介護保険料は約20万円。予防に5万円使っても、15万円の投資になります。</p><span class="dv4-badge dv4-badge--done">✓ 生涯学習・外出機会の充実で介護予防を推進</span></div>
           <!-- 新データ：医療介護タクシー -->
@@ -694,47 +703,36 @@ img{display:block;max-width:100%;height:auto}
       </div>
     </section>
 
-  </div>
+  </main>
 
   <aside class="sidebar sidebar--right" aria-hidden="true">
     <div class="sidebar-bubble"><span>声は届く！</span></div>
-    <img class="sidebar__portrait" src="images/rightcolumn.png" alt=""/>
+    <img class="sidebar__portrait" src="images/rightcolumn.png" alt="" width="848" height="1264" loading="lazy" decoding="async"/>
   </aside>
 </div>
 
 <!-- Footer -->
-<footer class="footer-v3">
-  <div class="fv3-sns">
-    <div class="fv3-sns__inner">
-      <a href="https://x.com/masayuki_kudoh" target="_blank" rel="noreferrer" class="fv3-sns__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.6l-5.2-6.8L5.2 22H2l7.4-8.5L1 2h6.8l4.7 6.1L18.9 2Zm-1.1 18h1.7L6.1 3.9H4.3L17.8 20Z"/></svg><span>X（Twitter）</span></a>
-      <a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noreferrer" class="fv3-sns__item"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9A5.5 5.5 0 0116.5 22h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2Zm9 2h-9A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4ZM12 7a5 5 0 110 10 5 5 0 010-10Zm0 2a3 3 0 100 6 3 3 0 000-6Zm5.7-.9a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4Z"/></svg><span>Instagram</span></a>
-      <a href="https://lin.ee/6mbk8Gl" target="_blank" rel="noreferrer noopener" class="fv3-sns__item" aria-label="LINE（公式）を開く"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg><span>LINE（ご相談）</span></a>
-      <a href="https://lin.ee/6mbk8Gl" target="_blank" rel="noreferrer noopener" class="fv3-sns__item" aria-label="LINE（公式）を開く"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.9 11.5c0-3.8-3.6-6.9-7.9-6.9S4.1 7.7 4.1 11.5c0 3.4 2.9 6.2 6.9 6.8.3.1.8.2.9.4.1.2.1.6.1.8l-.1.8c0 .2-.1.8.7.5.8-.3 4.3-2.5 5.9-4.2 1.1-1.2 1.6-2.4 1.6-3.9Z"/></svg><span>LINE（配信）</span></a>
+<footer class="site-footer" id="siteFooter">
+  <div class="site-footer__inner">
+    <div class="site-footer__contact">
+      <h2>お問い合わせ</h2>
+      <p>ご意見・ご相談は、公式LINEへお寄せください。</p>
+      <a class="site-line-button" href="https://lin.ee/6mbk8Gl" target="_blank" rel="noopener noreferrer">LINEで相談する<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
     </div>
-  </div>
-  <div class="fv3-main">
-    <div class="fv3-main__inner">
-      <div class="fv3-contact">
-        <h3 class="fv3-contact__title">お問い合わせ</h3>
-        <p class="fv3-contact__text">ご意見・ご相談はお気軽にどうぞ。匿名でも構いません。</p>
-        <a href="#" class="fv3-contact__btn">フォームを開く →</a>
-      </div>
-      <div class="fv3-nav">
-        <a href="index.html">ホーム</a>
-        <a href="index.html">政策</a>
-        <a href="index.html#profile">プロフィール</a>
-        <a href="reports/index.html">活動報告</a>
-        <a href="index.html#news">お知らせ</a>
-      </div>
-      <div class="fv3-office">
-        <p class="fv3-office__name">奈良県議会議員<br>工藤まさゆき</p>
-        <p class="fv3-office__party">日本維新の会 奈良県議団</p>
-        <p class="fv3-office__address">〒633-0062 桜井市大字粟殿612-8</p>
-        <p class="fv3-office__tel">TEL 090-9543-0910</p>
-      </div>
+    <div class="site-footer__office">
+      <p class="site-footer__role">奈良県議会議員</p><p class="site-footer__name">工藤まさゆき</p>
+      <p>日本維新の会 奈良県議団<br>〒633-0062 桜井市大字粟殿612-8<br><a href="tel:09095430910">TEL 090-9543-0910</a></p>
+      <div class="site-footer__social"><a href="https://x.com/masayuki_kudoh" target="_blank" rel="noopener noreferrer">X（Twitter）</a><a href="https://www.instagram.com/masayukikudoh/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
     </div>
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション"><a href="/index.html#home">ホーム</a>
+<a href="/policy/index.html">政策</a>
+<a href="/index.html#profile">プロフィール</a>
+<a href="/reports/index.html">活動報告</a>
+<a href="/portal.html">県民ポータル</a>
+<a href="/index.html#news">お知らせ</a>
+<a href="/index.html#siteFooter">お問い合わせ</a></nav>
+    <p class="site-footer__copyright">© 2026 Kudo Masayuki. All Rights Reserved.</p>
   </div>
-  <div class="fv3-copy"><p>© 2026 Kudo Masayuki. All Rights Reserved.</p></div>
 </footer>
 
 <script>
@@ -762,123 +760,6 @@ img{display:block;max-width:100%;height:auto}
 })();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
-<script>
-(function() {
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  // === A: ヒーローテキストのスタッガーリビール ===
-  // 「工藤まさゆき」の各文字を一文字ずつ下から登場させる
-  const heroName = document.querySelector('.hero__name');
-  if (heroName && typeof SplitType !== 'undefined') {
-    const split = new SplitType(heroName, { types: 'chars' });
-    gsap.from(split.chars, {
-      yPercent: 110,
-      opacity: 0,
-      stagger: 0.03,
-      duration: 0.8,
-      ease: 'power4.out',
-      delay: 0.3
-    });
-  }
-
-  // === B: ヒーロー写真のパララックス ===
-  const heroSection = document.querySelector('.hero');
-  if (heroSection) {
-    gsap.to(heroSection, {
-      backgroundPositionY: '60%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroSection,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.5
-      }
-    });
-  }
-
-  // 数値はHTMLの確定値を保持する（カンマ・丸め・未発火による誤表示を防止）。
-
-  // === E: カード類のスタッガー出現（共通） ===
-  // .reveal（opacity:0）付き要素と併用するため終了状態を明示
-  // 対象はコンテナ側で .js-stagger を付与して明示する
-  document.querySelectorAll('.js-stagger').forEach(function(grid) {
-    var cards = grid.querySelectorAll('.dv4-card, .policy-card, .rv3-sub, .pv3-item');
-    if (cards.length === 0) return;
-
-    gsap.fromTo(
-      cards,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.12,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: grid,
-          start: 'top 78%',
-          once: true
-        }
-      }
-    );
-  });
-
-  // === G: プロフィール写真のClipPathリビール ===
-  var profilePhoto = document.querySelector('.profile-photo img');
-  if (profilePhoto) {
-    gsap.from(profilePhoto, {
-      clipPath: 'inset(100% 0 0 0)',
-      duration: 1.2,
-      ease: 'power4.inOut',
-      scrollTrigger: {
-        trigger: '.profile-section, .profile-main',
-        start: 'top 65%',
-        once: true
-      }
-    });
-  }
-
-  // === K: 活動報告の写真スクロールズームアウト ===
-  document.querySelectorAll('.rv3-feature__photo img, .entry__photo img').forEach(function(img) {
-    gsap.fromTo(img,
-      { scale: 1.12 },
-      {
-        scale: 1,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: img.parentElement,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.5
-        }
-      }
-    );
-  });
-
-  // === H: プログレスバーのスクロール連動アニメーション ===
-  document.querySelectorAll('.dv4-hbar__fill, .dv4-mini-bar__track span').forEach(function(bar) {
-    var targetWidth = bar.style.width;
-    bar.style.width = '0%';
-
-    gsap.to(bar, {
-      width: targetWidth,
-      duration: 1.2,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: bar,
-        start: 'top 85%',
-        once: true
-      }
-    });
-  });
-
-})();
-</script>
 </body>
 </html>
