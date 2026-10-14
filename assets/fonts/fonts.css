@@ -1,0 +1,8 @@
+@font-face { font-family: "Zen Kaku Gothic New"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/zen-regular.woff2") format("woff2"); }
+@font-face { font-family: "Zen Kaku Gothic New"; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonts/zen-medium.woff2") format("woff2"); }
+@font-face { font-family: "Zen Kaku Gothic New"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/zen-bold.woff2") format("woff2"); }
+@font-face { font-family: "Noto Sans JP"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/noto-regular.woff2") format("woff2"); }
+@font-face { font-family: "Noto Sans JP"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/noto-bold.woff2") format("woff2"); }
+@font-face { font-family: "Noto Sans JP"; font-style: normal; font-weight: 900; font-display: swap; src: url("/assets/fonts/noto-black.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/montserrat-bold.woff2") format("woff2"); }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 800; font-display: swap; src: url("/assets/fonts/montserrat-extra-bold.woff2") format("woff2"); }
