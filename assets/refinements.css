@@ -312,6 +312,6 @@ body {
   .btn-primary, .btn-ghost, .pv3-item__link { transition: none; transform: none; }
 }
 
-@media (max-width: 359px) {
+@media (max-width: 389px) {
   .pi__table:not(.pi__table--stack) tr > :first-child { width: 50%; }
 }
