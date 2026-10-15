@@ -43,6 +43,7 @@ button.portal-nav__item:hover, button.portal-nav__item.is-active { border-bottom
 .site-footer__inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 40px 64px; }
 .site-footer__contact h2 { color: inherit; margin: 0 0 16px; font-size: 28px; letter-spacing: .04em; line-height: 1.4; }
 .site-footer__contact p { font-size: 16px; line-height: 1.8; margin: 0 0 24px; }
+.site-footer__contact .site-footer__notice { margin: 20px 0 0; font-size: 14px; line-height: 1.9; }
 .site-line-button { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; padding: 15px 24px; min-height: 54px; border: 1px solid var(--refine-green); border-radius: 10px; background: var(--refine-green); color: var(--refine-ink); font-size: 16px; font-weight: 700; line-height: 1.5; transition: background .2s; }
 .site-line-button:hover { background: var(--refine-light); border-color: var(--refine-light); }
 .site-line-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
