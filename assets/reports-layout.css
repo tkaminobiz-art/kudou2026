@@ -71,6 +71,24 @@
 .report-body .data-table tbody tr:last-child td { border-bottom: 0; }
 .report-body .report-number { white-space: nowrap; }
 .report-table-label { display: none; }
+.report-body .report-lead { font-weight: 700; margin-block: 24px 12px; }
+.report-june-2026 .overview-card__value { word-break: keep-all; overflow-wrap: anywhere; }
+.report-body .report-context { color: var(--refine-ink); font-size: 14px; line-height: 1.9; margin-block: 16px 24px; }
+.report-body a.theme-tag { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: .2em; }
+.report-body a.theme-tag:hover { background: var(--refine-mid); }
+.report-body .data-table caption { text-align: left; font-weight: 700; padding-bottom: 12px; color: var(--refine-deep); }
+.report-body .report-related { margin-top: 24px; }
+.report-body .report-current { margin-top: 28px; padding-block: 20px; border-block: 1px solid rgba(26,51,36,.16); }
+.report-body .report-current h3 { margin: 0 0 12px; color: var(--refine-deep); font-size: 17px; }
+.report-body .report-current p { margin: 0 0 12px; }
+.report-body .report-section-label { color: var(--refine-deep); font-weight: 700; margin-bottom: 12px; }
+.report-body .report-committee > .theme-title { margin-bottom: 16px; }
+.report-body .report-sources { font-size: 14px; line-height: 1.9; }
+.report-body .report-sources h2 { font-size: 22px; color: var(--refine-deep); }
+.report-body .report-sources h3 { font-size: 16px; margin: 24px 0 8px; }
+.report-body .report-sources ul { list-style: none; padding: 0; margin: 0; }
+.report-body .report-sources a { display: inline-block; padding-block: 10px; }
+.report-body .report-related a, .report-body .report-current a { display: inline-block; padding-block: 8px; text-decoration: underline; text-underline-offset: .2em; }
 .report-body .report-nav { flex-wrap: wrap; gap: 12px; }
 .report-body .report-nav a {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -158,7 +176,12 @@
 
 /* Keep long labels together; narrow screens present each key/value pair as a unit. */
 .report-label-part { display: inline-block; white-space: nowrap; }
+
+@media (max-width: 359px) {
+  .report-june-2026 .theme-title { font-size: 21px; }
+}
 @media (max-width: 600px) {
+  .report-body .report-table--keyvalue caption { display: block; width: 100%; padding: 12px; }
   .report-body .data-table.report-table--keyvalue,
   .report-body .report-table--keyvalue tbody,
   .report-body .report-table--keyvalue tr,

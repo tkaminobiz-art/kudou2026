@@ -120,12 +120,21 @@ body {
 .hero .container { padding-top: 64px; padding-bottom: 64px; }
 .photo-break img { object-position: 55% 46%; }
 .rv3-feature__photo img,
+.rv3-sub__photo img[src*="speech-point"],
 .entry__photo img[src*="speech-point"] { object-position: 48% 10%; }
 .rv3-sub__photo img[src*="speech-mic"],
 .entry__photo img[src*="speech-mic"] { object-position: 50% 10%; }
+.rv3-feature__photo img[src*="outdoor-speech"],
 .rv3-sub__photo img[src*="outdoor-speech"],
 .entry__photo img[src*="outdoor-speech"] { object-position: 61% 39%; }
 .profile-photo img { object-fit: contain; }
+.profile-photo picture { display: block; width: 100%; max-width: 380px; }
+.policy-update { padding: 24px 0; margin: 0 0 40px; border-block: 1px solid rgba(26,51,36,.18); }
+.policy-update h3 { font-size: 18px; color: var(--refine-deep); margin: 0 0 12px; line-height: 1.7; }
+.policy-update p { font-size: 15px; line-height: 1.9; margin: 0 0 12px; }
+.policy-update ul { display: flex; flex-wrap: wrap; gap: 4px 24px; list-style: none; padding: 0; margin: 0; }
+.policy-update a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 700; color: var(--refine-deep); text-decoration: underline; text-underline-offset: .25em; }
+@media (max-width: 767px) { .profile-photo picture { max-width: 280px; } }
 
 /* 3. Controls: flat surfaces, consistent height and a quieter edge. */
 .btn-primary, .btn-ghost, .pv3-item__link, .fv3-contact__btn {
@@ -288,7 +297,7 @@ body {
   .photo-break img { object-position: 59% 45%; }
   .rv3-feature__photo img { object-position: 50% 8%; }
   .rv3-sub__photo img[src*="speech-mic"], .entry__photo img[src*="speech-mic"] { object-position: 50% 8%; }
-  .rv3-sub__photo img[src*="outdoor-speech"], .entry__photo img[src*="outdoor-speech"] { object-position: 63% 38%; }
+  .rv3-feature__photo img[src*="outdoor-speech"], .rv3-sub__photo img[src*="outdoor-speech"], .entry__photo img[src*="outdoor-speech"] { object-position: 63% 38%; }
   .portal-nav { position: relative; top: 0; }
   .portal-nav__inner { overflow: visible; justify-content: flex-start; gap: 0; }
   .portal-nav__item { flex: 0 0 33.333%; padding: 10px 8px; text-align: center; font-size: 13px; }
